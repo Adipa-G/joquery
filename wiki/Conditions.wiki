@@ -1,0 +1,94 @@
+#summary Available conditions
+=Conditions=
+==Equality==
+In following code list would be filtered so that only item with id = 1 is returned
+{{{
+IQuery<Simple> query = new Query<Simple>()
+        .from(testList)
+        .where()
+        .exec(new IExec<Simple>()
+        {
+            public Object exec(Simple simple)
+            {
+                return simple.getId();
+            }
+        }).eq().value(1);
+
+Collection<Simple> filtered = query.execute();
+}}}
+
+==Less Than==
+In following code list would be filtered so that only items with id < 2 are returned
+{{{
+IQuery<Simple> query = new Query<Simple>()
+        .from(testList)
+        .where()
+        .exec(new IExec<Simple>()
+        {
+            public Object exec(Simple simple)
+            {
+                return simple.getId();
+            }
+        }).lt().value(2);
+
+Collection<Simple> filtered = query.execute();
+}}}
+
+==Less than or equal==
+Similar to the Less than condition but function le() should be used instead of lt()
+
+==Greater than==
+Similar to the Less than condition but function gt() should be used instead of lt()
+
+==Greater than or equal==
+Similar to the Less than condition but function ge() should be used instead of lt()
+
+==In==
+{{{
+In following code list would be filtered so that only items with id 1 or 2 are returned
+IQuery<Simple> query = new Query<Simple>()
+        .from(testList)
+        .where()
+        .exec(new IExec<Simple>()
+        {
+            public Object exec(Simple simple)
+            {
+                return simple.getId();
+            }
+        }).in().value(new int[]{1,2});
+
+Collection<Simple> filtered = query.execute();
+}}}
+
+It can be re-parsed to use a collection instead of an array.
+{{{
+IQuery<Simple> query = new Query<Simple>()
+        .from(testList)
+        .where()
+        .exec(new IExec<Simple>()
+        {
+            public Object exec(Simple simple)
+            {
+                return simple.getId();
+            }
+        }).in().value(Arrays.asList(1,2));
+
+Collection<Simple> filtered = query.execute();
+}}}
+
+==Between==
+In following code list would be filtered so that only items with id greater than or equal to 1 and less than or equal to 2 are returned
+{{{
+IQuery<Simple> query = new Query<Simple>()
+        .from(testList)
+        .where()
+        .exec(new IExec<Simple>()
+        {
+            public Object exec(Simple simple)
+            {
+                return simple.getId();
+            }
+        }).between().value(1).value(2);
+
+Collection<Simple> filtered = query.execute();
+}}}

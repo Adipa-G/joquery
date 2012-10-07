@@ -1,0 +1,47 @@
+#summary Expressions
+=Expressions=
+As of current Joquery supports only 3 expression types
+
+ # {{{value}}}
+ # {{{exec}}}
+ # {{{property}}}
+
+==value==
+this is the expression used to define a constant value
+{{{
+IQuery<Simple> query = new Query<Simple>()
+    .from(testList)
+    .where()
+    .exec(new IExec<Simple>()
+    {
+        public Object exec(Simple simple)
+        {
+            return simple.getId();
+        }
+    }).eq().value(1);
+}}}
+In this example the fixed value 1 is passed to the query using the value expression.
+
+==exec==
+{{{
+IQuery<Simple> query = new Query<Simple>()
+    .from(testList)
+    .where()
+    .exec(new IExec<Simple>()
+    {
+     public Object exec(Simple simple)
+     {
+         return simple.getId() == 1;
+     }
+    });
+}}}
+Here exec use to find out the valid objects, the exec method always passed IExec implementation.
+
+==property==
+{{{
+IQuery<Simple> query = new Query<Simple>()
+    .from(testList)
+    .where()
+    .property("id").eq().value(1);
+}}}
+In this case the property id of the object is used to get the value using reflection. It use first field ("id" in this case) to obtain the value if not it goes for getter ("getId" in this case, if it's not found it tried "isId"). So it's paramount to pass the proper camel case name of the field with lower case first letter.
