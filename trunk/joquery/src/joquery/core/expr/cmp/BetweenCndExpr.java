@@ -9,7 +9,7 @@ import joquery.core.expr.IExpr;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class BetweenCmpExpr<T> extends CmpExpr<T>
+public class BetweenCndExpr<T> extends CndExpr<T>
 {
     protected IExpr<T> right2;
 
@@ -37,11 +37,11 @@ public class BetweenCmpExpr<T> extends CmpExpr<T>
     public Object evaluate(T t) throws QueryException
     {
         validate();
-        GeCmpExpr<T> geExpr = new GeCmpExpr<>();
+        GeCndExpr<T> geExpr = new GeCndExpr<>();
         geExpr.left = left;
         geExpr.right = right;
 
-        LeCmpExpr<T> leExpr = new LeCmpExpr<>();
+        LeCndExpr<T> leExpr = new LeCndExpr<>();
         leExpr.left = left;
         leExpr.right = right2;
 

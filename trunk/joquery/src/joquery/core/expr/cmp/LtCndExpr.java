@@ -7,7 +7,7 @@ import joquery.core.QueryException;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class LtCmpExpr<T> extends CmpExpr<T>
+public class LtCndExpr<T> extends CndExpr<T>
 {
     @Override
     public Object evaluate(T t) throws QueryException

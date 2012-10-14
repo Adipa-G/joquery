@@ -7,13 +7,13 @@ import joquery.core.QueryException;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class GtCmpExpr<T> extends CmpExpr<T>
+public class GtCndExpr<T> extends CndExpr<T>
 {
     @Override
     public Object evaluate(T t)  throws QueryException
     {
         validate();
-        LeCmpExpr<T> leExpr = new LeCmpExpr<>();
+        LeCndExpr<T> leExpr = new LeCndExpr<>();
         leExpr.left = left; leExpr.right = right;
 
         boolean le = (Boolean)leExpr.evaluate(t);

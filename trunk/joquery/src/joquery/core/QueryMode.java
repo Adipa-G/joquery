@@ -7,5 +7,6 @@ package joquery.core;
  */
 enum QueryMode
 {
-    WHERE
+    WHERE,
+    GROUP
 }

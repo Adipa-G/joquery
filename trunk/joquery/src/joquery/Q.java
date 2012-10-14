@@ -1,6 +1,7 @@
 package joquery;
 
 import joquery.core.SimpleQueryImpl;
+import joquery.core.TransformedQueryImpl;
 
 /**
  * User: Adipa
@@ -12,5 +13,10 @@ public class Q
     public static <T> SimpleQuery<T> simple()
     {
         return new SimpleQueryImpl<>();
+    }
+
+    public static <T,U> TransformedQuery<T,U> transformed()
+    {
+        return new TransformedQueryImpl<>();
     }
 }
