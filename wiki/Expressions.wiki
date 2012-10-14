@@ -14,9 +14,9 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
     .where()
     .exec(new Exec<Dto>()
     {
-        public Object exec(Dto simple)
+        public Object exec(Dto dto)
         {
-            return simple.getId();
+            return dto.getId();
         }
     }).eq().value(1);
 }}}
@@ -29,9 +29,9 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
     .where()
     .exec(new Exec<Dto>()
     {
-     public Object exec(Dto simple)
+     public Object exec(Dto dto)
      {
-         return simple.getId() == 1;
+         return dto.getId() == 1;
      }
     });
 }}}

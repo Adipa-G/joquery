@@ -8,9 +8,9 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
         .where()
         .exec(new Exec<Dto>()
         {
-            public Object exec(Dto simple)
+            public Object exec(Dto dto)
             {
-                return simple.getId();
+                return dto.getId();
             }
         }).eq().value(1);
 
@@ -25,9 +25,9 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
         .where()
         .exec(new Exec<Dto>()
         {
-            public Object exec(Dto simple)
+            public Object exec(Dto dto)
             {
-                return simple.getId();
+                return dto.getId();
             }
         }).lt().value(2);
 
@@ -51,9 +51,9 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
         .where()
         .exec(new Exec<Dto>()
         {
-            public Object exec(Dto simple)
+            public Object exec(Dto dto)
             {
-                return simple.getId();
+                return dto.getId();
             }
         }).in().value(new int[]{1,2});
 
@@ -67,9 +67,9 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
         .where()
         .exec(new Exec<Dto>()
         {
-            public Object exec(Dto simple)
+            public Object exec(Dto dto)
             {
-                return simple.getId();
+                return dto.getId();
             }
         }).in().value(Arrays.asList(1,2));
 
@@ -84,9 +84,9 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
         .where()
         .exec(new Exec<Dto>()
         {
-            public Object exec(Dto simple)
+            public Object exec(Dto dto)
             {
-                return simple.getId();
+                return dto.getId();
             }
         }).between().value(1).value(2);
 
@@ -101,17 +101,17 @@ SimpleQuery<Dto> query = Q.<Dto>simple()
         .where()
         .exec(new Exec<Dto>()
         {
-            public Object exec(Dto simple)
+            public Object exec(Dto dto)
             {
-                return simple.getId();
+                return dto.getId();
             }
         }).gt().value(1)
         .and()
         .exec(new Exec<Dto>()
         {
-            public Object exec(Dto simple)
+            public Object exec(Dto dto)
             {
-                return simple.getId();
+                return dto.getId();
             }
         }).lt().value(3);
 
