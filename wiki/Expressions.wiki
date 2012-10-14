@@ -9,12 +9,12 @@ As of current Joquery supports only 3 expression types
 ==value==
 this is the expression used to define a constant value
 {{{
-SimpleQuery<Simple> query = Q.<Simple>simple()
+SimpleQuery<Dto> query = Q.<Dto>simple()
     .from(testList)
     .where()
-    .exec(new Exec<Simple>()
+    .exec(new Exec<Dto>()
     {
-        public Object exec(Simple simple)
+        public Object exec(Dto simple)
         {
             return simple.getId();
         }
@@ -24,22 +24,22 @@ In this example the fixed value 1 is passed to the query using the value express
 
 ==exec==
 {{{
-SimpleQuery<Simple> query = Q.<Simple>simple()
+SimpleQuery<Dto> query = Q.<Dto>simple()
     .from(testList)
     .where()
-    .exec(new Exec<Simple>()
+    .exec(new Exec<Dto>()
     {
-     public Object exec(Simple simple)
+     public Object exec(Dto simple)
      {
          return simple.getId() == 1;
      }
     });
 }}}
-Here exec use to find out the valid objects, the exec method always passed Exec implementation.
+Here exec use to find out the valid objects.
 
 ==property==
 {{{
-SimpleQuery<Simple> query = Q.<Simple>simple()
+SimpleQuery<Dto> query = Q.<Dto>simple()
     .from(testList)
     .where()
     .property("id").eq().value(1);
