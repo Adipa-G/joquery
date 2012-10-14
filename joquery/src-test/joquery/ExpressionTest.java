@@ -17,15 +17,15 @@ import java.util.Collection;
 
 public class ExpressionTest
 {
-    private static Collection<Simple> testList;
+    private static Collection<Dto> testList;
 
     @BeforeClass
     public static void setup()
     {
         testList = new ArrayList<>();
-        testList.add(new Simple(1));
-        testList.add(new Simple(2));
-        testList.add(new Simple(3));
+        testList.add(new Dto(1));
+        testList.add(new Dto(2));
+        testList.add(new Dto(3));
     }
 
     @AfterClass
@@ -38,55 +38,55 @@ public class ExpressionTest
     @Test
     public void Expression_Exec_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Simple> query = Q.<Simple>simple()
+        SimpleQuery<Dto> query = Q.<Dto>simple()
                 .from(testList)
                 .where()
-                .exec(new Exec<Simple>()
+                .exec(new Exec<Dto>()
                 {
-                    public Object exec(Simple simple)
+                    public Object exec(Dto simple)
                     {
                         return simple.getId() == 1;
                     }
                 });
 
-        Collection<Simple> filtered = query.execute();
+        Collection<Dto> filtered = query.execute();
         assertResult(filtered, new int[]{1});
     }
 
     @Test
     public void Expression_Property_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Simple> query = Q.<Simple>simple()
+        SimpleQuery<Dto> query = Q.<Dto>simple()
                 .from(testList)
                 .where()
                 .property("id")
                 .eq()
                 .value(1);
 
-        Collection<Simple> filtered = query.execute();
+        Collection<Dto> filtered = query.execute();
         assertResult(filtered, new int[]{1});
     }
 
-    private static void assertResult(Collection<Simple> list,int[] ids)
+    private static void assertResult(Collection<Dto> list,int[] ids)
     {
         Assert.assertEquals(String.format("Expected items are not retrieved"), ids.length, list.size());
         for (int id : ids)
         {
             boolean found = false;
-            for (Simple simple : list)
+            for (Dto dto : list)
             {
-                found = simple.id == id;
+                found = dto.id == id;
                 if (found) break;
             }
             Assert.assertTrue(String.format("Unable to find item with id %s",id),found);
         }
     }
 
-    static class Simple
+    static class Dto
     {
         private int id;
 
-        Simple(int id)
+        Dto(int id)
         {
             this.id = id;
         }

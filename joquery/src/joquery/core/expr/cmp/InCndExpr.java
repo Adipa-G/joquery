@@ -9,7 +9,7 @@ import java.lang.reflect.Array;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class InCmpExpr<T> extends CmpExpr<T>
+public class InCndExpr<T> extends CndExpr<T>
 {
     @SuppressWarnings("SimplifiableIfStatement")
     @Override

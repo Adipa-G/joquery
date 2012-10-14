@@ -9,7 +9,6 @@ import joquery.core.expr.IExpr;
 import joquery.core.expr.ReflectionExpr;
 import joquery.core.expr.cmp.*;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -18,100 +17,134 @@ import java.util.Collection;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class QueryImpl<T,U> implements Query<T, U>
+public class QueryImpl<T,U,W extends Query> implements Query<T, W>
 {
-    private Iterable<T> items;
     private QueryMode queryMode;
-    private IExpr<T> condition;
+
+    protected Iterable<T> items;
+    protected IExpr<T> condition;
 
     @Override
-    public Query<T, U> from(Iterable<T> list)
+    public W from(Iterable<T> list)
     {
         items = list;
-        return this;
+        //noinspection unchecked
+        return (W)this;
     }
 
     @Override
-    public Query<T, U> where()
+    public W where()
     {
         queryMode = QueryMode.WHERE;
-        return this;
+        //noinspection unchecked
+        return (W)this;
     }
 
     @Override
-    public Query<T, U> exec(Exec<T> exec) throws QueryException
+    public W exec(Exec<T> exec) throws QueryException
     {
         return addExpr(new ExecExpr<>(exec));
     }
 
     @Override
-    public Query<T, U> property(String property) throws QueryException
+    public W property(String property) throws QueryException
     {
         return addExpr(new ReflectionExpr<T>(property));
     }
 
     @Override
-    public Query<T, U> value(Object value) throws QueryException
+    public W value(Object value) throws QueryException
     {
         return addExpr(new ConstExpr<T>(value));
     }
 
     @Override
-    public Query<T, U> eq() throws QueryException
+    public W and() throws QueryException
     {
-        return addExpr(new EqCmpExpr<T>());
+        return addExpr(new AndCndExpr<T>());
     }
 
     @Override
-    public Query<T, U> lt() throws QueryException
+    public W or() throws QueryException
     {
-        return addExpr(new LtCmpExpr<T>());
+        return addExpr(new OrCndExpr<T>());
     }
 
     @Override
-    public Query<T, U> le() throws QueryException
+    public W eq() throws QueryException
     {
-        return addExpr(new LeCmpExpr<T>());
+        return addExpr(new EqCndExpr<T>());
     }
 
     @Override
-    public Query<T, U> gt() throws QueryException
+    public W lt() throws QueryException
     {
-        return addExpr(new GtCmpExpr<T>());
+        return addExpr(new LtCndExpr<T>());
     }
 
     @Override
-    public Query<T, U> ge() throws QueryException
+    public W le() throws QueryException
     {
-        return addExpr(new GeCmpExpr<T>());
+        return addExpr(new LeCndExpr<T>());
     }
 
     @Override
-    public Query<T, U> in() throws QueryException
+    public W gt() throws QueryException
     {
-        return addExpr(new InCmpExpr<T>());
+        return addExpr(new GtCndExpr<T>());
     }
 
     @Override
-    public Query<T, U> between() throws QueryException
+    public W ge() throws QueryException
     {
-        return addExpr(new BetweenCmpExpr<T>());
+        return addExpr(new GeCndExpr<T>());
     }
 
-    private Query<T, U> addExpr(IExpr<T> expr) throws QueryException
+    @Override
+    public W in() throws QueryException
+    {
+        return addExpr(new InCndExpr<T>());
+    }
+
+    @Override
+    public W between() throws QueryException
+    {
+        return addExpr(new BetweenCndExpr<T>());
+    }
+
+    private W addExpr(IExpr<T> expr) throws QueryException
     {
         boolean added;
 
+        switch (queryMode)
+        {
+            case WHERE:
+                added = addWhereExpr(expr);
+                break;
+            case GROUP:
+                added = false;
+                break;
+            default:
+                added = false;
+        }
+
+        if (!added)
+            throw new QueryException("failed while adding expression to tree " + expr);
+
+        //noinspection unchecked
+        return (W)this;
+    }
+
+    private boolean addWhereExpr(IExpr<T> expr)
+    {
+        boolean added;
         if (condition != null)
         {
-            added = expr.add(condition);
-            if (added)
+            added = condition.add(expr);
+            if (!added)
             {
+                added = expr.add(condition);
                 condition = expr;
-            }
-            else
-            {
-                added = condition.add(expr);
             }
         }
         else
@@ -119,44 +152,15 @@ public class QueryImpl<T,U> implements Query<T, U>
             added = true;
             condition = expr;
         }
-
-        if (!added)
-            throw new QueryException("failed while adding expression to tree " + expr);
-
-        return this;
+        return added;
     }
 
-    @Override
-    public Collection<U> execute() throws QueryException
-    {
-        ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-        Class tClass = type.getActualTypeArguments()[0].getClass();
-        Class uClass = type.getActualTypeArguments()[1].getClass();
-
-        if (tClass != uClass)
-            throw new QueryException(String.format("The result type of %s cannot be directly transformed from type %s." +
-                                                           " Use a resultTransformer to achieve this"
-                    ,tClass.getCanonicalName(),uClass.getCanonicalName()));
-
-        ResultTransformer<T,U> resultTransformer = new ResultTransformer<T, U>()
-        {
-            @Override
-            public U transform(T t)
-            {
-                //noinspection unchecked
-                return (U)t;
-            }
-        };
-        return execute(resultTransformer);
-    }
-
-    @Override
-    public Collection<U> execute(ResultTransformer<T,U> transformer) throws QueryException
+    protected Collection<U> executeSelect(ResultTransformer<T, U> transformer) throws QueryException
     {
         Collection<U> retVal = new ArrayList<>();
         for (T t : items)
         {
-            Object result = condition.evaluate(t);
+            Object result = condition != null ? condition.evaluate(t) : true;
             if (result instanceof Boolean)
             {
                 boolean boolResult = (Boolean)result;

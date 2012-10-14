@@ -8,7 +8,7 @@ import joquery.core.expr.IExpr;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public abstract class CmpExpr<T> implements IExpr<T>
+public abstract class CndExpr<T> implements IExpr<T>
 {
     protected IExpr<T> left;
     protected IExpr<T> right;

@@ -2,40 +2,38 @@ package joquery;
 
 import joquery.core.QueryException;
 
-import java.util.Collection;
-
 /**
  * User: Adipa
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public interface Query<T, U>
+public interface Query<T,W extends Query>
 {
-    Query<T, U> from(Iterable<T> list);
+    W from(Iterable<T> list);
 
-    Query<T, U> where();
+    W where();
 
-    Query<T, U> exec(Exec<T> exec) throws QueryException;
+    W exec(Exec<T> exec) throws QueryException;
 
-    Query<T, U> property(String property) throws QueryException;
+    W property(String property) throws QueryException;
 
-    Query<T, U> value(Object value) throws QueryException;
+    W value(Object value) throws QueryException;
 
-    Query<T, U> eq() throws QueryException;
+    W and() throws QueryException;
 
-    Query<T, U> lt() throws QueryException;
+    W or() throws QueryException;
 
-    Query<T, U> le() throws QueryException;
+    W eq() throws QueryException;
 
-    Query<T, U> gt() throws QueryException;
+    W lt() throws QueryException;
 
-    Query<T, U> ge() throws QueryException;
+    W le() throws QueryException;
 
-    Query<T, U> in() throws QueryException;
+    W gt() throws QueryException;
 
-    Query<T, U> between() throws QueryException;
+    W ge() throws QueryException;
 
-    Collection<U> execute()throws QueryException;
+    W in() throws QueryException;
 
-    Collection<U> execute(ResultTransformer<T,U> transformer)throws QueryException;
+    W between() throws QueryException;
 }
