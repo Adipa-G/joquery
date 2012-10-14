@@ -96,7 +96,7 @@
           <formatter type="plain"/>
 
           <test todir="${build.testreports}" name="joquery.ExpressionTest" fork="yes"/>
-          <test todir="${build.testreports}" name="joquery.SimpleConditionTest" fork="yes"/>
+          <test todir="${build.testreports}" name="joquery.SimpleQueryConditionTest" fork="yes"/>
         </junit>
     </target>
 

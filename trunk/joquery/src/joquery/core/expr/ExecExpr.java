@@ -1,6 +1,6 @@
 package joquery.core.expr;
 
-import joquery.IExec;
+import joquery.Exec;
 import joquery.core.QueryException;
 
 /**
@@ -10,9 +10,9 @@ import joquery.core.QueryException;
  */
 public class ExecExpr<T> implements IExpr<T>
 {
-    private IExec<T> exec;
+    private Exec<T> exec;
 
-    public ExecExpr(IExec<T> exec)
+    public ExecExpr(Exec<T> exec)
     {
         this.exec = exec;
     }
