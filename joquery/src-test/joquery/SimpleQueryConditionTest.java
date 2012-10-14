@@ -1,6 +1,5 @@
 package joquery;
 
-import joquery.core.Query;
 import joquery.core.QueryException;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -17,7 +16,7 @@ import java.util.Collection;
  * Time: 9:31 PM
  */
 
-public class SimpleConditionTest
+public class SimpleQueryConditionTest
 {
     private static Collection<Simple> testList;
 
@@ -25,9 +24,9 @@ public class SimpleConditionTest
     public static void setup()
     {
         testList = new ArrayList<>();
-        testList.add(new Simple(1,"A"));
-        testList.add(new Simple(2,"B"));
-        testList.add(new Simple(3,"C"));
+        testList.add(new Simple(1));
+        testList.add(new Simple(2));
+        testList.add(new Simple(3));
     }
 
     @AfterClass
@@ -40,10 +39,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_Exec_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -58,10 +57,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_Eq_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -76,10 +75,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_Lt_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -94,10 +93,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_Le_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -112,10 +111,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_Gt_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -130,10 +129,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_Ge_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -148,10 +147,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_InWithArray_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -166,10 +165,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_InWithIterable_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -184,10 +183,10 @@ public class SimpleConditionTest
     @Test
     public void Condition_Between_ShouldFilter() throws QueryException
     {
-        IQuery<Simple> query = new Query<Simple>()
+        SimpleQuery<Simple> query = Q.<Simple>simple()
                 .from(testList)
                 .where()
-                .exec(new IExec<Simple>()
+                .exec(new Exec<Simple>()
                 {
                     public Object exec(Simple simple)
                     {
@@ -217,32 +216,15 @@ public class SimpleConditionTest
     static class Simple
     {
         private int id;
-        private String value;
 
-        Simple(int id, String value)
+        Simple(int id)
         {
             this.id = id;
-            this.value = value;
         }
 
         public int getId()
         {
             return id;
-        }
-
-        public void setId(int id)
-        {
-            this.id = id;
-        }
-
-        public String getValue()
-        {
-            return value;
-        }
-
-        public void setValue(String value)
-        {
-            this.value = value;
         }
     }
 }
