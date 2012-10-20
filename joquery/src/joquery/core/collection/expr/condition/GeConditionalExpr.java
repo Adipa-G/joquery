@@ -1,4 +1,4 @@
-package joquery.core.expr.cmp;
+package joquery.core.collection.expr.condition;
 
 import joquery.core.QueryException;
 
@@ -7,13 +7,13 @@ import joquery.core.QueryException;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class GeCndExpr<T> extends CndExpr<T>
+public class GeConditionalExpr<T> extends ConditionalExpr<T>
 {
     @Override
     public Object evaluate(T t) throws QueryException
     {
         validate();
-        LtCndExpr<T> ltExpr = new LtCndExpr<>();
+        LtConditionalExpr<T> ltExpr = new LtConditionalExpr<>();
         ltExpr.left = left; ltExpr.right = right;
 
         boolean lt = (Boolean)ltExpr.evaluate(t);

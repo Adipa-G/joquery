@@ -1,11 +1,11 @@
-package joquery.core.expr.cmp;
+package joquery.core.collection.expr.condition.combine;
 
 /**
  * User: Adipa
  * Date: 10/14/12
  * Time: 12:58 PM
  */
-public class OrCndExpr<T> extends BaseCombineCndExpr<T>
+public class OrConditionalCombinationExpr<T> extends BaseConditionalCombinationExpr<T>
 {
     @Override
     public boolean combine(boolean leftVal, boolean rightVal)

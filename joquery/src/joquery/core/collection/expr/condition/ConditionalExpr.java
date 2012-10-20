@@ -1,17 +1,24 @@
-package joquery.core.expr.cmp;
+package joquery.core.collection.expr.condition;
 
 import joquery.core.QueryException;
-import joquery.core.expr.IExpr;
+import joquery.core.collection.QueryMode;
+import joquery.core.collection.expr.IExpr;
 
 /**
  * User: Adipa
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public abstract class CndExpr<T> implements IExpr<T>
+public abstract class ConditionalExpr<T> implements IExpr<T>
 {
     protected IExpr<T> left;
     protected IExpr<T> right;
+
+    @Override
+    public boolean supportsMode(QueryMode mode)
+    {
+        return mode == QueryMode.WHERE;
+    }
 
     @Override
     public boolean add(IExpr<T> expr)

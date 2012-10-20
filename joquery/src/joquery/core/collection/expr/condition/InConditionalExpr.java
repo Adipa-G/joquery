@@ -1,4 +1,4 @@
-package joquery.core.expr.cmp;
+package joquery.core.collection.expr.condition;
 
 import joquery.core.QueryException;
 
@@ -9,7 +9,7 @@ import java.lang.reflect.Array;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class InCndExpr<T> extends CndExpr<T>
+public class InConditionalExpr<T> extends ConditionalExpr<T>
 {
     @SuppressWarnings("SimplifiableIfStatement")
     @Override

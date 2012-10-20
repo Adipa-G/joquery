@@ -15,7 +15,7 @@ import java.util.Collection;
  * Time: 9:31 PM
  */
 
-public class SimpleQueryTest
+public class FilterTest
 {
     private static Collection<Dto> testList;
 
@@ -38,7 +38,7 @@ public class SimpleQueryTest
     @Test
     public void Execute_WithNoFilter_ShouldReturnAll() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList);
 
         Collection<Dto> filtered = query.execute();

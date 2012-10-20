@@ -1,6 +1,7 @@
-package joquery.core.expr;
+package joquery.core.collection.expr;
 
 import joquery.core.QueryException;
+import joquery.core.collection.QueryMode;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -19,6 +20,12 @@ public class ReflectionExpr<T> implements IExpr<T>
     public ReflectionExpr(String property)
     {
         this.property = property;
+    }
+
+    @Override
+    public boolean supportsMode(QueryMode mode)
+    {
+        return true;
     }
 
     @Override

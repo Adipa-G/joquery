@@ -1,4 +1,4 @@
-package joquery.core.expr.cmp;
+package joquery.core.collection.expr.condition;
 
 import joquery.core.QueryException;
 
@@ -7,7 +7,7 @@ import joquery.core.QueryException;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class EqCndExpr<T> extends CndExpr<T>
+public class EqConditionalExpr<T> extends ConditionalExpr<T>
 {
     @Override
     public Object evaluate(T t) throws QueryException

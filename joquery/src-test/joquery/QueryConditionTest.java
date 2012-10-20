@@ -39,7 +39,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Exec_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -57,7 +57,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Eq_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -75,7 +75,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Lt_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -93,7 +93,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Le_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -111,7 +111,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Gt_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -129,7 +129,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Ge_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -147,7 +147,7 @@ public class QueryConditionTest
     @Test
     public void Condition_InWithArray_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -165,7 +165,7 @@ public class QueryConditionTest
     @Test
     public void Condition_InWithIterable_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -183,7 +183,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Between_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -201,7 +201,7 @@ public class QueryConditionTest
     @Test
     public void Condition_And_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -227,7 +227,7 @@ public class QueryConditionTest
     @Test
     public void Condition_Or_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -253,7 +253,7 @@ public class QueryConditionTest
     @Test
     public void Condition_AndOrCombined_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()

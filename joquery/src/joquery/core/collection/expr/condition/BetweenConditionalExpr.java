@@ -1,7 +1,7 @@
-package joquery.core.expr.cmp;
+package joquery.core.collection.expr.condition;
 
 import joquery.core.QueryException;
-import joquery.core.expr.IExpr;
+import joquery.core.collection.expr.IExpr;
 
 
 /**
@@ -9,7 +9,7 @@ import joquery.core.expr.IExpr;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class BetweenCndExpr<T> extends CndExpr<T>
+public class BetweenConditionalExpr<T> extends ConditionalExpr<T>
 {
     protected IExpr<T> right2;
 
@@ -37,11 +37,11 @@ public class BetweenCndExpr<T> extends CndExpr<T>
     public Object evaluate(T t) throws QueryException
     {
         validate();
-        GeCndExpr<T> geExpr = new GeCndExpr<>();
+        GeConditionalExpr<T> geExpr = new GeConditionalExpr<>();
         geExpr.left = left;
         geExpr.right = right;
 
-        LeCndExpr<T> leExpr = new LeCndExpr<>();
+        LeConditionalExpr<T> leExpr = new LeConditionalExpr<>();
         leExpr.left = left;
         leExpr.right = right2;
 

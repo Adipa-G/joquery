@@ -1,6 +1,7 @@
-package joquery.core.expr;
+package joquery.core.collection.expr;
 
 import joquery.core.QueryException;
+import joquery.core.collection.QueryMode;
 
 /**
  * User: Adipa
@@ -9,6 +10,8 @@ import joquery.core.QueryException;
  */
 public interface IExpr<T>
 {
+    boolean supportsMode(QueryMode mode);
+
     boolean add(IExpr<T> expr);
 
     Object evaluate(T t) throws QueryException;

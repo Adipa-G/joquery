@@ -1,6 +1,7 @@
-package joquery.core.expr;
+package joquery.core.collection.expr;
 
 import joquery.core.QueryException;
+import joquery.core.collection.QueryMode;
 
 /**
  * User: Adipa
@@ -14,6 +15,12 @@ public class ConstExpr<T> implements IExpr<T>
     public ConstExpr(Object constVal)
     {
         this.constVal = constVal;
+    }
+
+    @Override
+    public boolean supportsMode(QueryMode mode)
+    {
+        return true;
     }
 
     @Override

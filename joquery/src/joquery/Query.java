@@ -13,6 +13,8 @@ public interface Query<T,W extends Query>
 
     W where();
 
+    W select();
+
     W exec(Exec<T> exec) throws QueryException;
 
     W property(String property) throws QueryException;
