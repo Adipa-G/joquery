@@ -3,7 +3,7 @@
 ==Equality==
 In following code list would be filtered so that only item with id = 1 is returned
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
         .exec(new Exec<Dto>()
@@ -20,7 +20,7 @@ Collection<Dto> filtered = query.execute();
 ==Less Than==
 In following code list would be filtered so that only items with id < 2 are returned
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
         .exec(new Exec<Dto>()
@@ -46,7 +46,7 @@ Similar to the Less than condition but function ge() should be used instead of l
 ==In==
 {{{
 In following code list would be filtered so that only items with id 1 or 2 are returned
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
         .exec(new Exec<Dto>()
@@ -62,7 +62,7 @@ Collection<Dto> filtered = query.execute();
 
 It can be re-parsed to use a collection instead of an array.
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
         .exec(new Exec<Dto>()
@@ -79,7 +79,7 @@ Collection<Dto> filtered = query.execute();
 ==Between==
 In following code list would be filtered so that only items with id greater than or equal to 1 and less than or equal to 2 are returned
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
         .exec(new Exec<Dto>()
@@ -96,7 +96,7 @@ Collection<Dto> filtered = query.execute();
 ==And==
 In following code list would use and to join two conditions. Items with id greter than 1 and less than 3 are returned
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
         .exec(new Exec<Dto>()

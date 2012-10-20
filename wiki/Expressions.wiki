@@ -9,7 +9,7 @@ As of current Joquery supports only 3 expression types
 ==value==
 this is the expression used to define a constant value
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
     .from(testList)
     .where()
     .exec(new Exec<Dto>()
@@ -24,7 +24,7 @@ In this example the fixed value 1 is passed to the query using the value express
 
 ==exec==
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
     .from(testList)
     .where()
     .exec(new Exec<Dto>()
@@ -39,7 +39,7 @@ Here exec use to find out the valid objects.
 
 ==property==
 {{{
-SimpleQuery<Dto> query = Q.<Dto>simple()
+Filter<Dto> query = CQ.<Dto>filter()
     .from(testList)
     .where()
     .property("id").eq().value(1);
