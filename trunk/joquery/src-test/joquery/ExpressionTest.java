@@ -38,7 +38,7 @@ public class ExpressionTest
     @Test
     public void Expression_Exec_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .exec(new Exec<Dto>()
@@ -56,7 +56,7 @@ public class ExpressionTest
     @Test
     public void Expression_Property_ShouldFilter() throws QueryException
     {
-        SimpleQuery<Dto> query = Q.<Dto>simple()
+        Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
                 .property("id")

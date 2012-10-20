@@ -97,8 +97,8 @@
 
           <test todir="${build.testreports}" name="joquery.ExpressionTest" fork="yes"/>
           <test todir="${build.testreports}" name="joquery.QueryConditionTest" fork="yes"/>
-          <test todir="${build.testreports}" name="joquery.SimpleQueryTest" fork="yes"/>
-          <test todir="${build.testreports}" name="joquery.TransformedQueryTest" fork="yes"/>
+          <test todir="${build.testreports}" name="joquery.FilterTest" fork="yes"/>
+          <test todir="${build.testreports}" name="joquery.SelectionQueryTest" fork="yes"/>
         </junit>
     </target>
 

@@ -9,7 +9,7 @@ import java.util.Collection;
  * Date: 10/14/12
  * Time: 11:19 AM
  */
-public interface SimpleQuery<T> extends Query<T, SimpleQuery<T>>
+public interface Filter<T> extends Query<T, Filter<T>>
 {
     Collection<T> execute()throws QueryException;
 }

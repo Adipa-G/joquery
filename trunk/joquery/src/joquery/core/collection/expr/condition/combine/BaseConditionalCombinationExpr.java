@@ -1,19 +1,20 @@
-package joquery.core.expr.cmp;
+package joquery.core.collection.expr.condition.combine;
 
 import joquery.core.QueryException;
-import joquery.core.expr.IExpr;
+import joquery.core.collection.expr.IExpr;
+import joquery.core.collection.expr.condition.ConditionalExpr;
 
 /**
  * User: Adipa
  * Date: 10/14/12
  * Time: 12:58 PM
  */
-public abstract class BaseCombineCndExpr<T> extends CndExpr<T>
+public abstract class BaseConditionalCombinationExpr<T> extends ConditionalExpr<T>
 {
     @Override
     public boolean add(IExpr<T> expr)
     {
-        if (left != null && expr instanceof BaseCombineCndExpr)
+        if (left != null && expr instanceof BaseConditionalCombinationExpr)
             return false;
 
         boolean added = super.add(expr);

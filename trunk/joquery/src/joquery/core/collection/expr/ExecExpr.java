@@ -1,7 +1,8 @@
-package joquery.core.expr;
+package joquery.core.collection.expr;
 
 import joquery.Exec;
 import joquery.core.QueryException;
+import joquery.core.collection.QueryMode;
 
 /**
  * User: Adipa
@@ -15,6 +16,12 @@ public class ExecExpr<T> implements IExpr<T>
     public ExecExpr(Exec<T> exec)
     {
         this.exec = exec;
+    }
+
+    @Override
+    public boolean supportsMode(QueryMode mode)
+    {
+        return true;
     }
 
     @Override
