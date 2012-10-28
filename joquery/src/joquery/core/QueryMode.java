@@ -1,4 +1,4 @@
-package joquery.core.collection;
+package joquery.core;
 
 /**
  * User: Adipa

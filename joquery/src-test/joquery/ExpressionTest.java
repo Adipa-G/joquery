@@ -1,5 +1,6 @@
 package joquery;
 
+import assertions.A;
 import joquery.core.QueryException;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -69,7 +70,7 @@ public class ExpressionTest
 
     private static void assertResult(Collection<Dto> list,int[] ids)
     {
-        Assert.assertEquals(String.format("Expected items are not retrieved"), ids.length, list.size());
+        A.exp(ids.length).act(list.size(),String.format("Expected items are not retrieved"));
         for (int id : ids)
         {
             boolean found = false;
@@ -78,7 +79,7 @@ public class ExpressionTest
                 found = dto.id == id;
                 if (found) break;
             }
-            Assert.assertTrue(String.format("Unable to find item with id %s",id),found);
+            Assert.assertTrue(String.format("Unable to find item with id %s", id), found);
         }
     }
 

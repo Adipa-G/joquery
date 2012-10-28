@@ -1,5 +1,6 @@
 package joquery;
 
+import assertions.A;
 import joquery.core.QueryException;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -286,7 +287,7 @@ public class QueryConditionTest
 
     private static void assertResult(Collection<Dto> list,int[] ids)
     {
-        Assert.assertEquals(String.format("Expected items are not retrieved"), ids.length, list.size());
+        A.exp(ids.length).act(list.size(),String.format("Expected items are not retrieved"));
         for (int id : ids)
         {
             boolean found = false;
