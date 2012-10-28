@@ -1,8 +1,8 @@
 package joquery;
 
+import assertions.A;
 import joquery.core.QueryException;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -42,7 +42,7 @@ public class FilterTest
                 .from(testList);
 
         Collection<Dto> filtered = query.execute();
-        Assert.assertEquals(filtered.size(),testList.size());
+        A.exp(testList).act(filtered);
     }
 
     static class Dto
@@ -54,7 +54,18 @@ public class FilterTest
             this.id = id;
         }
 
-        public int getId()
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Dto dto = (Dto) o;
+            return id == dto.id;
+        }
+
+        @Override
+        public int hashCode()
         {
             return id;
         }

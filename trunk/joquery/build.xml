@@ -99,6 +99,7 @@
           <test todir="${build.testreports}" name="joquery.QueryConditionTest" fork="yes"/>
           <test todir="${build.testreports}" name="joquery.FilterTest" fork="yes"/>
           <test todir="${build.testreports}" name="joquery.SelectionQueryTest" fork="yes"/>
+          <test todir="${build.testreports}" name="joquery.JoinTest" fork="yes"/>
         </junit>
     </target>
 

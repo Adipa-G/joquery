@@ -4,6 +4,7 @@ import joquery.Exec;
 import joquery.Query;
 import joquery.ResultTransformer;
 import joquery.core.QueryException;
+import joquery.core.QueryMode;
 import joquery.core.collection.expr.ConstExpr;
 import joquery.core.collection.expr.ExecExpr;
 import joquery.core.collection.expr.IExpr;
@@ -14,6 +15,7 @@ import joquery.core.collection.expr.condition.combine.OrConditionalCombinationEx
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,21 +27,43 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
 {
     private QueryMode queryMode;
 
+    private IExpr<T> defaultSelection;
+
     private List<IExpr<T>> selections;
     private Iterable<T> items;
     private IExpr<T> condition;
 
     protected QueryImpl()
     {
+        setItems(Collections.<T>emptyList());
         selections = new ArrayList<>();
-        items = new ArrayList<>();
+    }
+
+    public Iterable<T> getItems() throws QueryException
+    {
+        return items;
+    }
+
+    public void setItems(Iterable<T> items)
+    {
+        this.items = items;
+    }
+
+    public List<IExpr<T>> getSelections()
+    {
+        return selections;
+    }
+
+    private boolean addSelection(IExpr<T> selection)
+    {
+        return this.selections.add(selection);
     }
 
     @Override
     public W from(Iterable<T> list)
     {
         queryMode = QueryMode.FROM;
-        items = list;
+        setItems(list);
         //noinspection unchecked
         return (W)this;
     }
@@ -162,7 +186,7 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
 
     private boolean addSelectExpr(IExpr<T> expr)
     {
-        return expr.supportsMode(queryMode) && selections.add(expr);
+        return expr.supportsMode(queryMode) && addSelection(expr);
     }
 
     private boolean addWhereExpr(IExpr<T> expr)
@@ -189,26 +213,38 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
         return added;
     }
 
-    protected  <U> Collection<U> selectTransformed() throws QueryException
+    protected  <U> Collection<U> transformDefaultSelection() throws QueryException
     {
-        ResultTransformer<U> transformer = createDefaultTransformer();
-        return selectTransformed(transformer);
+        ResultTransformer<T,U> transformer = createDefaultTransformer();
+        return transformDefaultSelection(transformer);
     }
 
-    private <U> ResultTransformer<U> createDefaultTransformer()
+    protected <U> Collection<U> transformDefaultSelection(ResultTransformer<T,U> transformer) throws QueryException
     {
-        return new ResultTransformer<U>()
+        Collection<U> retVal = new ArrayList<>();
+        Collection<T> selectionResult = executeSelect();
+
+        for (T result : selectionResult)
+        {
+            retVal.add(transformer.transform(result));
+        }
+        return retVal;
+    }
+
+    private <U> ResultTransformer<T,U> createDefaultTransformer()
+    {
+        return new ResultTransformer<T,U>()
         {
             @Override
-            public U transform(Object[] selection)
+            public U transform(T selection)
             {
                 //noinspection unchecked
-                return (U) selection[0];
+                return (U) selection;
             }
         };
     }
 
-    protected <U> Collection<U> selectTransformed(ResultTransformer<U> transformer) throws QueryException
+    protected <U> Collection<U> transformCustomSelection(ResultTransformer<Object[], U> transformer) throws QueryException
     {
         Collection<U> retVal = new ArrayList<>();
         Collection<Object[]> selectionResult = executeSelect();
@@ -220,10 +256,10 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
         return retVal;
     }
 
-    private Collection<Object[]> executeSelect() throws QueryException
+    private <U> Collection<U> executeSelect() throws QueryException
     {
-        Collection<Object[]> retVal = new ArrayList<>();
-        for (T t : items)
+        Collection<U> retVal = new ArrayList<>();
+        for (T t : getItems())
         {
             Object result = condition != null ? condition.evaluate(t) : true;
             if (result instanceof Boolean)
@@ -231,7 +267,7 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
                 boolean boolResult = (Boolean)result;
                 if (boolResult)
                 {
-                    Object[] selection = doSelectionOn(t);
+                    U selection = doSelectionOn(t);
                     retVal.add(selection);
                 }
             }
@@ -243,30 +279,42 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
         return retVal;
     }
 
-    private Object[] doSelectionOn(T t) throws QueryException
+    private <U> U doSelectionOn(T t) throws QueryException
     {
-        addDefaultSelectionIfNeeded();
-        Object[] result = new Object[selections.size()];
-        for (int i = 0; i < selections.size(); i++)
+        initDefaultSelectionIfNeeded();
+        if (getSelections().size() == 0)
         {
-            IExpr<T> selection = selections.get(i);
-            result[i] = selection.evaluate(t);
+            //noinspection unchecked
+            return (U)defaultSelection.evaluate(t);
         }
-        return result;
+        else
+        {
+            List<IExpr<T>> selectionList = getSelections();
+
+            Object[] result = new Object[selectionList.size()];
+            for (int i = 0; i < selectionList.size(); i++)
+            {
+                IExpr<T> selection = selectionList.get(i);
+                result[i] = selection.evaluate(t);
+            }
+            //noinspection unchecked
+            return (U)result;
+        }
     }
 
-    private void addDefaultSelectionIfNeeded()
+    private void initDefaultSelectionIfNeeded()
     {
-        if (selections.size() == 0)
+        if (getSelections().size() == 0
+                && defaultSelection == null)
         {
-            selections.add(new ExecExpr<>(new Exec<T>()
+            defaultSelection = new ExecExpr<>(new Exec<T>()
             {
                 @Override
                 public Object exec(T t)
                 {
                     return t;
                 }
-            }));
+            });
         }
     }
 }

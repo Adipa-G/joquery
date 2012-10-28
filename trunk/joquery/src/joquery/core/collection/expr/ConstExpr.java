@@ -1,7 +1,7 @@
 package joquery.core.collection.expr;
 
 import joquery.core.QueryException;
-import joquery.core.collection.QueryMode;
+import joquery.core.QueryMode;
 
 /**
  * User: Adipa

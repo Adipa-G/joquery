@@ -15,6 +15,6 @@ public class FilterImpl<T> extends QueryImpl<T,Filter<T>> implements Filter<T>
     @Override
     public Collection<T> execute() throws QueryException
     {
-        return selectTransformed();
+        return transformDefaultSelection();
     }
 }

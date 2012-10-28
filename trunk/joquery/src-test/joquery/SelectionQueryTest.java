@@ -1,5 +1,6 @@
 package joquery;
 
+import assertions.A;
 import joquery.core.QueryException;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -42,7 +43,7 @@ public class SelectionQueryTest
                 .from(testList);
 
         Collection<SrcDto> filtered = query.execute();
-        Assert.assertEquals(filtered.size(),testList.size());
+        A.exp(filtered.size()).act(testList.size());
     }
 
     @Test
@@ -51,12 +52,11 @@ public class SelectionQueryTest
         SelectionQuery<SrcDto,DestDto> query = CQ.<SrcDto,DestDto>query()
                 .from(testList);
 
-        Collection<DestDto> filtered = query.execute(new ResultTransformer<DestDto>()
+        Collection<DestDto> filtered = query.execute(new ResultTransformer<SrcDto,DestDto>()
         {
             @Override
-            public DestDto transform(Object[] selection)
+            public DestDto transform(SrcDto srcDto)
             {
-                SrcDto srcDto = (SrcDto) selection[0];
                 return new DestDto(srcDto.getId());
             }
         });
@@ -77,7 +77,7 @@ public class SelectionQueryTest
                     }
                 });
 
-        Collection<DestDto> filtered = query.execute(new ResultTransformer<DestDto>()
+        Collection<DestDto> filtered = query.executeSelection(new ResultTransformer<Object[],DestDto>()
         {
             @Override
             public DestDto transform(Object[] selection)
@@ -91,7 +91,7 @@ public class SelectionQueryTest
 
     private static void VerifyEquals(Collection<SrcDto> srcDtos,Collection<DestDto> destDtos)
     {
-        Assert.assertEquals(srcDtos.size(),destDtos.size());
+        A.exp(srcDtos.size()).act(destDtos.size());
         for (SrcDto srcDto : srcDtos)
         {
             boolean found = false;

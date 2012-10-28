@@ -5,7 +5,7 @@ package joquery;
  * Date: 10/14/12
  * Time: 10:49 AM
  */
-public interface ResultTransformer<U>
+public interface ResultTransformer<T,U>
 {
-    U transform(Object[] selection);
+    U transform(T selection);
 }
