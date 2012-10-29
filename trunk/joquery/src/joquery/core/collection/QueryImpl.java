@@ -170,9 +170,6 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
             case WHERE:
                 added = addWhereExpr(expr);
                 break;
-            case GROUP:
-                added = false;
-                break;
             default:
                 added = false;
         }

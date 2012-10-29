@@ -47,6 +47,13 @@ public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,
             {
                 case INNER:
                     setItems(innerJoin());
+                    break;
+                case LEFT_OUTER:
+                    setItems(leftOuterJoin());
+                    break;
+                case RIGHT_OUTER:
+                    setItems(rightOuterJoin());
+                    break;
             }
             return getItems();
         }
@@ -77,14 +84,7 @@ public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,
         {
             for (U right : rightList)
             {
-                boolean match = true;
-                for (JoinCondition<T, U> condition : joinConditions)
-                {
-                    Object leftConditionValue = condition.getLeft().evaluate(left);
-                    Object rightConditionValue = condition.getRight().evaluate(right);
-                    match = match && (leftConditionValue == rightConditionValue
-                            || leftConditionValue.equals(rightConditionValue));
-                }
+                boolean match = isMatch(left, right);
                 if (match)
                 {
                     results.add(new JoinPair<>(left,right));
@@ -92,5 +92,64 @@ public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,
             }
         }
         return results;
+    }
+
+    private Iterable<JoinPair<T, U>> leftOuterJoin() throws QueryException
+    {
+        Collection<T> leftList = leftQuery.execute();
+        Collection<U> rightList = rightQuery.execute();
+
+        ArrayList<JoinPair<T, U>> results = new ArrayList<>();
+        for (T left : leftList)
+        {
+            U rightMatch = null;
+            for (U right : rightList)
+            {
+                boolean match = isMatch(left, right);
+                if (match)
+                {
+                    rightMatch = right;
+                    break;
+                }
+            }
+            results.add(new JoinPair<>(left,rightMatch));
+        }
+        return results;
+    }
+
+    private Iterable<JoinPair<T, U>> rightOuterJoin() throws QueryException
+    {
+        Collection<T> leftList = leftQuery.execute();
+        Collection<U> rightList = rightQuery.execute();
+
+        ArrayList<JoinPair<T, U>> results = new ArrayList<>();
+        for (U right : rightList)
+        {
+            T leftMatch = null;
+            for (T left : leftList)
+            {
+                boolean match = isMatch(left, right);
+                if (match)
+                {
+                    leftMatch = left;
+                    break;
+                }
+            }
+            results.add(new JoinPair<>(leftMatch,right));
+        }
+        return results;
+    }
+
+    private boolean isMatch(T left, U right) throws QueryException
+    {
+        boolean match = true;
+        for (JoinCondition<T, U> condition : joinConditions)
+        {
+            Object leftConditionValue = condition.getLeft().evaluate(left);
+            Object rightConditionValue = condition.getRight().evaluate(right);
+            match = match && (leftConditionValue == rightConditionValue
+                    || leftConditionValue.equals(rightConditionValue));
+        }
+        return match;
     }
 }

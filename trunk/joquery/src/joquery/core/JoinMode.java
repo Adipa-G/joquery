@@ -7,5 +7,7 @@ package joquery.core;
  */
 public enum JoinMode
 {
-    INNER
+    INNER,
+    LEFT_OUTER,
+    RIGHT_OUTER
 }

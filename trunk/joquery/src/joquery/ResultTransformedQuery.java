@@ -18,4 +18,8 @@ public interface ResultTransformedQuery<T,U,W extends ResultTransformedQuery> ex
     Collection<U> executeSelection(ResultTransformer<Object[],U> transformer)throws QueryException;
 
     <X,Y> JoinQuery<U,X,Y> innerJoin(ResultTransformedQuery<X, X, ?> rightQuery) throws QueryException;
+
+    <X,Y> JoinQuery<U,X,Y> leftOuterJoin(ResultTransformedQuery<X, X, ?> rightQuery)  throws QueryException;
+
+    <X,Y> JoinQuery<U,X,Y> rightOuterJoin(ResultTransformedQuery<X, X, ?> rightQuery)  throws QueryException;
 }
