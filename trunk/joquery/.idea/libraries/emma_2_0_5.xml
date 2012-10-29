@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="emma.2.0.5">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/emma.2.0.5" />
+      <root url="file://$PROJECT_DIR$/lib/emma.2.0.5" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/emma.2.0.5" recursive="false" />
+  </library>
+</component>

@@ -9,6 +9,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="junit4.0" level="project" />
+    <orderEntry type="library" name="emma.2.0.5" level="project" />
   </component>
 </module>
 

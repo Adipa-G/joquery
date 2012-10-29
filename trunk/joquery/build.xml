@@ -1,127 +1,136 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<project name="joquery" default="all" basedir=".">
+    <description>
+        joquery build file with code coverage
+    </description>
 
-<!--
- DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
- 
- Copyright 1997-2007 Sun Microsystems, Inc. All rights reserved.
- 
- The contents of this file are subject to the terms of either the GNU
- General Public License Version 2 only ("GPL") or the Common Development
- and Distribution License("CDDL") (collectively, the "License").  You
- may not use this file except in compliance with the License. You can obtain
- a copy of the License at https://glassfish.dev.java.net/public/CDDL+GPL.html
- or glassfish/bootstrap/legal/LICENSE.txt.  See the License for the specific
- language governing permissions and limitations under the License.
- 
- When distributing the software, include this License Header Notice in each
- file and include the License file at glassfish/bootstrap/legal/LICENSE.txt.
- Sun designates this particular file as subject to the "Classpath" exception
- as provided by Sun in the GPL Version 2 section of the License file that
- accompanied this code.  If applicable, add the following below the License
- Header, with the fields enclosed by brackets [] replaced by your own
- identifying information: "Portions Copyrighted [year]
- [name of copyright owner]"
- 
- Contributor(s):
- 
- If you wish your version of this file to be governed by only the CDDL or
- only the GPL Version 2, indicate your decision by adding "[Contributor]
- elects to include this software in this distribution under the [CDDL or GPL
- Version 2] license."  If you don't indicate a single choice of license, a
- recipient has the option to distribute your version of this file under
- either the CDDL, the GPL Version 2 or to extend the choice of license to
- its licensees as provided above.  However, if you add GPL Version 2 code
- and therefore, elected the GPL Version 2 license, then the option applies
- only if the new code is made subject to such option by the copyright
- holder.
--->
+    <property name="product" value="joquery"/>
+    <property name="version" value="0.13"/>
 
+    <property name="src" location="${basedir}/src"/>
+    <property name="src.test" location="${basedir}/src-test"/>
+    <property name="ci" location="${basedir}/ci"/>
+    <property name="build" location="${ci}/build"/>
+    <property name="reports" location="${ci}/reports"/>
+    <property name="coverage" location="${ci}/coverage" />
+    <property name="instr" location="${ci}/instr" />
+    <property name="jar" location="${ci}/jar" />
+    <property name="lib" location="${basedir}/lib" />
+    <property name="emma.dir" value="${lib}/emma.2.0.5" />
 
+    <!-- Set emma.lib to refer to the list of EMMA jar files -->
+    <path id="emma.lib">
+        <fileset dir="${emma.dir}">
+            <include name="*.jar" />
+        </fileset>
+    </path>
 
-<project basedir="." default="build" name="buildscript">
+    <path id="prodcode.classpath">
+        <pathelement path="${build}"/>
+    </path>
 
-    <property environment="env"/>
-    <property name="app.name" value="joquery"/>
-    <property name="build.home" value="${basedir}/build"/>
-    <property name="build.sources.home" value="${basedir}/src"/>
-    <property name="build.classes.home" value="${basedir}/out/production"/>
-    <property name="build.tests.home" value="${basedir}/out/test"/>
-    <property name="build.jar.home" value="${build.home}/jar"/>
-    <property name="jar.file" value="${build.jar.home}/${app.name}.jar"/>
-    <property name="src.jar.file" value="${build.jar.home}/${app.name}-src.jar"/>
-    <property name="tests.jar.file" value="${build.jar.home}/${app.name}_tests.jar"/>
-    <property name="build.testreports" value="${build.home}/testreports"/>
+    <path id="build.classpath">
+        <pathelement path="${build}"/>
+        <files includes="${lib}/**/*.jar" excludes="${lib}/*emma*/*.jar"/>
+    </path>
 
-    <target name="setup">
-        <mkdir dir="${build.home}"/>
-        <mkdir dir="${build.jar.home}"/>
-        <mkdir dir="${build.testreports}"/>
+    <path id="run.classpath">
+        <path  refid="build.classpath"/>
+        <files includes="${lib}/**/*.jar"/>
+    </path>
+
+    <taskdef resource="emma_ant.properties" classpathref="emma.lib"/>
+
+    <target name="with.emma">
+        <mkdir dir="${coverage}" />
+        <property name="emma.enabled" value="true"/>
+        <property name="out.instr.dir" value="${instr}" />
+        <path id="run.classpath">
+            <pathelement location="${out.instr.dir}" />
+            <path refid="build.classpath"/>
+        </path>
     </target>
 
-    <target name="clean-before">
-        <delete dir="${build.home}" includeemptydirs="true"/>
+    <target name="create-report" >
+        <emma>
+            <report sourcepath="${src},${src.test}" >
+                <fileset dir="${coverage}" >
+                    <include name="*.emma" />
+                </fileset>
+                <html outfile="${coverage}/coverage.html" />
+            </report>
+        </emma>
     </target>
 
-    <target name="clean-after">
-        <delete dir="${build.testreports}" includeemptydirs="true"/>
-        <delete file="${tests.jar.file}"/>
+    <!-- Creates Destination directory and compiles files in source directory-->
+    <target name="compile-code" >
+        <mkdir dir="${build}" />
+        <javac srcdir="${src}" destdir="${build}"  debug="true"/>
     </target>
 
-    <target name="create-jar">
-        <jar jarfile="${jar.file}" compress="true">
-            <fileset dir= "${build.classes.home}/${app.name}"/>
-        </jar>
+    <target name="compile-test" >
+        <mkdir dir="${build}" />
+        <javac srcdir="${src.test}" destdir="${build}"  debug="true">
+            <classpath refid="build.classpath"/>
+        </javac>
     </target>
 
-    <target name="create-src-jar">
-        <jar jarfile="${src.jar.file}" compress="true">
-            <fileset dir= "${build.sources.home}"/>
-        </jar>
+    <!-- Instrument the code -->
+    <target name="instr" >
+        <mkdir dir="${instr}" />
+        <emma>
+            <instr instrpathref="prodcode.classpath"
+                   destdir="${instr}"
+                   metadatafile="${coverage}/metadata.emma"
+                   merge="true"
+                    />
+        </emma>
     </target>
 
-    <target name="create-test-jar">
-        <jar jarfile="${tests.jar.file}">
-            <zipfileset dir= "${build.tests.home}/${app.name}"/>
-        </jar>
-    </target>
-
-    <target name="run-tests">
-         <junit printsummary="yes" haltonfailure="true">
-          <classpath>
-            <pathelement path="${jar.file}"/>
-            <pathelement path="${tests.jar.file}"/>
-            <path refid = "library.junit4.0.classpath"/>
-          </classpath>
-
-          <formatter type="plain"/>
-
-          <test todir="${build.testreports}" name="joquery.ExpressionTest" fork="yes"/>
-          <test todir="${build.testreports}" name="joquery.QueryConditionTest" fork="yes"/>
-          <test todir="${build.testreports}" name="joquery.FilterTest" fork="yes"/>
-          <test todir="${build.testreports}" name="joquery.SelectionQueryTest" fork="yes"/>
-          <test todir="${build.testreports}" name="joquery.JoinTest" fork="yes"/>
+    <!-- runs the tests -->
+    <target name="run-test" description="runs the examples" >
+        <mkdir dir="${reports}" />
+        <junit printsummary="yes" fork="yes"
+               haltonfailure="yes" >
+            <classpath>
+                <path path="${instr}"/>
+                <path  refid="run.classpath"/>
+            </classpath>
+            <jvmarg value="-Demma.coverage.out.file=${coverage}/coverage.emma" />
+            <jvmarg value="-Demma.coverage.out.merge=true" />
+            <jvmarg value="-XX:-UseSplitVerifier" />
+            <formatter type="plain"/>
+            <formatter type="xml" />
+            <batchtest todir="${reports}">
+                <fileset dir="${src.test}" >
+                    <include name="**/*Test.java" />
+                </fileset>
+            </batchtest>
         </junit>
     </target>
 
-
-    <import file="joquery.xml"/>
-    <target name="build" depends="setup">
-
-        <antcall target="clean-before"/>
-
-        <antcall target="setup" />
-
-        <antcall target="all"/>
-
-        <antcall target="create-jar"/>
-
-        <antcall target="create-src-jar"/>
-
-        <antcall target="create-test-jar"/>
-
-        <antcall target="run-tests"/>
-
-        <antcall target="clean-after"/>
+    <target name="create-jar">
+        <jar jarfile="${jar}/${product}-${version}.jar" compress="true">
+            <fileset dir= "${build}"/>
+        </jar>
+        <jar jarfile="${jar}/${product}-${version}-src.jar" compress="true">
+            <fileset dir= "${src}"/>
+            <fileset dir= "${src.test}"/>
+        </jar>
     </target>
 
+    <!-- Delete the ${build} directory-->
+    <target name="clean">
+        <delete dir="${ci}"/>
+    </target>
+
+    <target name="all">
+        <antcall target="clean"/>
+        <antcall target="compile-code"/>
+        <antcall target="compile-test"/>
+        <antcall target="with.emma"/>
+        <antcall target="instr"/>
+        <antcall target="run-test"/>
+        <antcall target="create-report"/>
+        <antcall target="create-jar"/>
+    </target>
 </project>
