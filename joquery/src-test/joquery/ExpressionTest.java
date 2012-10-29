@@ -54,6 +54,23 @@ public class ExpressionTest
         assertResult(filtered, new int[]{1});
     }
 
+    @Test(expected = QueryException.class)
+    public void Expression_ExecThrowException_ShouldThrowException() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return 1/0;
+                    }
+                });
+
+        query.execute();
+    }
+
     @Test
     public void Expression_Property_ShouldFilter() throws QueryException
     {
@@ -61,6 +78,47 @@ public class ExpressionTest
                 .from(testList)
                 .where()
                 .property("id")
+                .eq()
+                .value(1);
+
+        Collection<Dto> filtered = query.execute();
+        assertResult(filtered, new int[]{1});
+    }
+
+    @Test(expected = QueryException.class)
+    public void Expression_PropertyWithNoField_ShouldThrowException() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .property("id1")
+                .eq()
+                .value(1);
+
+        query.execute();
+    }
+
+    @Test
+    public void Expression_PropertyOnlyWithField_ShouldFilter() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .property("id2")
+                .eq()
+                .value(1);
+
+        Collection<Dto> filtered = query.execute();
+        assertResult(filtered, new int[]{1});
+    }
+
+    @Test
+    public void Expression_PropertyOnlyWithGetter_ShouldFilter() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .property("id3")
                 .eq()
                 .value(1);
 
@@ -86,13 +144,20 @@ public class ExpressionTest
     static class Dto
     {
         private int id;
+        private int id2;
 
         Dto(int id)
         {
             this.id = id;
+            this.id2 = id;
         }
 
         public int getId()
+        {
+            return id;
+        }
+
+        public int getId3()
         {
             return id;
         }

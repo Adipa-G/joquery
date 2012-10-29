@@ -10,5 +10,4 @@ public enum QueryMode
     SELECT,
     FROM,
     WHERE,
-    GROUP
 }

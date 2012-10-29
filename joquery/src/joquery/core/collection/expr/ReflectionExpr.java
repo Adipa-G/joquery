@@ -50,41 +50,45 @@ public class ReflectionExpr<T> implements IExpr<T>
         {
             initFieldIfNot(t);
         }
-        catch (Exception ex)
+        catch (Exception ignored)
         {
-            try
-            {
-                initMethodIfNot(t);
-            }
-            catch (Exception ex1)
-            {
-                throw new QueryException(String.format("No property or getters can't be found for property %s",property));
-            }
         }
 
-        setAccessibleIfNeeded();
+        try
+        {
+            initMethodIfNot(t);
+        }
+        catch (Exception ignored)
+        {
+        }
+
+        if (!setAccessibleIfNeeded())
+        {
+            throw new QueryException(String.format("No property or getters can't be found for property %s",property));
+        }
     }
 
-    private void setAccessibleIfNeeded()
+    private boolean setAccessibleIfNeeded()
     {
         if (field != null
                 && method == null
                 && !field.isAccessible())
         {
             field.setAccessible(true);
+            return true;
         }
         else if (method != null
                 && !method.isAccessible())
         {
             method.setAccessible(true);
+            return true;
         }
+        return false;
     }
 
     private void initFieldIfNot(T t) throws Exception
     {
-        field = t.getClass().getField(property);
-        if (!field.isAccessible())
-            throw new Exception("Field cannot be accessed");
+        field = t.getClass().getDeclaredField(property);
     }
 
     private void initMethodIfNot(T t) throws Exception

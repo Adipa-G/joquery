@@ -38,9 +38,7 @@ public abstract class ConditionalExpr<T> implements IExpr<T>
 
     protected void validate() throws QueryException
     {
-        if (left == null)
-            throw new QueryException(String.format("Left segment of %s is null",this));
-        if (right == null)
-            throw new QueryException(String.format("Right segment of %s is null",this));
+        if (left == null || right == null)
+            throw new QueryException(String.format("%s segment of %s is null",left == null ? "Left":"Right",this));
     }
 }

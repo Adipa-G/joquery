@@ -37,6 +37,20 @@ public class QueryConditionTest
         testList = null;
     }
 
+    @Test(expected = QueryException.class)
+    public void Condition_WithoutWhere_ShouldThrowException() throws QueryException
+    {
+        CQ.<Dto>filter()
+                .from(testList)
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return null;
+                    }
+                });
+    }
+
     @Test
     public void Condition_Exec_ShouldFilter() throws QueryException
     {
@@ -55,6 +69,56 @@ public class QueryConditionTest
         assertResult(filtered, new int[]{1});
     }
 
+    @Test (expected = QueryException.class)
+    public void Condition_2ExecWithoutComparisonClause_ShouldThrowException() throws QueryException
+    {
+        CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return null;
+                    }
+                }).value(1);
+    }
+
+    @Test (expected = QueryException.class)
+    public void Condition_2ValuesWithoutComparisonClause_ShouldThrowException() throws QueryException
+    {
+        CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .value(1).value(1);
+    }
+
+    @Test (expected = QueryException.class)
+    public void Condition_2PropertiesWithoutComparisonClause_ShouldThrowException() throws QueryException
+    {
+        CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .property("id").property("id");
+    }
+
+    @Test (expected = QueryException.class)
+    public void Condition_EqWithOnlyLeft_ShouldThrowException() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq();
+
+        query.execute();
+    }
+
     @Test
     public void Condition_Eq_ShouldFilter() throws QueryException
     {
@@ -68,6 +132,24 @@ public class QueryConditionTest
                         return simple.getId();
                     }
                 }).eq().value(1);
+
+        Collection<Dto> filtered = query.execute();
+        assertResult(filtered, new int[]{1});
+    }
+
+    @Test
+    public void Condition_EqSwitchOrder_ShouldFilter() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .value(1).eq().exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                });
 
         Collection<Dto> filtered = query.execute();
         assertResult(filtered, new int[]{1});
@@ -199,6 +281,23 @@ public class QueryConditionTest
         assertResult(filtered,new int[]{1,2});
     }
 
+    @Test (expected = QueryException.class)
+    public void Condition_BetweenWithoutRight2_ShouldThrowException() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).between().value(1);
+
+        query.execute();
+    }
+
     @Test
     public void Condition_And_ShouldFilter() throws QueryException
     {
@@ -283,6 +382,44 @@ public class QueryConditionTest
 
         Collection<Dto> filtered = query.execute();
         assertResult(filtered,new int[]{1});
+    }
+
+    @Test(expected = QueryException.class)
+    public void Condition_AndWithLeftNonBoolean_ShouldThrowException() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .value(1)
+                .and()
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(2);
+
+        query.execute();
+    }
+
+    @Test(expected = QueryException.class)
+    public void Condition_OrWithRightNonBoolean_ShouldThrowException() throws QueryException
+    {
+        Filter<Dto> query = CQ.<Dto>filter()
+                .from(testList)
+                .where()
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(2)
+                .or()
+                .value(1);
+
+        query.execute();
     }
 
     private static void assertResult(Collection<Dto> list,int[] ids)
