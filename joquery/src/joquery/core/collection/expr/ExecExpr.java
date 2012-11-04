@@ -21,7 +21,9 @@ public class ExecExpr<T> implements IExpr<T>
     @Override
     public boolean supportsMode(QueryMode mode)
     {
-        return true;
+        return mode == QueryMode.SELECT
+                || mode == QueryMode.WHERE
+                || mode == QueryMode.SORT;
     }
 
     @Override

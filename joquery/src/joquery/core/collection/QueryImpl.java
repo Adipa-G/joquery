@@ -13,10 +13,7 @@ import joquery.core.collection.expr.condition.*;
 import joquery.core.collection.expr.condition.combine.AndConditionalCombinationExpr;
 import joquery.core.collection.expr.condition.combine.OrConditionalCombinationExpr;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * User: Adipa
@@ -30,6 +27,7 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
     private IExpr<T> defaultSelection;
 
     private List<IExpr<T>> selections;
+    private List<IExpr<T>> sortExpressions;
     private Iterable<T> items;
     private IExpr<T> condition;
 
@@ -37,6 +35,7 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
     {
         setItems(Collections.<T>emptyList());
         selections = new ArrayList<>();
+        sortExpressions = new ArrayList<>();
     }
 
     public Iterable<T> getItems() throws QueryException
@@ -57,6 +56,16 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
     private boolean addSelection(IExpr<T> selection)
     {
         return this.selections.add(selection);
+    }
+
+    public List<IExpr<T>> getSortExpressions()
+    {
+        return sortExpressions;
+    }
+
+    private boolean addSortExpression(IExpr<T> expr)
+    {
+        return this.sortExpressions.add(expr);
     }
 
     @Override
@@ -80,6 +89,14 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
     public W select()
     {
         queryMode = QueryMode.SELECT;
+        //noinspection unchecked
+        return (W)this;
+    }
+
+    @Override
+    public W orderBy() throws QueryException
+    {
+        queryMode = QueryMode.SORT;
         //noinspection unchecked
         return (W)this;
     }
@@ -170,6 +187,9 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
             case WHERE:
                 added = addWhereExpr(expr);
                 break;
+            case SORT:
+                added = addSortExpr(expr);
+                break;
             default:
                 added = false;
         }
@@ -210,6 +230,11 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
         return added;
     }
 
+    private boolean addSortExpr(IExpr<T> expr)
+    {
+        return expr.supportsMode(queryMode) && addSortExpression(expr);
+    }
+
     protected  <U> Collection<U> transformDefaultSelection() throws QueryException
     {
         ResultTransformer<T,U> transformer = createDefaultTransformer();
@@ -219,7 +244,7 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
     protected <U> Collection<U> transformDefaultSelection(ResultTransformer<T,U> transformer) throws QueryException
     {
         Collection<U> retVal = new ArrayList<>();
-        Collection<T> selectionResult = executeSelect();
+        Collection<T> selectionResult = filterSelectAndSort();
 
         for (T result : selectionResult)
         {
@@ -244,7 +269,7 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
     protected <U> Collection<U> transformCustomSelection(ResultTransformer<Object[], U> transformer) throws QueryException
     {
         Collection<U> retVal = new ArrayList<>();
-        Collection<Object[]> selectionResult = executeSelect();
+        Collection<Object[]> selectionResult = filterSelectAndSort();
 
         for (Object[] result : selectionResult)
         {
@@ -253,9 +278,16 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
         return retVal;
     }
 
-    private <U> Collection<U> executeSelect() throws QueryException
+    private <U> Collection<U> filterSelectAndSort() throws QueryException
     {
-        Collection<U> retVal = new ArrayList<>();
+        Collection<T> filtered = filterByConditions();
+        Collection<T> sorted = sortCollection(filtered);
+        return selectFromList(sorted);
+    }
+
+    private Collection<T> filterByConditions() throws QueryException
+    {
+        Collection<T> filteredList = new ArrayList<>();
         for (T t : getItems())
         {
             Object result = condition != null ? condition.evaluate(t) : true;
@@ -264,8 +296,7 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
                 boolean boolResult = (Boolean)result;
                 if (boolResult)
                 {
-                    U selection = doSelectionOn(t);
-                    retVal.add(selection);
+                    filteredList.add(t);
                 }
             }
             else
@@ -273,10 +304,70 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
                 throw new QueryException(String.format("Evaluation resulted in unexpected result %s should have been a boolean",result));
             }
         }
-        return retVal;
+        return filteredList;
     }
 
-    private <U> U doSelectionOn(T t) throws QueryException
+    private Collection<T> sortCollection(Collection<T> collectionToSort) throws QueryException
+    {
+        Comparator<T> comparator = new Comparator<T>()
+        {
+            @Override
+            public int compare(T t1, T t2)
+            {
+                int compareResult = 0;
+                for (IExpr<T> expr : sortExpressions)
+                {
+                    Object val1 = EvaluateExpression(t1, expr);
+                    Object val2 = EvaluateExpression(t2, expr);
+
+                    compareResult = 0;
+                    if (val1 != null && val1 instanceof Comparable)
+                    {
+                        Comparable val1Comparable = (Comparable) val1;
+                        compareResult = val1Comparable.compareTo(val2);
+                    }
+                    else
+                    {
+                        compareResult = val1 == null ? -1 : 0;
+                    }
+
+                    if (compareResult != 0)
+                        break;
+                }
+
+                return compareResult;
+            }
+        };
+
+        List<T> sortedList = new ArrayList<>(collectionToSort);
+        Collections.sort(sortedList,comparator);
+        return sortedList;
+    }
+
+    private Object EvaluateExpression(T t, IExpr<T> expr)
+    {
+        Object result = null;
+        try
+        {
+            result = expr.evaluate(t);
+        }
+        catch (QueryException ignored)
+        {}
+        return result;
+    }
+
+    private <U> Collection<U> selectFromList(Collection<T> listToSelect) throws QueryException
+    {
+        Collection<U> selectedList = new ArrayList<>();
+        for (T t : listToSelect)
+        {
+            U selection = selectFromItem(t);
+            selectedList.add(selection);
+        }
+        return selectedList;
+    }
+
+    private <U> U selectFromItem(T t) throws QueryException
     {
         initDefaultSelectionIfNeeded();
         if (getSelections().size() == 0)
@@ -314,4 +405,6 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
             });
         }
     }
+
+
 }
