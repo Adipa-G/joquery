@@ -10,4 +10,5 @@ public enum QueryMode
     SELECT,
     FROM,
     WHERE,
+    SORT
 }

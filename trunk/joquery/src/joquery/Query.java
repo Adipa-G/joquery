@@ -38,4 +38,6 @@ public interface Query<T,W extends Query>
     W in() throws QueryException;
 
     W between() throws QueryException;
+
+    W orderBy() throws  QueryException;
 }
