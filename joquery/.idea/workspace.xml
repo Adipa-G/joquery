@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="87bb388b-eb48-46fe-b4fd-4ff9211367da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/GroupTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/GroupQuery.java" afterPath="$PROJECT_DIR$/src/joquery/GroupQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/Query.java" afterPath="$PROJECT_DIR$/src/joquery/Query.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" afterPath="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" />
     </list>
     <ignored path="joquery.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -119,10 +113,10 @@
       <file leaf-file-name="QueryImpl.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="355" column="46" selection-start="9070" selection-end="9070" vertical-scroll-proportion="0.2808642">
+            <state line="357" column="60" selection-start="9223" selection-end="9223" vertical-scroll-proportion="1.1203704">
               <folding>
-                <element signature="e#8166#9323#0" expanded="true" />
-                <element signature="e#9312#9313#0" expanded="true" />
+                <element signature="e#8166#9413#0" expanded="true" />
+                <element signature="e#9402#9403#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -771,7 +765,11 @@
       <created>1352561365136</created>
       <updated>1352561365136</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Grouping + Streamlining the API">
+      <created>1352568680104</created>
+      <updated>1352568680104</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1012,10 +1010,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="355" column="46" selection-start="9070" selection-end="9070" vertical-scroll-proportion="0.2808642">
+        <state line="357" column="60" selection-start="9223" selection-end="9223" vertical-scroll-proportion="1.1203704">
           <folding>
-            <element signature="e#8166#9323#0" expanded="true" />
-            <element signature="e#9312#9313#0" expanded="true" />
+            <element signature="e#8166#9413#0" expanded="true" />
+            <element signature="e#9402#9403#0" expanded="true" />
           </folding>
         </state>
       </provider>

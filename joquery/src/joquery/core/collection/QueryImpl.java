@@ -350,7 +350,8 @@ public abstract class QueryImpl<T,W extends Query<T,W>> implements Query<T, W>
                     {
                         compareResult = 1;
                     }
-                    else
+                    else if (val1 instanceof Comparable
+                            && val2 instanceof Comparable)
                     {
                         Comparable val1Comparable = (Comparable) val1;
                         //noinspection unchecked
