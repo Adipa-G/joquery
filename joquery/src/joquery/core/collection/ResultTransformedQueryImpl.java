@@ -14,7 +14,7 @@ import java.util.Collection;
  * Date: 10/28/12
  * Time: 12:44 PM
  */
-public abstract class ResultTransformedQueryImpl<T,U,W extends ResultTransformedQuery>
+public abstract class ResultTransformedQueryImpl<T,U,W extends ResultTransformedQuery<T,U,W>>
         extends QueryImpl<T,W>
         implements ResultTransformedQuery<T,U,W>
 {
@@ -86,8 +86,7 @@ public abstract class ResultTransformedQueryImpl<T,U,W extends ResultTransformed
     @Override
     public <Key> GroupQuery<Key,U> group() throws QueryException
     {
-        //noinspection unchecked
-        return new GroupQueryImpl<Key,U>().from(list());
+        return new GroupQueryImpl<>(list());
     }
 
     private <X, Y> JoinQuery<U, X, Y> doJoin(JoinMode joinMode,ResultTransformedQuery<X, X, ?> rightQuery) throws QueryException

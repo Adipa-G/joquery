@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="87bb388b-eb48-46fe-b4fd-4ff9211367da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/joquery/GroupQuery.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/joquery/Grouping.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/ExpressionTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/ExpressionTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/FilterTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/FilterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/JoinTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/JoinTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/SortTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/SortTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/CQ.java" afterPath="$PROJECT_DIR$/src/joquery/CQ.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/Filter.java" afterPath="$PROJECT_DIR$/src/joquery/Filter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/JoinPair.java" afterPath="$PROJECT_DIR$/src/joquery/JoinPair.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/JoinQuery.java" afterPath="$PROJECT_DIR$/src/joquery/JoinQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/GroupTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/GroupQuery.java" afterPath="$PROJECT_DIR$/src/joquery/GroupQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/Query.java" afterPath="$PROJECT_DIR$/src/joquery/Query.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" afterPath="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/JoinQueryImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/JoinQueryImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" afterPath="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" />
     </list>
@@ -79,55 +67,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ResultTransformedQueryImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="20" selection-start="1900" selection-end="1900" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupQueryImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="105" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="JoinQueryImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/JoinQueryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="13" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SortTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src-test/joquery/SortTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grouping.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/Grouping.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="13" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QueryImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="343" column="40" selection-start="8711" selection-end="8711" vertical-scroll-proportion="0.0">
+            <state line="48" column="24" selection-start="1501" selection-end="1501" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -142,10 +85,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GroupTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="10" selection-start="1928" selection-end="1928" vertical-scroll-proportion="0.7062315">
+            <state line="16" column="15" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1571#1580#0" expanded="true" />
+                <element signature="e#2334#2343#0" expanded="true" />
+                <element signature="e#2882#2891#0" expanded="true" />
+                <element signature="e#3653#3662#0" expanded="true" />
+                <element signature="e#4212#4221#0" expanded="true" />
+                <element signature="e#4277#4286#0" expanded="true" />
+                <element signature="e#4319#4536#0" expanded="true" />
+                <element signature="e#4517#4518#0" expanded="true" />
+                <element signature="e#4563#4782#0" expanded="true" />
+                <element signature="e#4763#4764#0" expanded="true" />
+                <element signature="e#5663#5686#0" expanded="true" />
+                <element signature="e#6356#6378#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultTransformedQueryImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QueryImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="355" column="46" selection-start="9070" selection-end="9070" vertical-scroll-proportion="0.2808642">
+              <folding>
+                <element signature="e#8166#9323#0" expanded="true" />
+                <element signature="e#9312#9313#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReflectionExpr.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/ReflectionExpr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="0" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Query.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/joquery/Query.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -154,7 +149,7 @@
       <file leaf-file-name="FilterImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
+            <state line="29" column="44" selection-start="556" selection-end="591" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,10 +157,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupQuery.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/GroupQuery.java">
+      <file leaf-file-name="GroupQueryImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="22" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+            <state line="49" column="0" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#2578#2608#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IExpr.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/IExpr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="19" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -181,22 +187,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/joquery/Query.java" />
-        <option value="$PROJECT_DIR$/src/joquery/Filter.java" />
         <option value="$PROJECT_DIR$/src-test/joquery/ExpressionTest.java" />
         <option value="$PROJECT_DIR$/src-test/joquery/FilterTest.java" />
-        <option value="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" />
         <option value="$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java" />
-        <option value="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" />
         <option value="$PROJECT_DIR$/src/joquery/JoinQuery.java" />
         <option value="$PROJECT_DIR$/src/joquery/core/collection/JoinQueryImpl.java" />
-        <option value="$PROJECT_DIR$/src/joquery/GroupQuery.java" />
-        <option value="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" />
         <option value="$PROJECT_DIR$/src-test/joquery/JoinTest.java" />
         <option value="$PROJECT_DIR$/src/joquery/JoinPair.java" />
-        <option value="$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java" />
         <option value="$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java" />
+        <option value="$PROJECT_DIR$/src/joquery/Query.java" />
+        <option value="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" />
+        <option value="$PROJECT_DIR$/src/joquery/GroupQuery.java" />
+        <option value="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" />
+        <option value="$PROJECT_DIR$/src/joquery/Grouping.java" />
         <option value="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
+        <option value="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" />
+        <option value="$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java" />
       </list>
     </option>
   </component>
@@ -453,14 +459,42 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.GroupTest">
-    <configuration default="false" name="ExpressionTest" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="GroupTest.GroupById_UsingExecWithValidList_ShouldGroupById" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="joquery" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="joquery" />
-      <option name="MAIN_CLASS_NAME" value="joquery.ExpressionTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="joquery.GroupTest" />
+      <option name="METHOD_NAME" value="GroupById_UsingExecWithValidList_ShouldGroupById" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="GroupTest.GroupById_UsingPropertyWithValidList_ShouldGroupById" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="joquery" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="joquery" />
+      <option name="MAIN_CLASS_NAME" value="joquery.GroupTest" />
+      <option name="METHOD_NAME" value="GroupById_UsingPropertyWithValidList_ShouldGroupById" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -475,14 +509,14 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="FilterTest" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="GroupTest.GroupByText_UsingPropertyWithValidList_ShouldGroupById" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="joquery" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="joquery" />
-      <option name="MAIN_CLASS_NAME" value="joquery.FilterTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="joquery.GroupTest" />
+      <option name="METHOD_NAME" value="GroupByText_UsingPropertyWithValidList_ShouldGroupById" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -493,29 +527,13 @@
       </option>
       <envs />
       <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="SelectionQueryTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="joquery" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="joquery" />
-      <option name="MAIN_CLASS_NAME" value="joquery.SelectionQueryTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -541,13 +559,13 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="JoinTest.Join_RightOuter_ShouldJoin" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="GroupTest.GroupByIdAndText_UsingExecWithValidList_ShouldGroupById" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="joquery" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="joquery" />
-      <option name="MAIN_CLASS_NAME" value="joquery.JoinTest" />
-      <option name="METHOD_NAME" value="Join_RightOuter_ShouldJoin" />
+      <option name="MAIN_CLASS_NAME" value="joquery.GroupTest" />
+      <option name="METHOD_NAME" value="GroupByIdAndText_UsingExecWithValidList_ShouldGroupById" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -681,11 +699,11 @@
       </method>
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ExpressionTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.FilterTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SelectionQueryTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.GroupTest.GroupById_UsingExecWithValidList_ShouldGroupById" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.GroupTest.GroupById_UsingPropertyWithValidList_ShouldGroupById" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.GroupTest.GroupByText_UsingPropertyWithValidList_ShouldGroupById" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.GroupTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.JoinTest.Join_RightOuter_ShouldJoin" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.GroupTest.GroupByIdAndText_UsingExecWithValidList_ShouldGroupById" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -749,7 +767,11 @@
       <created>1351508229105</created>
       <updated>1351508229105</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Grouping + Streamlining the API">
+      <created>1352561365136</created>
+      <updated>1352561365136</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -759,6 +781,7 @@
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13328198" sideWeight="0.6701389" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5173611" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.50385207" order="7" side_tool="true" content_ui="tabs" />
@@ -773,7 +796,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Fireworks" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298611" sideWeight="0.49075502" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -864,86 +886,93 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="337" selection-end="337" vertical-scroll-proportion="-1.5153203" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="0" selection-start="3213" selection-end="3213" vertical-scroll-proportion="4.632312" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/JoinQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="97" selection-start="76" selection-end="76" vertical-scroll-proportion="0.19354838" />
+        <state line="29" column="26" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/Query.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="696" selection-end="696" vertical-scroll-proportion="1.0891365" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src-test/joquery/JoinTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="20" selection-start="7078" selection-end="7078" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#7454#7475#0" expanded="true" />
-          </folding>
+        <state line="11" column="0" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/JoinQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="105" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
+        <state line="6" column="97" selection-start="76" selection-end="76" vertical-scroll-proportion="0.30267063">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/JoinQueryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0">
+        <state line="48" column="24" selection-start="1501" selection-end="1501" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="20" selection-start="1900" selection-end="1900" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/JoinPair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="0.7832423">
+        <state line="108" column="17" selection-start="4208" selection-end="4208" vertical-scroll-proportion="0.33206832">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src-test/joquery/SortTest.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0">
+        <state line="29" column="44" selection-start="556" selection-end="591" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src-test/assertions/A.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="1304" selection-end="1304" vertical-scroll-proportion="0.516129">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/GroupQuery.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/IExpr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+        <state line="10" column="19" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/Grouping.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="13" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
+        <state line="10" column="13" selection-start="147" selection-end="147" vertical-scroll-proportion="0.29032257">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/GroupQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="343" column="40" selection-start="8711" selection-end="8711" vertical-scroll-proportion="0.0">
+        <state line="13" column="32" selection-start="262" selection-end="262" vertical-scroll-proportion="0.41935483">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/ReflectionExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#2578#2608#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -954,19 +983,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java">
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
+        <state line="16" column="15" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1571#1580#0" expanded="true" />
+            <element signature="e#2334#2343#0" expanded="true" />
+            <element signature="e#2882#2891#0" expanded="true" />
+            <element signature="e#3653#3662#0" expanded="true" />
+            <element signature="e#4212#4221#0" expanded="true" />
+            <element signature="e#4277#4286#0" expanded="true" />
+            <element signature="e#4319#4536#0" expanded="true" />
+            <element signature="e#4517#4518#0" expanded="true" />
+            <element signature="e#4563#4782#0" expanded="true" />
+            <element signature="e#4763#4764#0" expanded="true" />
+            <element signature="e#5663#5686#0" expanded="true" />
+            <element signature="e#6356#6378#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupTest.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="10" selection-start="1928" selection-end="1928" vertical-scroll-proportion="0.7062315">
+        <state line="9" column="0" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="355" column="46" selection-start="9070" selection-end="9070" vertical-scroll-proportion="0.2808642">
+          <folding>
+            <element signature="e#8166#9323#0" expanded="true" />
+            <element signature="e#9312#9313#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
