@@ -14,7 +14,7 @@ Filter<Dto> query = CQ.<Dto>filter()
             }
         }).eq().value(1);
 
-Collection<Dto> filtered = query.execute();
+Collection<Dto> filtered = query.list();
 }}}
 
 ==Less Than==
@@ -31,7 +31,7 @@ Filter<Dto> query = CQ.<Dto>filter()
             }
         }).lt().value(2);
 
-Collection<Dto> filtered = query.execute();
+Collection<Dto> filtered = query.list();
 }}}
 
 ==Less than or equal==
@@ -57,7 +57,7 @@ Filter<Dto> query = CQ.<Dto>filter()
             }
         }).in().value(new int[]{1,2});
 
-Collection<Dto> filtered = query.execute();
+Collection<Dto> filtered = query.list();
 }}}
 
 It can be re-parsed to use a collection instead of an array.
@@ -73,7 +73,7 @@ Filter<Dto> query = CQ.<Dto>filter()
             }
         }).in().value(Arrays.asList(1,2));
 
-Collection<Dto> filtered = query.execute();
+Collection<Dto> filtered = query.list();
 }}}
 
 ==Between==
@@ -90,7 +90,7 @@ Filter<Dto> query = CQ.<Dto>filter()
             }
         }).between().value(1).value(2);
 
-Collection<Dto> filtered = query.execute();
+Collection<Dto> filtered = query.list();
 }}}
 
 ==And==
@@ -115,7 +115,7 @@ Filter<Dto> query = CQ.<Dto>filter()
             }
         }).lt().value(3);
 
-Collection<Dto> filtered = query.execute();
+Collection<Dto> filtered = query.list();
 }}}
 
 When using and set of the conditions before {{{and()}}} would be associated with the left hand side of the and condition.
