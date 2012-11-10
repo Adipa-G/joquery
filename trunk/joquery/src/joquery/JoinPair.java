@@ -25,32 +25,4 @@ public class JoinPair<T,U>
     {
         return right;
     }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        JoinPair joinPair = (JoinPair) o;
-
-        if (!(left != null ? !left.equals(joinPair.left) : joinPair.left != null))
-        {
-            if (!(right != null ? !right.equals(
-                    joinPair.right) : joinPair.right != null))
-            {
-                return true;
-            }
-        }
-        return false;
-
-    }
-
-    @Override
-    public int hashCode()
-    {
-        int result = left != null ? left.hashCode() : 0;
-        result = 31 * result + (right != null ? right.hashCode() : 0);
-        return result;
-    }
 }

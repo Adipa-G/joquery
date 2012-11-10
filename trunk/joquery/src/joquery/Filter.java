@@ -11,5 +11,9 @@ import java.util.Collection;
  */
 public interface Filter<T> extends Query<T, Filter<T>>
 {
-    Collection<T> execute()throws QueryException;
+    T first() throws QueryException;
+
+    T last() throws QueryException;
+
+    Collection<T> list() throws QueryException;
 }

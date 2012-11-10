@@ -68,6 +68,24 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
         return this.sortExpressions.add(expr);
     }
 
+    protected <X> X first(Collection<X> xs)
+    {
+        if (xs.iterator().hasNext())
+            return xs.iterator().next();
+        return null;
+    }
+
+    protected <X> X last(Collection<X> xs)
+    {
+        Iterator<X> iterator = xs.iterator();
+        X last = null;
+        while (iterator.hasNext())
+        {
+            last = iterator.next();
+        }
+        return last;
+    }
+
     @Override
     public W from(Iterable<T> list)
     {
@@ -320,7 +338,6 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
                     Object val1 = EvaluateExpression(t1, expr);
                     Object val2 = EvaluateExpression(t2, expr);
 
-                    compareResult = 0;
                     if (val1 != null && val1 instanceof Comparable)
                     {
                         Comparable val1Comparable = (Comparable) val1;

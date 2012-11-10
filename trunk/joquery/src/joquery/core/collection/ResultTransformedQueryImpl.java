@@ -1,5 +1,6 @@
 package joquery.core.collection;
 
+import joquery.GroupQuery;
 import joquery.JoinQuery;
 import joquery.ResultTransformedQuery;
 import joquery.ResultTransformer;
@@ -17,22 +18,51 @@ public abstract class ResultTransformedQueryImpl<T,U,W extends ResultTransformed
         extends QueryImpl<T,W>
         implements ResultTransformedQuery<T,U,W>
 {
+    private ResultTransformer<T, U> directTransformer;
+    private ResultTransformer<Object[], U> selectionTransformer;
+
     @Override
-    public Collection<U> execute() throws QueryException
+    public U first() throws QueryException
     {
+        return super.first(list());
+    }
+
+    @Override
+    public U last() throws QueryException
+    {
+        return super.last(list());
+    }
+
+    @Override
+    public Collection<U> list() throws QueryException
+    {
+        boolean hasSelections = super.getSelections().size() > 0;
+
+        if (hasSelections && selectionTransformer == null)
+            throw new QueryException("Cannot list with a select items are available without using a selection" +
+            " transformer, use 'transformSelection(ResultTransformer<Object[], U> transformer)' to set the transformer");
+
+        if (hasSelections)
+            return super.transformCustomSelection(selectionTransformer);
+
+        if (directTransformer != null)
+            return super.transformDefaultSelection(directTransformer);
+
         return super.transformDefaultSelection();
     }
 
     @Override
-    public Collection<U> execute(ResultTransformer<T, U> transformer) throws QueryException
+    public ResultTransformedQueryImpl<T,U,W> transformDirect(ResultTransformer<T, U> transformer)
     {
-        return super.transformDefaultSelection(transformer);
+        directTransformer = transformer;
+        return this;
     }
 
     @Override
-    public Collection<U> executeSelection(ResultTransformer<Object[], U> transformer) throws QueryException
+    public ResultTransformedQueryImpl<T,U,W> transformSelection(ResultTransformer<Object[], U> transformer)
     {
-        return super.transformCustomSelection(transformer);
+        selectionTransformer = transformer;
+        return this;
     }
 
     @Override
@@ -51,6 +81,13 @@ public abstract class ResultTransformedQueryImpl<T,U,W extends ResultTransformed
     public <X, Y> JoinQuery<U, X, Y> rightOuterJoin(ResultTransformedQuery<X, X, ?> rightQuery) throws QueryException
     {
         return doJoin(JoinMode.RIGHT_OUTER,rightQuery);
+    }
+
+    @Override
+    public <Key> GroupQuery<Key,U> group() throws QueryException
+    {
+        //noinspection unchecked
+        return new GroupQueryImpl<Key,U>().from(list());
     }
 
     private <X, Y> JoinQuery<U, X, Y> doJoin(JoinMode joinMode,ResultTransformedQuery<X, X, ?> rightQuery) throws QueryException

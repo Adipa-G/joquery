@@ -20,7 +20,7 @@ import java.util.List;
  * Date: 10/28/12
  * Time: 1:35 PM
  */
-public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,U>,V,JoinQuery> implements JoinQuery<T,U,V>
+public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,U>,V,JoinQuery<T,U,V>> implements JoinQuery<T,U,V>
 {
     private JoinMode joinMode;
     private ResultTransformedQuery<T,T,?> leftQuery;
@@ -76,8 +76,8 @@ public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,
 
     private Iterable<JoinPair<T, U>> innerJoin() throws QueryException
     {
-        Collection<T> leftList = leftQuery.execute();
-        Collection<U> rightList = rightQuery.execute();
+        Collection<T> leftList = leftQuery.list();
+        Collection<U> rightList = rightQuery.list();
 
         ArrayList<JoinPair<T, U>> results = new ArrayList<>();
         for (T left : leftList)
@@ -96,8 +96,8 @@ public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,
 
     private Iterable<JoinPair<T, U>> leftOuterJoin() throws QueryException
     {
-        Collection<T> leftList = leftQuery.execute();
-        Collection<U> rightList = rightQuery.execute();
+        Collection<T> leftList = leftQuery.list();
+        Collection<U> rightList = rightQuery.list();
 
         ArrayList<JoinPair<T, U>> results = new ArrayList<>();
         for (T left : leftList)
@@ -119,8 +119,8 @@ public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,
 
     private Iterable<JoinPair<T, U>> rightOuterJoin() throws QueryException
     {
-        Collection<T> leftList = leftQuery.execute();
-        Collection<U> rightList = rightQuery.execute();
+        Collection<T> leftList = leftQuery.list();
+        Collection<U> rightList = rightQuery.list();
 
         ArrayList<JoinPair<T, U>> results = new ArrayList<>();
         for (U right : rightList)

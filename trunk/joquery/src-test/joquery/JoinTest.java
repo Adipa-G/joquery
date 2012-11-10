@@ -28,24 +28,24 @@ public class JoinTest
         rightList = new ArrayList<>();
 
         //inner joined items
-        leftList.add(new LeftDto(1,"1"));
-        rightList.add(new RightDto(1,100));
-        leftList.add(new LeftDto(2,"2"));
-        rightList.add(new RightDto(2,101));
-        leftList.add(new LeftDto(3,"3"));
-        rightList.add(new RightDto(3,102));
-        leftList.add(new LeftDto(4,"4"));
-        rightList.add(new RightDto(4,103));
+        leftList.add(new LeftDto(1, "1"));
+        rightList.add(new RightDto(1, 100));
+        leftList.add(new LeftDto(2, "2"));
+        rightList.add(new RightDto(2, 101));
+        leftList.add(new LeftDto(3, "3"));
+        rightList.add(new RightDto(3, 102));
+        leftList.add(new LeftDto(4, "4"));
+        rightList.add(new RightDto(4, 103));
 
         //left only items
-        leftList.add(new LeftDto(5,"5"));
-        leftList.add(new LeftDto(6,"6"));
-        leftList.add(new LeftDto(7,"7"));
+        leftList.add(new LeftDto(5, "5"));
+        leftList.add(new LeftDto(6, "6"));
+        leftList.add(new LeftDto(7, "7"));
 
         //right only items
-        rightList.add(new RightDto(8,104));
-        rightList.add(new RightDto(9,105));
-        rightList.add(new RightDto(10,106));
+        rightList.add(new RightDto(8, 104));
+        rightList.add(new RightDto(9, 105));
+        rightList.add(new RightDto(10, 106));
     }
 
     @AfterClass
@@ -60,13 +60,13 @@ public class JoinTest
     @Test
     public void Join_TwoEmptyQueries_ShouldReturnEmpty() throws QueryException
     {
-        SelectionQuery<LeftDto,LeftDto> leftQuery = CQ.<LeftDto,LeftDto>query()
+        SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(Collections.<LeftDto>emptyList());
-        SelectionQuery<RightDto,RightDto> rightQuery = CQ.<RightDto,RightDto>query()
+        SelectionQuery<RightDto, RightDto> rightQuery = CQ.<RightDto, RightDto>query()
                 .from(Collections.<RightDto>emptyList());
-        JoinQuery<LeftDto,RightDto,JoinedDto> joinQuery = leftQuery.innerJoin(rightQuery);
+        JoinQuery<LeftDto, RightDto, JoinedDto> joinQuery = leftQuery.innerJoin(rightQuery);
 
-        Collection<JoinedDto> results = joinQuery.execute();
+        Collection<JoinedDto> results = joinQuery.list();
 
         A.exp(0).act(results.size());
     }
@@ -74,25 +74,25 @@ public class JoinTest
     @Test(expected = QueryException.class)
     public void Join_LeftWithTransformation_ShouldThrowException() throws QueryException
     {
-        SelectionQuery<LeftDto,RightDto> leftQuery = CQ.<LeftDto,RightDto>query()
+        SelectionQuery<LeftDto, RightDto> leftQuery = CQ.<LeftDto, RightDto>query()
                 .from(Collections.<LeftDto>emptyList())
                 .select().property("id").property("text");
-        SelectionQuery<RightDto,RightDto> rightQuery = CQ.<RightDto,RightDto>query()
+        SelectionQuery<RightDto, RightDto> rightQuery = CQ.<RightDto, RightDto>query()
                 .from(Collections.<RightDto>emptyList());
-        JoinQuery<RightDto,RightDto,JoinedDto> joinQuery = leftQuery.innerJoin(rightQuery);
+        JoinQuery<RightDto, RightDto, JoinedDto> joinQuery = leftQuery.innerJoin(rightQuery);
 
-        joinQuery.execute();
+        joinQuery.list();
     }
 
     @Test
     public void Join_InnerWithExec_ShouldJoin() throws QueryException
     {
-        SelectionQuery<LeftDto,LeftDto> leftQuery = CQ.<LeftDto,LeftDto>query()
+        SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
-        SelectionQuery<RightDto,RightDto> rightQuery = CQ.<RightDto,RightDto>query()
+        SelectionQuery<RightDto, RightDto> rightQuery = CQ.<RightDto, RightDto>query()
                 .from(rightList);
-        JoinQuery<LeftDto,RightDto,JoinedDto> joinQuery = leftQuery
-                .<RightDto,JoinedDto>innerJoin(rightQuery)
+        JoinQuery<LeftDto, RightDto, JoinedDto> joinQuery = leftQuery
+                .<RightDto, JoinedDto>innerJoin(rightQuery)
                 .on(
                         new Exec<LeftDto>()
                         {
@@ -112,16 +112,18 @@ public class JoinTest
                         }
                    );
 
-        Collection<JoinedDto> results = joinQuery.execute(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-        {
-            @Override
-            public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-            {
-                return new JoinedDto(selection.getLeft().getText()
-                        ,selection.getLeft().getId()
-                        ,selection.getRight().getId());
-            }
-        });
+        Collection<JoinedDto> results = joinQuery
+                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
+                {
+                    @Override
+                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
+                    {
+                        return new JoinedDto(selection.getLeft().getText()
+                                , selection.getLeft().getId()
+                                , selection.getRight().getId());
+                    }
+                })
+                .list();
 
         A.exp(innerJoin()).act(results);
     }
@@ -131,17 +133,18 @@ public class JoinTest
     {
         Collection<JoinedDto> results = CQ.<LeftDto, LeftDto>query()
                 .from(leftList).<RightDto, JoinedDto>innerJoin(CQ.<RightDto, RightDto>query().from(rightList))
-                .on("id", "leftId").execute(
-                        new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                        {
-                            @Override
-                            public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                            {
-                                return new JoinedDto(selection.getLeft().getText()
-                                        , selection.getLeft().getId()
-                                        , selection.getRight().getId());
-                            }
-                        });
+                .on("id", "leftId")
+                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
+                {
+                    @Override
+                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
+                    {
+                        return new JoinedDto(selection.getLeft().getText()
+                                , selection.getLeft().getId()
+                                , selection.getRight().getId());
+                    }
+                })
+                .list();
 
         A.exp(innerJoin()).act(results);
     }
@@ -149,12 +152,12 @@ public class JoinTest
     @Test
     public void Join_LeftOuter_ShouldJoin() throws QueryException
     {
-        SelectionQuery<LeftDto,LeftDto> leftQuery = CQ.<LeftDto,LeftDto>query()
+        SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
-        SelectionQuery<RightDto,RightDto> rightQuery = CQ.<RightDto,RightDto>query()
+        SelectionQuery<RightDto, RightDto> rightQuery = CQ.<RightDto, RightDto>query()
                 .from(rightList);
-        JoinQuery<LeftDto,RightDto,JoinedDto> joinQuery = leftQuery
-                .<RightDto,JoinedDto>leftOuterJoin(rightQuery)
+        JoinQuery<LeftDto, RightDto, JoinedDto> joinQuery = leftQuery
+                .<RightDto, JoinedDto>leftOuterJoin(rightQuery)
                 .on(
                         new Exec<LeftDto>()
                         {
@@ -174,16 +177,18 @@ public class JoinTest
                         }
                    );
 
-        Collection<JoinedDto> results = joinQuery.execute(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-        {
-            @Override
-            public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-            {
-                return new JoinedDto(selection.getLeft().getText()
-                        ,selection.getLeft().getId()
-                        ,(selection.getRight() != null ? selection.getRight().getId() : -1));
-            }
-        });
+        Collection<JoinedDto> results = joinQuery
+                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
+                {
+                    @Override
+                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
+                    {
+                        return new JoinedDto(selection.getLeft().getText()
+                                , selection.getLeft().getId()
+                                , (selection.getRight() != null ? selection.getRight().getId() : -1));
+                    }
+                })
+                .list();
 
         A.exp(leftOuterJoin()).act(results);
     }
@@ -191,12 +196,12 @@ public class JoinTest
     @Test
     public void Join_RightOuter_ShouldJoin() throws QueryException
     {
-        SelectionQuery<LeftDto,LeftDto> leftQuery = CQ.<LeftDto,LeftDto>query()
+        SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
-        SelectionQuery<RightDto,RightDto> rightQuery = CQ.<RightDto,RightDto>query()
+        SelectionQuery<RightDto, RightDto> rightQuery = CQ.<RightDto, RightDto>query()
                 .from(rightList);
-        JoinQuery<LeftDto,RightDto,JoinedDto> joinQuery = leftQuery
-                .<RightDto,JoinedDto>rightOuterJoin(rightQuery)
+        JoinQuery<LeftDto, RightDto, JoinedDto> joinQuery = leftQuery
+                .<RightDto, JoinedDto>rightOuterJoin(rightQuery)
                 .on(
                         new Exec<LeftDto>()
                         {
@@ -216,16 +221,20 @@ public class JoinTest
                         }
                    );
 
-        Collection<JoinedDto> results = joinQuery.execute(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-        {
-            @Override
-            public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-            {
-                return new JoinedDto((selection.getLeft() != null ? selection.getLeft().getText() : "")
-                        ,(selection.getLeft() != null ? selection.getLeft().getId() : -1)
-                        ,selection.getRight().getId());
-            }
-        });
+        Collection<JoinedDto> results = joinQuery
+                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
+                {
+                    @Override
+                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
+                    {
+                        return new JoinedDto((selection.getLeft() != null ? selection.getLeft().getText() : "")
+                                , (selection.getLeft() != null ? selection.getLeft().getId() : -1)
+                                , selection.getRight().getId());
+                    }
+                })
+                .orderBy()
+                .property("text")
+                .list();
 
         A.exp(rightOuterJoin()).act(results);
     }
@@ -239,7 +248,7 @@ public class JoinTest
             {
                 if (leftDto.id == rightDto.leftId)
                 {
-                    joinPairs.add(new JoinedDto(leftDto.getText(),leftDto.getId(),rightDto.getId()));
+                    joinPairs.add(new JoinedDto(leftDto.getText(), leftDto.getId(), rightDto.getId()));
                 }
             }
         }
@@ -259,8 +268,8 @@ public class JoinTest
                     matchingDto = rightDto;
                 }
             }
-            joinPairs.add(new JoinedDto(leftDto.getText(),leftDto.getId()
-                    ,matchingDto != null ? matchingDto.getId(): -1));
+            joinPairs.add(new JoinedDto(leftDto.getText(), leftDto.getId()
+                    , matchingDto != null ? matchingDto.getId() : -1));
         }
         return joinPairs;
     }
@@ -279,8 +288,8 @@ public class JoinTest
                 }
             }
             joinPairs.add(new JoinedDto(matchingDto != null ? matchingDto.getText() : ""
-                    ,matchingDto != null ? matchingDto.getId(): -1
-                    ,rightDto.getId()));
+                    , matchingDto != null ? matchingDto.getId() : -1
+                    , rightDto.getId()));
         }
         return joinPairs;
     }
