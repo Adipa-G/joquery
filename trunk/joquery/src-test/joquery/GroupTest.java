@@ -29,6 +29,7 @@ public class GroupTest
         dtoList.add(new Dto(4, "B"));
         dtoList.add(new Dto(5, "E"));
         dtoList.add(new Dto(5, "F"));
+        dtoList.add(new Dto(5, "F"));
         dtoList.add(new Dto(5, null));
     }
 
@@ -59,7 +60,7 @@ public class GroupTest
     }
 
     @Test
-    public void GroupById_ValidList_ShouldGroupById() throws QueryException
+    public void GroupById_UsingExecWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -71,15 +72,113 @@ public class GroupTest
                     {
                         return dto.getId();
                     }
+                })
+                .orderBy()
+                .property("key");
+
+        Collection<Grouping<Integer,Dto>> groupedList = query.list();
+        A.exp(groupById().size()).act(groupedList.size());
+        A.exp(createCompareString(groupById())).act(createCompareString(groupedList));
+    }
+
+    @Test
+    public void GroupById_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
+    {
+        GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+                .from(dtoList)
+                .<Integer>group()
+                .groupBy("id")
+                .orderBy()
+                .property("key");
+
+        Collection<Grouping<Integer,Dto>> groupedList = query.list();
+        A.exp(groupById().size()).act(groupedList.size());
+        A.exp(createCompareString(groupById())).act(createCompareString(groupedList));
+    }
+
+    @Test
+    public void GroupByText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    {
+        GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+                .from(dtoList)
+                .<Integer>group()
+                .groupBy(new Exec<Dto>()
+                {
+                    @Override
+                    public Object exec(Dto dto)
+                    {
+                        return dto.getText();
+                    }
+                })
+                .orderBy()
+                .property("key");
+
+        Collection<Grouping<Integer,Dto>> groupedList = query.list();
+        A.exp(groupByText().size()).act(groupedList.size());
+        A.exp(createCompareString(groupByText())).act(createCompareString(groupedList));
+    }
+
+    @Test
+    public void GroupByText_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
+    {
+        GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+                .from(dtoList)
+                .<Integer>group()
+                .groupBy("text")
+                .orderBy()
+                .property("key");
+
+        Collection<Grouping<Integer,Dto>> groupedList = query.list();
+        A.exp(groupByText().size()).act(groupedList.size());
+        A.exp(createCompareString(groupByText())).act(createCompareString(groupedList));
+    }
+
+    @Test
+    public void GroupByIdAndText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    {
+        GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+                .from(dtoList)
+                .<Integer>group()
+                .groupBy(new Exec<Dto>()
+                {
+                    @Override
+                    public Object exec(Dto dto)
+                    {
+                        return dto.getId();
+                    }
+                })
+                .groupBy(new Exec<Dto>()
+                {
+                    @Override
+                    public Object exec(Dto dto)
+                    {
+                        return dto.getText();
+                    }
                 });
 
         Collection<Grouping<Integer,Dto>> groupedList = query.list();
-        //A.exp(groupById()).act(groupedList);
+        A.exp(dtoList.size() - 1).act(groupedList.size());
+    }
+
+    private <T> String createCompareString(Collection<Grouping<T,Dto>> list)
+    {
+        StringBuilder sb = new StringBuilder();
+        for (Grouping<T, Dto> grouping : list)
+        {
+            sb.append(grouping.getKey()).append("_{");
+            for (Dto dto : grouping.getValues())
+            {
+                sb.append(dto.getId()).append("-");
+                sb.append(dto.getText()).append(",");
+            }
+            sb.append("}");
+        }
+        return sb.toString();
     }
 
     private Collection<Grouping<Integer,Dto>> groupById() throws QueryException
     {
-        Collection<Grouping<Integer,Dto>> groupings = new ArrayList<>();
+        List<Grouping<Integer,Dto>> groupings = new ArrayList<>();
         for (Dto dto : dtoList)
         {
             Grouping<Integer,Dto> value = CQ.<Grouping<Integer,Dto>>filter(groupings)
@@ -96,7 +195,47 @@ public class GroupTest
                 groupings.add(value);
             }
         }
+        sortSingleGroup(groupings);
         return groupings;
+    }
+
+    private Collection<Grouping<String,Dto>> groupByText() throws QueryException
+    {
+        List<Grouping<String,Dto>> groupings = new ArrayList<>();
+        for (Dto dto : dtoList)
+        {
+            Grouping<String,Dto> value = CQ.<Grouping<String,Dto>>filter(groupings)
+                    .where().property("key").eq().value(dto.getText()).first();
+
+            if (value != null)
+            {
+                value.Add(dto);
+            }
+            else
+            {
+                value = new Grouping<>(dto.getText());
+                value.Add(dto);
+                groupings.add(value);
+            }
+        }
+        sortSingleGroup(groupings);
+        return groupings;
+    }
+
+    private <T extends Comparable<T>> void sortSingleGroup(List<Grouping<T, Dto>> groupings)
+    {
+        Collections.sort(groupings, new Comparator<Grouping<T, Dto>>()
+        {
+            @Override
+            public int compare(Grouping<T, Dto> o1, Grouping<T, Dto> o2)
+            {
+                if (o1.getKey() == null)
+                    return -1;
+                if (o2.getKey() == null)
+                    return 1;
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
     }
 
     static class Dto

@@ -9,7 +9,7 @@ import java.util.Collection;
  * Date: 10/28/12
  * Time: 12:43 PM
  */
-public interface ResultTransformedQuery<T,U,W extends ResultTransformedQuery> extends Query<T,W>
+public interface ResultTransformedQuery<T,U,W extends ResultTransformedQuery<T,U,W>> extends Query<T,W>
 {
     U first() throws QueryException;
 
@@ -27,5 +27,5 @@ public interface ResultTransformedQuery<T,U,W extends ResultTransformedQuery> ex
 
     <X,Y> JoinQuery<U,X,Y> rightOuterJoin(ResultTransformedQuery<X, X, ?> rightQuery)  throws QueryException;
 
-    <X> GroupQuery<X,U> group()  throws QueryException;
+    <Key> GroupQuery<Key,U> group()  throws QueryException;
 }

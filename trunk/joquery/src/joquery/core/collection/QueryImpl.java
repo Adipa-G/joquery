@@ -20,7 +20,7 @@ import java.util.*;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
+public abstract class QueryImpl<T,W extends Query<T,W>> implements Query<T, W>
 {
     private QueryMode queryMode;
 
@@ -333,19 +333,28 @@ public abstract class QueryImpl<T,W extends Query> implements Query<T, W>
             public int compare(T t1, T t2)
             {
                 int compareResult = 0;
-                for (IExpr<T> expr : sortExpressions)
+                for (IExpr<T> expr : getSortExpressions())
                 {
                     Object val1 = EvaluateExpression(t1, expr);
                     Object val2 = EvaluateExpression(t2, expr);
 
-                    if (val1 != null && val1 instanceof Comparable)
+                    if (val1 == val2)
                     {
-                        Comparable val1Comparable = (Comparable) val1;
-                        compareResult = val1Comparable.compareTo(val2);
+                        compareResult = 0;
+                    }
+                    else if (val1 == null)
+                    {
+                        compareResult = -1;
+                    }
+                    else if (val2 == null)
+                    {
+                        compareResult = 1;
                     }
                     else
                     {
-                        compareResult = val1 == null ? -1 : 0;
+                        Comparable val1Comparable = (Comparable) val1;
+                        //noinspection unchecked
+                        compareResult = val1Comparable.compareTo(val2);
                     }
 
                     if (compareResult != 0)

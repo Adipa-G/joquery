@@ -7,7 +7,7 @@ import joquery.core.QueryException;
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public interface Query<T,W extends Query>
+public interface Query<T,W extends Query<T,W>>
 {
     W from(Iterable<T> list);
 
