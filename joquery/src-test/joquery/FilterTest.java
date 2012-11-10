@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * User: Adipa
@@ -36,12 +37,34 @@ public class FilterTest
     }
 
     @Test
-    public void Execute_WithNoFilter_ShouldReturnAll() throws QueryException
+    public void First_WithNoFilter_ShouldReturnAll() throws QueryException
+    {
+        Dto first = CQ.<Dto>filter(testList).first();
+
+        A.exp(testList.iterator().next()).act(first);
+    }
+
+    @Test
+    public void Last_WithNoFilter_ShouldReturnAll() throws QueryException
+    {
+        Dto last = CQ.<Dto>filter(testList).last();
+
+        Iterator<Dto> iterator = testList.iterator();
+        Dto expected = null;
+        while (iterator.hasNext())
+        {
+            expected = iterator.next();
+        }
+        A.exp(expected).act(last);
+    }
+
+    @Test
+    public void List_WithNoFilter_ShouldReturnAll() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         A.exp(testList).act(filtered);
     }
 

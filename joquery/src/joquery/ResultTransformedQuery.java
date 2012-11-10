@@ -11,15 +11,21 @@ import java.util.Collection;
  */
 public interface ResultTransformedQuery<T,U,W extends ResultTransformedQuery> extends Query<T,W>
 {
-    Collection<U> execute()throws QueryException;
+    U first() throws QueryException;
 
-    Collection<U> execute(ResultTransformer<T,U> transformer)throws QueryException;
+    U last() throws QueryException;
 
-    Collection<U> executeSelection(ResultTransformer<Object[],U> transformer)throws QueryException;
+    Collection<U> list()throws QueryException;
+
+    ResultTransformedQuery<T,U,W> transformDirect(ResultTransformer<T, U> transformer);
+
+    ResultTransformedQuery<T,U,W> transformSelection(ResultTransformer<Object[], U> transformer);
 
     <X,Y> JoinQuery<U,X,Y> innerJoin(ResultTransformedQuery<X, X, ?> rightQuery) throws QueryException;
 
     <X,Y> JoinQuery<U,X,Y> leftOuterJoin(ResultTransformedQuery<X, X, ?> rightQuery)  throws QueryException;
 
     <X,Y> JoinQuery<U,X,Y> rightOuterJoin(ResultTransformedQuery<X, X, ?> rightQuery)  throws QueryException;
+
+    <X> GroupQuery<X,U> group()  throws QueryException;
 }

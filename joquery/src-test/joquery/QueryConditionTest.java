@@ -65,7 +65,7 @@ public class QueryConditionTest
                     }
                 });
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 
@@ -116,7 +116,7 @@ public class QueryConditionTest
                     }
                 }).eq();
 
-        query.execute();
+        query.list();
     }
 
     @Test
@@ -133,7 +133,7 @@ public class QueryConditionTest
                     }
                 }).eq().value(1);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 
@@ -151,7 +151,7 @@ public class QueryConditionTest
                     }
                 });
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 
@@ -169,7 +169,7 @@ public class QueryConditionTest
                     }
                 }).lt().value(2);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 
@@ -187,7 +187,7 @@ public class QueryConditionTest
                     }
                 }).le().value(2);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1, 2});
     }
 
@@ -205,7 +205,7 @@ public class QueryConditionTest
                     }
                 }).gt().value(2);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{3});
     }
 
@@ -223,7 +223,7 @@ public class QueryConditionTest
                     }
                 }).ge().value(2);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{2,3});
     }
 
@@ -241,7 +241,7 @@ public class QueryConditionTest
                     }
                 }).in().value(new int[]{1,2});
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
     }
 
@@ -259,7 +259,7 @@ public class QueryConditionTest
                     }
                 }).in().value(Arrays.asList(1,2));
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
     }
 
@@ -277,7 +277,7 @@ public class QueryConditionTest
                     }
                 }).between().value(1).value(2);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
     }
 
@@ -295,7 +295,7 @@ public class QueryConditionTest
                     }
                 }).between().value(1);
 
-        query.execute();
+        query.list();
     }
 
     @Test
@@ -320,7 +320,7 @@ public class QueryConditionTest
                     }
                 }).eq().value(1);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1});
     }
 
@@ -346,7 +346,7 @@ public class QueryConditionTest
                     }
                 }).eq().value(2);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
     }
 
@@ -380,7 +380,7 @@ public class QueryConditionTest
                     }
                 }).eq().value(1);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1});
     }
 
@@ -400,7 +400,7 @@ public class QueryConditionTest
                     }
                 }).eq().value(2);
 
-        query.execute();
+        query.list();
     }
 
     @Test(expected = QueryException.class)
@@ -419,7 +419,7 @@ public class QueryConditionTest
                 .or()
                 .value(1);
 
-        query.execute();
+        query.list();
     }
 
     private static void assertResult(Collection<Dto> list,int[] ids)

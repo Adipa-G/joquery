@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * User: Adipa
@@ -37,34 +38,58 @@ public class SelectionQueryTest
     }
 
     @Test
-    public void Execute_UseWithoutTransformation_ShouldReturnAll() throws QueryException
+    public void First_WithNoFilter_ShouldReturnAll() throws QueryException
+    {
+        SrcDto first = CQ.<SrcDto,SrcDto>query(testList).first();
+
+        A.exp(testList.iterator().next()).act(first);
+    }
+
+    @Test
+    public void Last_WithNoFilter_ShouldReturnAll() throws QueryException
+    {
+        SrcDto last = CQ.<SrcDto,SrcDto>query(testList).last();
+
+        Iterator<SrcDto> iterator = testList.iterator();
+        SrcDto expected = null;
+        while (iterator.hasNext())
+        {
+            expected = iterator.next();
+        }
+        A.exp(expected).act(last);
+    }
+
+    @Test
+    public void List_UseWithoutTransformation_ShouldReturnAll() throws QueryException
     {
         SelectionQuery<SrcDto,SrcDto> query = CQ.<SrcDto,SrcDto>query()
                 .from(testList);
 
-        Collection<SrcDto> filtered = query.execute();
+        Collection<SrcDto> filtered = query.list();
         A.exp(filtered.size()).act(testList.size());
     }
 
     @Test
-    public void Execute_WithNoSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
+    public void List_WithNoSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
     {
         SelectionQuery<SrcDto,DestDto> query = CQ.<SrcDto,DestDto>query()
                 .from(testList);
 
-        Collection<DestDto> filtered = query.execute(new ResultTransformer<SrcDto,DestDto>()
-        {
-            @Override
-            public DestDto transform(SrcDto srcDto)
-            {
-                return new DestDto(srcDto.getId());
-            }
-        });
+        Collection<DestDto> filtered = query
+                .transformDirect(new ResultTransformer<SrcDto, DestDto>()
+                {
+                    @Override
+                    public DestDto transform(SrcDto srcDto)
+                    {
+                        return new DestDto(srcDto.getId());
+                    }
+                })
+                .list();
         VerifyEquals(testList,filtered);
     }
 
     @Test
-    public void Execute_WithSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
+    public void List_WithSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
     {
         SelectionQuery<SrcDto,DestDto> query = CQ.<SrcDto,DestDto>query()
                 .from(testList)
@@ -77,15 +102,18 @@ public class SelectionQueryTest
                     }
                 });
 
-        Collection<DestDto> filtered = query.executeSelection(new ResultTransformer<Object[],DestDto>()
-        {
-            @Override
-            public DestDto transform(Object[] selection)
-            {
-                int id = (Integer)selection[0];
-                return new DestDto(id);
-            }
-        });
+        Collection<DestDto> filtered = query
+                .transformSelection(new ResultTransformer<Object[], DestDto>()
+                {
+                    @Override
+                    public DestDto transform(Object[] selection)
+                    {
+                        int id = (Integer) selection[0];
+                        return new DestDto(id);
+                    }
+                })
+                .list();
+
         VerifyEquals(testList,filtered);
     }
 

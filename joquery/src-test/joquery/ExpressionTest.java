@@ -37,7 +37,7 @@ public class ExpressionTest
     }
 
     @Test
-    public void Expression_Exec_ShouldFilter() throws QueryException
+    public void WhereExpression_Exec_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -50,12 +50,12 @@ public class ExpressionTest
                     }
                 });
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 
     @Test(expected = QueryException.class)
-    public void Expression_ExecThrowException_ShouldThrowException() throws QueryException
+    public void WhereExpression_ExecThrowException_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -68,11 +68,11 @@ public class ExpressionTest
                     }
                 });
 
-        query.execute();
+        query.list();
     }
 
     @Test
-    public void Expression_Property_ShouldFilter() throws QueryException
+    public void WhereExpression_Property_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -81,12 +81,12 @@ public class ExpressionTest
                 .eq()
                 .value(1);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 
     @Test(expected = QueryException.class)
-    public void Expression_PropertyWithNoField_ShouldThrowException() throws QueryException
+    public void WhereExpression_PropertyWithNoField_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -95,11 +95,11 @@ public class ExpressionTest
                 .eq()
                 .value(1);
 
-        query.execute();
+        query.list();
     }
 
     @Test
-    public void Expression_PropertyOnlyWithField_ShouldFilter() throws QueryException
+    public void WhereExpression_PropertyOnlyWithField_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -108,12 +108,12 @@ public class ExpressionTest
                 .eq()
                 .value(1);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 
     @Test
-    public void Expression_PropertyOnlyWithGetter_ShouldFilter() throws QueryException
+    public void WhereExpression_PropertyOnlyWithGetter_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -122,7 +122,7 @@ public class ExpressionTest
                 .eq()
                 .value(1);
 
-        Collection<Dto> filtered = query.execute();
+        Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
 

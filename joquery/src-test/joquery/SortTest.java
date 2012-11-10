@@ -54,7 +54,7 @@ public class SortTest
                     }
                 });
 
-        Collection<Dto> sortedList = filter.execute();
+        Collection<Dto> sortedList = filter.list();
 
         A.exp(0).act(sortedList.size());
     }
@@ -66,7 +66,7 @@ public class SortTest
                 .from(unsortedList)
                 .orderBy();
 
-        Collection<Dto> sortedList = filter.execute();
+        Collection<Dto> sortedList = filter.list();
 
         A.exp(unsortedList).act(sortedList);
     }
@@ -86,7 +86,7 @@ public class SortTest
                     }
                 });
 
-        Collection<Dto> sortedList = filter.execute();
+        Collection<Dto> sortedList = filter.list();
 
         A.exp(sortById()).act(sortedList);
         A.exp(listOfIds(sortById())).act(listOfIds(sortedList));
@@ -100,7 +100,7 @@ public class SortTest
                 .orderBy()
                 .property("id");
 
-        Collection<Dto> sortedList = filter.execute();
+        Collection<Dto> sortedList = filter.list();
 
         A.exp(sortById()).act(sortedList);
         A.exp(listOfIds(sortById())).act(listOfIds(sortedList));
@@ -129,7 +129,7 @@ public class SortTest
                     }
                 });
 
-        Collection<Dto> sortedList = filter.execute();
+        Collection<Dto> sortedList = filter.list();
 
         A.exp(sortByIdAndText()).act(sortedList);
         A.exp(listOfIds(sortByIdAndText())).act(listOfIds(sortedList));
@@ -144,7 +144,7 @@ public class SortTest
                 .property("id")
                 .property("text");
 
-        Collection<Dto> sortedList = filter.execute();
+        Collection<Dto> sortedList = filter.list();
 
         A.exp(sortByIdAndText()).act(sortedList);
         A.exp(listOfIds(sortByIdAndText())).act(listOfIds(sortedList));

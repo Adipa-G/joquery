@@ -13,7 +13,19 @@ import java.util.Collection;
 public class FilterImpl<T> extends QueryImpl<T,Filter<T>> implements Filter<T>
 {
     @Override
-    public Collection<T> execute() throws QueryException
+    public T first() throws QueryException
+    {
+        return super.first(list());
+    }
+
+    @Override
+    public T last() throws QueryException
+    {
+        return super.last(list());
+    }
+
+    @Override
+    public Collection<T> list() throws QueryException
     {
         return transformDefaultSelection();
     }
