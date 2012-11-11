@@ -6,6 +6,28 @@ As of current Joquery supports only 3 expression types
  # {{{exec}}}
  # {{{property}}}
 
+ Following class and object definitions are referred in the examples
+ {{{
+ class Dto
+ {
+     private int id;
+     private String text;
+
+     public int getId()
+     {
+         return id;
+     }
+
+     public int getText()
+     {
+         return text;
+     }
+ }
+
+ Collection<Dto> testList = new ArrayList<>();
+ testList.Add(new Dto());
+ }}}
+
 ==value==
 this is the expression used to define a constant value
 {{{

@@ -1,7 +1,93 @@
 #summary Join types
 =Joins=
+
+Following class and object definitions are referred in the examples
+{{{
+class LeftDto
+{
+    private int id;
+    private String text;
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public int getText()
+    {
+        return text;
+    }
+}
+
+class RightDto
+{
+    private int id;
+    private int leftId;
+    private String text;
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public int getLeftId()
+        {
+            return leftId;
+        }
+
+    public int getText()
+    {
+        return text;
+    }
+}
+
+class JoinedDto
+{
+    private int leftId;
+    private int rightId;
+    private String text;
+
+    public JoinedDto(int leftId,int rightId,String text)
+    {
+        this.leftId = leftId;
+        this.rightId = rightId;
+        this.text = text;
+    }
+
+    public int getLeftId()
+    {
+        return leftId;
+    }
+
+    public int getRightId()
+        {
+            return rightId;
+        }
+
+    public int getText()
+    {
+        return text;
+    }
+}
+
+Collection<LeftDto> leftList = new ArrayList<>();
+leftList.Add(new LeftDto());
+
+Collection<RightDto> rightList = new ArrayList<>();
+rightList.Add(new RightDto());
+}}}
+
 ==Inner==
-In following code inner join is done on two types of dtos
+In following code inner join leftList and rightList on LeftDto.getId() == RightDto().getLeftId()
+{{{
+Collection<JoinPair<LeftDto,RightDto>> results = CQ.<LeftDto, LeftDto>query(leftList)
+    .<RightDto, JoinPair<LeftDto,RightDto>>innerJoin(CQ.<RightDto, RightDto>query(rightList))
+    .on("id", "leftId")
+    .list();
+}}}
+The result would be LeftDto to RightDto mapping contained in JoinPair
+
+The same query can be applied with a transformation to get some other object instead of JoinPair,
 {{{
     Collection<JoinedDto> results = CQ.<LeftDto, LeftDto>query().from(leftList)
                 .<RightDto, JoinedDto>innerJoin(CQ.<RightDto, RightDto>query().from(rightList))
@@ -18,41 +104,21 @@ In following code inner join is done on two types of dtos
                                      })
                 .list();
 }}}
+This would result in list of JoindDtos.
 
 ==Left Outer==
-In following code left outer join is done on two types of dtos
+Very much similar to inner
 {{{
-    Collection<JoinedDto> results = CQ.<LeftDto, LeftDto>query().from(leftList)
-                .<RightDto, JoinedDto>leftOuterJoin(CQ.<RightDto, RightDto>query().from(rightList))
-                .on("id", "leftId")
-                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                                     {
-                                         @Override
-                                         public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                                         {
-                                             return new JoinedDto(selection.getLeft().getText()
-                                                     , selection.getLeft().getId()
-                                                     , selection.getRight().getId());
-                                         }
-                                     })
-                .list();
+Collection<JoinPair<LeftDto,RightDto>> results = CQ.<LeftDto, LeftDto>query(leftList)
+    .<RightDto, JoinPair<LeftDto,RightDto>>leftOuterJoin(CQ.<RightDto, RightDto>query(rightList))
+    .on("id", "leftId")
+    .list();
 }}}
 
 ==Right Outer==
-In following code right outer join is done on two types of dtos
 {{{
-    Collection<JoinedDto> results = CQ.<LeftDto, LeftDto>query().from(leftList)
-                .<RightDto, JoinedDto>rightOuterJoin(CQ.<RightDto, RightDto>query().from(rightList))
-                .on("id", "leftId")
-                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                                     {
-                                         @Override
-                                         public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                                         {
-                                             return new JoinedDto(selection.getLeft().getText()
-                                                     , selection.getLeft().getId()
-                                                     , selection.getRight().getId());
-                                         }
-                                     })
-                .list();
+Collection<JoinPair<LeftDto,RightDto>> results = CQ.<LeftDto, LeftDto>query(leftList)
+    .<RightDto, JoinPair<LeftDto,RightDto>>rightOuterJoin(CQ.<RightDto, RightDto>query(rightList))
+    .on("id", "leftId")
+    .list();
 }}}
