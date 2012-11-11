@@ -4,7 +4,7 @@
     </description>
 
     <property name="product" value="joquery"/>
-    <property name="version" value="0.13"/>
+    <property name="version" value="0.14"/>
 
     <property name="src" location="${basedir}/src"/>
     <property name="src.test" location="${basedir}/src-test"/>
