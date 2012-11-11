@@ -58,7 +58,7 @@ public class JoinTest
     }
 
     @Test
-    public void Join_TwoEmptyQueries_ShouldReturnEmpty() throws QueryException
+    public void join_TwoEmptyQueries_ShouldReturnEmpty() throws QueryException
     {
         SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.query(Collections.<LeftDto>emptyList());
         SelectionQuery<RightDto, RightDto> rightQuery = CQ.query(Collections.<RightDto>emptyList());
@@ -69,7 +69,7 @@ public class JoinTest
     }
 
     @Test(expected = QueryException.class)
-    public void Join_LeftWithTransformation_ShouldThrowException() throws QueryException
+    public void join_LeftWithTransformation_ShouldThrowException() throws QueryException
     {
         SelectionQuery<LeftDto, RightDto> leftQuery = CQ.<LeftDto, RightDto>query(Collections.<LeftDto>emptyList())
                 .select().property("id").property("text");
@@ -80,7 +80,7 @@ public class JoinTest
     }
 
     @Test
-    public void Join_InnerWithExec_ShouldJoin() throws QueryException
+    public void join_InnerWithExec_ShouldJoin() throws QueryException
     {
         SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
@@ -112,7 +112,7 @@ public class JoinTest
     }
 
     @Test
-    public void Join_InnerWithExecWithTransformation_ShouldJoin() throws QueryException
+    public void join_InnerWithExecWithTransformation_ShouldJoin() throws QueryException
     {
         SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
@@ -156,7 +156,7 @@ public class JoinTest
     }
 
     @Test
-    public void Join_InnerWithProperty_ShouldJoin() throws QueryException
+    public void join_InnerWithProperty_ShouldJoin() throws QueryException
     {
         Collection<JoinPair<LeftDto,RightDto>> results = CQ.<LeftDto, LeftDto>query(leftList)
                 .<RightDto, JoinPair<LeftDto,RightDto>>innerJoin(CQ.<RightDto, RightDto>query(rightList))
@@ -167,7 +167,7 @@ public class JoinTest
     }
 
     @Test
-    public void Join_InnerWithPropertyWithTransformation_ShouldJoin() throws QueryException
+    public void join_InnerWithPropertyWithTransformation_ShouldJoin() throws QueryException
     {
         Collection<JoinedDto> results = CQ.<LeftDto, LeftDto>query()
                 .from(leftList).<RightDto, JoinedDto>innerJoin(CQ.<RightDto, RightDto>query().from(rightList))
@@ -188,7 +188,7 @@ public class JoinTest
     }
 
     @Test
-    public void Join_LeftOuter_ShouldJoin() throws QueryException
+    public void join_LeftOuter_ShouldJoin() throws QueryException
     {
         SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
@@ -232,7 +232,7 @@ public class JoinTest
     }
 
     @Test
-    public void Join_RightOuter_ShouldJoin() throws QueryException
+    public void join_RightOuter_ShouldJoin() throws QueryException
     {
         SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);

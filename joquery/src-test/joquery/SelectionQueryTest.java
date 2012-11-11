@@ -38,7 +38,7 @@ public class SelectionQueryTest
     }
 
     @Test
-    public void First_WithNoFilter_ShouldReturnAll() throws QueryException
+    public void first_WithNoFilter_ShouldReturnAll() throws QueryException
     {
         SrcDto first = CQ.<SrcDto,SrcDto>query(testList).first();
 
@@ -46,7 +46,7 @@ public class SelectionQueryTest
     }
 
     @Test
-    public void Last_WithNoFilter_ShouldReturnAll() throws QueryException
+    public void last_WithNoFilter_ShouldReturnAll() throws QueryException
     {
         SrcDto last = CQ.<SrcDto,SrcDto>query(testList).last();
 
@@ -60,7 +60,7 @@ public class SelectionQueryTest
     }
 
     @Test
-    public void List_UseWithoutTransformation_ShouldReturnAll() throws QueryException
+    public void list_UseWithoutTransformation_ShouldReturnAll() throws QueryException
     {
         SelectionQuery<SrcDto,SrcDto> query = CQ.<SrcDto,SrcDto>query()
                 .from(testList);
@@ -70,7 +70,7 @@ public class SelectionQueryTest
     }
 
     @Test
-    public void List_WithNoSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
+    public void list_WithNoSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
     {
         SelectionQuery<SrcDto,DestDto> query = CQ.<SrcDto,DestDto>query()
                 .from(testList);
@@ -85,11 +85,11 @@ public class SelectionQueryTest
                     }
                 })
                 .list();
-        VerifyEquals(testList,filtered);
+        verifyEquals(testList, filtered);
     }
 
     @Test
-    public void List_WithSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
+    public void list_WithSelectionNoFilterWithTransformer_ShouldReturnAll() throws QueryException
     {
         SelectionQuery<SrcDto,DestDto> query = CQ.<SrcDto,DestDto>query()
                 .from(testList)
@@ -114,10 +114,10 @@ public class SelectionQueryTest
                 })
                 .list();
 
-        VerifyEquals(testList,filtered);
+        verifyEquals(testList, filtered);
     }
 
-    private static void VerifyEquals(Collection<SrcDto> srcDtos,Collection<DestDto> destDtos)
+    private static void verifyEquals(Collection<SrcDto> srcDtos, Collection<DestDto> destDtos)
     {
         A.exp(srcDtos.size()).act(destDtos.size());
         for (SrcDto srcDto : srcDtos)

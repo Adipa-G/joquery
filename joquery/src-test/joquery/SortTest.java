@@ -40,7 +40,7 @@ public class SortTest
     }
 
     @Test
-    public void Sort_EmptyList_ShouldReturnEmptyList() throws QueryException
+    public void sort_EmptyList_ShouldReturnEmptyList() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
                 .from(new ArrayList<Dto>())
@@ -60,7 +60,7 @@ public class SortTest
     }
 
     @Test
-    public void SortWithoutExpression_ValidList_ShouldReturnSameList() throws QueryException
+    public void sortWithoutExpression_ValidList_ShouldReturnSameList() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
                 .from(unsortedList)
@@ -72,7 +72,7 @@ public class SortTest
     }
 
     @Test
-    public void SortWithExecExpression_ValidList_ShouldSort() throws QueryException
+    public void sortWithExecExpression_ValidList_ShouldSort() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
                 .from(unsortedList)
@@ -93,7 +93,7 @@ public class SortTest
     }
 
     @Test
-    public void SortWithPropertyExpression_ValidList_ShouldSort() throws QueryException
+    public void sortWithPropertyExpression_ValidList_ShouldSort() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
                 .from(unsortedList)
@@ -107,7 +107,7 @@ public class SortTest
     }
 
     @Test
-    public void SortByTwoExecs_ValidList_ShouldSort() throws QueryException
+    public void sortByTwoExecs_ValidList_ShouldSort() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
                 .from(unsortedList)
@@ -136,7 +136,7 @@ public class SortTest
     }
 
     @Test
-    public void SortByTwoProperties_ValidList_ShouldSort() throws QueryException
+    public void sortByTwoProperties_ValidList_ShouldSort() throws QueryException
     {
         SelectionQuery<Dto,Dto> filter = CQ.<Dto,Dto>query()
                 .from(unsortedList)

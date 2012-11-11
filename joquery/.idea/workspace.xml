@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="87bb388b-eb48-46fe-b4fd-4ff9211367da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/ExpressionTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/ExpressionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/FilterTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/FilterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/GroupTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/JoinTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/JoinTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/joquery/JoinPair.java" afterPath="$PROJECT_DIR$/src/joquery/JoinPair.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/joquery/SortTest.java" afterPath="$PROJECT_DIR$/src-test/joquery/SortTest.java" />
     </list>
     <ignored path="joquery.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,90 +67,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FilterImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="17" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="JoinTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src-test/joquery/JoinTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="59" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1604#1613#0" expanded="true" />
-                <element signature="e#1704#1714#0" expanded="true" />
-                <element signature="e#2120#2139#0" expanded="true" />
-                <element signature="e#2315#2325#0" expanded="true" />
-                <element signature="e#2893#2931#0" expanded="true" />
-                <element signature="e#5689#5707#0" expanded="true" />
-                <element signature="e#5740#5778#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="33" selection-start="2080" selection-end="2080" vertical-scroll-proportion="-0.42433235">
+            <state line="234" column="17" selection-start="8665" selection-end="8665" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JoinPair.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/JoinPair.java">
+      <file leaf-file-name="QueryConditionTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="8" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0">
+            <state line="406" column="17" selection-start="11618" selection-end="11618" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JoinMode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/JoinMode.java">
+      <file leaf-file-name="SelectionQueryTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="12" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
+            <state line="119" column="25" selection-start="3289" selection-end="3289" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QueryMode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/QueryMode.java">
+      <file leaf-file-name="SortTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src-test/joquery/SortTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="12" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QueryException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/QueryException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupQueryImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IExpr.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/IExpr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="19" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0">
+            <state line="138" column="17" selection-start="3648" selection-end="3648" vertical-scroll-proportion="-2.0362117">
               <folding />
             </state>
           </provider>
@@ -162,22 +113,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src-test/joquery/FilterTest.java" />
-        <option value="$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java" />
-        <option value="$PROJECT_DIR$/src/joquery/JoinQuery.java" />
-        <option value="$PROJECT_DIR$/src/joquery/core/collection/JoinQueryImpl.java" />
-        <option value="$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java" />
         <option value="$PROJECT_DIR$/src/joquery/Query.java" />
         <option value="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" />
         <option value="$PROJECT_DIR$/src/joquery/GroupQuery.java" />
         <option value="$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java" />
         <option value="$PROJECT_DIR$/src/joquery/Grouping.java" />
-        <option value="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
         <option value="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" />
         <option value="$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/joquery/JoinPair.java" />
+        <option value="$PROJECT_DIR$/src-test/joquery/ExpressionTest.java" />
+        <option value="$PROJECT_DIR$/src-test/joquery/FilterTest.java" />
+        <option value="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
         <option value="$PROJECT_DIR$/src-test/joquery/JoinTest.java" />
+        <option value="$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java" />
+        <option value="$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java" />
+        <option value="$PROJECT_DIR$/src-test/joquery/SortTest.java" />
       </list>
     </option>
   </component>
@@ -213,6 +164,30 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -341,30 +316,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="joquery" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="joquery" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -380,18 +331,18 @@
     <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="true" />
-    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="joquery" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -553,6 +504,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -578,24 +547,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -728,14 +679,18 @@
       <created>1352568814104</created>
       <updated>1352568814104</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Test modifications">
+      <created>1352618938118</created>
+      <updated>1352618938118</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="1" width="1363" height="736" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13328198" sideWeight="0.6701389" order="1" side_tool="false" content_ui="tabs" />
@@ -844,114 +799,110 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/condition/BetweenConditionalExpr.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0" />
+        <state line="23" column="0" selection-start="561" selection-end="561" vertical-scroll-proportion="0.5483871" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/Query.java">
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+        <state line="22" column="17" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/JoinPair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="8" selection-start="672" selection-end="672" vertical-scroll-proportion="0.41165757">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="357" column="60" selection-start="9223" selection-end="9223" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/ReflectionExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="1275" selection-end="1275" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/JoinMode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
+        <state line="7" column="12" selection-start="93" selection-end="93" vertical-scroll-proportion="0.21675774">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/QueryMode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+        <state line="7" column="12" selection-start="92" selection-end="92" vertical-scroll-proportion="0.21675774">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/QueryException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
+        <state line="7" column="13" selection-start="93" selection-end="93" vertical-scroll-proportion="0.21675774">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/GroupQueryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.0" />
+        <state line="49" column="0" selection-start="1211" selection-end="1211" vertical-scroll-proportion="0.030965392">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/expr/IExpr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="19" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="34" selection-start="1963" selection-end="1963" vertical-scroll-proportion="1.9772296">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/JoinQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="78" selection-start="142" selection-end="155" vertical-scroll-proportion="0.22580644">
+        <state line="10" column="19" selection-start="183" selection-end="183" vertical-scroll-proportion="0.3096539">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java">
+    <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="561" selection-end="561" vertical-scroll-proportion="0.5483871">
+        <state line="60" column="33" selection-start="2080" selection-end="2080" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/FilterImpl.java">
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/ExpressionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
+        <state line="115" column="17" selection-start="2852" selection-end="2852" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/JoinPair.java">
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/FilterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="8" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0">
+        <state line="61" column="17" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="17" selection-start="4084" selection-end="4084" vertical-scroll-proportion="-1.4553734">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src-test/joquery/JoinTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="59" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1604#1613#0" expanded="true" />
-            <element signature="e#1704#1714#0" expanded="true" />
-            <element signature="e#2120#2139#0" expanded="true" />
-            <element signature="e#2315#2325#0" expanded="true" />
-            <element signature="e#2893#2931#0" expanded="true" />
-            <element signature="e#5689#5707#0" expanded="true" />
-            <element signature="e#5740#5778#0" expanded="true" />
-          </folding>
+        <state line="234" column="17" selection-start="8665" selection-end="8665" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/QueryConditionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="33" selection-start="2080" selection-end="2080" vertical-scroll-proportion="-0.42433235">
+        <state line="406" column="17" selection-start="11618" selection-end="11618" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/SelectionQueryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="25" selection-start="3289" selection-end="3289" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/SortTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="17" selection-start="3648" selection-end="3648" vertical-scroll-proportion="-2.0362117">
           <folding />
         </state>
       </provider>
