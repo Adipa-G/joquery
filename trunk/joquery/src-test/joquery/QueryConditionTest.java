@@ -38,7 +38,7 @@ public class QueryConditionTest
     }
 
     @Test(expected = QueryException.class)
-    public void Condition_WithoutWhere_ShouldThrowException() throws QueryException
+    public void condition_WithoutWhere_ShouldThrowException() throws QueryException
     {
         CQ.<Dto>filter()
                 .from(testList)
@@ -52,7 +52,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Exec_ShouldFilter() throws QueryException
+    public void condition_Exec_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -70,7 +70,7 @@ public class QueryConditionTest
     }
 
     @Test (expected = QueryException.class)
-    public void Condition_2ExecWithoutComparisonClause_ShouldThrowException() throws QueryException
+    public void condition_2ExecWithoutComparisonClause_ShouldThrowException() throws QueryException
     {
         CQ.<Dto>filter()
                 .from(testList)
@@ -85,7 +85,7 @@ public class QueryConditionTest
     }
 
     @Test (expected = QueryException.class)
-    public void Condition_2ValuesWithoutComparisonClause_ShouldThrowException() throws QueryException
+    public void condition_2ValuesWithoutComparisonClause_ShouldThrowException() throws QueryException
     {
         CQ.<Dto>filter()
                 .from(testList)
@@ -94,7 +94,7 @@ public class QueryConditionTest
     }
 
     @Test (expected = QueryException.class)
-    public void Condition_2PropertiesWithoutComparisonClause_ShouldThrowException() throws QueryException
+    public void condition_2PropertiesWithoutComparisonClause_ShouldThrowException() throws QueryException
     {
         CQ.<Dto>filter()
                 .from(testList)
@@ -103,7 +103,7 @@ public class QueryConditionTest
     }
 
     @Test (expected = QueryException.class)
-    public void Condition_EqWithOnlyLeft_ShouldThrowException() throws QueryException
+    public void condition_EqWithOnlyLeft_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -120,7 +120,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Eq_ShouldFilter() throws QueryException
+    public void condition_Eq_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -138,7 +138,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_EqSwitchOrder_ShouldFilter() throws QueryException
+    public void condition_EqSwitchOrder_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -156,7 +156,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Lt_ShouldFilter() throws QueryException
+    public void condition_Lt_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -174,7 +174,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Le_ShouldFilter() throws QueryException
+    public void condition_Le_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -192,7 +192,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Gt_ShouldFilter() throws QueryException
+    public void condition_Gt_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -210,7 +210,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Ge_ShouldFilter() throws QueryException
+    public void condition_Ge_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -228,7 +228,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_InWithArray_ShouldFilter() throws QueryException
+    public void condition_InWithArray_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -246,7 +246,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_InWithIterable_ShouldFilter() throws QueryException
+    public void condition_InWithIterable_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -264,7 +264,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Between_ShouldFilter() throws QueryException
+    public void condition_Between_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -282,7 +282,7 @@ public class QueryConditionTest
     }
 
     @Test (expected = QueryException.class)
-    public void Condition_BetweenWithoutRight2_ShouldThrowException() throws QueryException
+    public void condition_BetweenWithoutRight2_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -299,7 +299,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_And_ShouldFilter() throws QueryException
+    public void condition_And_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -325,7 +325,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_Or_ShouldFilter() throws QueryException
+    public void condition_Or_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -351,7 +351,7 @@ public class QueryConditionTest
     }
 
     @Test
-    public void Condition_AndOrCombined_ShouldFilter() throws QueryException
+    public void condition_AndOrCombined_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -385,7 +385,7 @@ public class QueryConditionTest
     }
 
     @Test(expected = QueryException.class)
-    public void Condition_AndWithLeftNonBoolean_ShouldThrowException() throws QueryException
+    public void condition_AndWithLeftNonBoolean_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -404,7 +404,7 @@ public class QueryConditionTest
     }
 
     @Test(expected = QueryException.class)
-    public void Condition_OrWithRightNonBoolean_ShouldThrowException() throws QueryException
+    public void condition_OrWithRightNonBoolean_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)

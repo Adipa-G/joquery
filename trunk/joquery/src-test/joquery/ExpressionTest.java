@@ -37,7 +37,7 @@ public class ExpressionTest
     }
 
     @Test
-    public void WhereExpression_Exec_ShouldFilter() throws QueryException
+    public void whereExpression_Exec_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -55,7 +55,7 @@ public class ExpressionTest
     }
 
     @Test(expected = QueryException.class)
-    public void WhereExpression_ExecThrowException_ShouldThrowException() throws QueryException
+    public void whereExpression_ExecThrowException_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -72,7 +72,7 @@ public class ExpressionTest
     }
 
     @Test
-    public void WhereExpression_Property_ShouldFilter() throws QueryException
+    public void whereExpression_Property_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -86,7 +86,7 @@ public class ExpressionTest
     }
 
     @Test(expected = QueryException.class)
-    public void WhereExpression_PropertyWithNoField_ShouldThrowException() throws QueryException
+    public void whereExpression_PropertyWithNoField_ShouldThrowException() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -99,7 +99,7 @@ public class ExpressionTest
     }
 
     @Test
-    public void WhereExpression_PropertyOnlyWithField_ShouldFilter() throws QueryException
+    public void whereExpression_PropertyOnlyWithField_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
@@ -113,7 +113,7 @@ public class ExpressionTest
     }
 
     @Test
-    public void WhereExpression_PropertyOnlyWithGetter_ShouldFilter() throws QueryException
+    public void whereExpression_PropertyOnlyWithGetter_ShouldFilter() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)

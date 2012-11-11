@@ -37,7 +37,7 @@ public class FilterTest
     }
 
     @Test
-    public void First_WithNoFilter_ShouldReturnAll() throws QueryException
+    public void first_WithNoFilter_ShouldReturnAll() throws QueryException
     {
         Dto first = CQ.<Dto>filter(testList).first();
 
@@ -45,7 +45,7 @@ public class FilterTest
     }
 
     @Test
-    public void Last_WithNoFilter_ShouldReturnAll() throws QueryException
+    public void last_WithNoFilter_ShouldReturnAll() throws QueryException
     {
         Dto last = CQ.<Dto>filter(testList).last();
 
@@ -59,7 +59,7 @@ public class FilterTest
     }
 
     @Test
-    public void List_WithNoFilter_ShouldReturnAll() throws QueryException
+    public void list_WithNoFilter_ShouldReturnAll() throws QueryException
     {
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList);

@@ -41,7 +41,7 @@ public class GroupTest
     }
 
     @Test
-    public void GroupById_EmptyList_ShouldReturnEmptyList() throws QueryException
+    public void groupById_EmptyList_ShouldReturnEmptyList() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(new ArrayList<Dto>())
@@ -60,7 +60,7 @@ public class GroupTest
     }
 
     @Test
-    public void GroupById_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupById_UsingExecWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -82,7 +82,7 @@ public class GroupTest
     }
 
     @Test
-    public void GroupById_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
+    public void groupById_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -97,7 +97,7 @@ public class GroupTest
     }
 
     @Test
-    public void GroupByText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupByText_UsingExecWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -119,7 +119,7 @@ public class GroupTest
     }
 
     @Test
-    public void GroupByText_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
+    public void groupByText_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -134,7 +134,7 @@ public class GroupTest
     }
 
     @Test
-    public void GroupByIdAndText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupByIdAndText_UsingExecWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
