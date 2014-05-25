@@ -91,27 +91,21 @@ The same query can be applied with a transformation to get some other object ins
 {{{
     Collection<JoinedDto> results = CQ.<LeftDto, LeftDto>query().from(leftList)
                 .<RightDto, JoinedDto>innerJoin(CQ.<RightDto, RightDto>query().from(rightList))
-                .on("id", "leftId")
-                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                                     {
-                                         @Override
-                                         public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                                         {
-                                             return new JoinedDto(selection.getLeft().getText()
+                .on(LeftFyo::getId, RightDto::getLeftId)
+                .transformDirect(selection ->  new JoinedDto(selection.getLeft().getText()
                                                      , selection.getLeft().getId()
-                                                     , selection.getRight().getId());
-                                         }
-                                     })
+                                                     , selection.getRight().getId())
+                                 )
                 .list();
 }}}
-This would result in list of JoindDtos.
+This would result in list of JoindDto.
 
 ==Left Outer==
 Very much similar to inner
 {{{
 Collection<JoinPair<LeftDto,RightDto>> results = CQ.<LeftDto, LeftDto>query(leftList)
     .<RightDto, JoinPair<LeftDto,RightDto>>leftOuterJoin(CQ.<RightDto, RightDto>query(rightList))
-    .on("id", "leftId")
+    .on(LeftDto::getId, RightDto::getLeftId)
     .list();
 }}}
 
@@ -119,6 +113,6 @@ Collection<JoinPair<LeftDto,RightDto>> results = CQ.<LeftDto, LeftDto>query(left
 {{{
 Collection<JoinPair<LeftDto,RightDto>> results = CQ.<LeftDto, LeftDto>query(leftList)
     .<RightDto, JoinPair<LeftDto,RightDto>>rightOuterJoin(CQ.<RightDto, RightDto>query(rightList))
-    .on("id", "leftId")
+    .on(LeftDto::getId, RightDto::getLeftId)
     .list();
 }}}

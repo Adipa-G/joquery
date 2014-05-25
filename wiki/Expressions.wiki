@@ -34,30 +34,18 @@ this is the expression used to define a constant value
 Filter<Dto> query = CQ.<Dto>filter()
     .from(testList)
     .where()
-    .exec(new Exec<Dto>()
-    {
-        public Object exec(Dto dto)
-        {
-            return dto.getId();
-        }
-    }).eq().value(1);
+    .property(Dto::getId).eq().value(1);
 }}}
-In this example the fixed value 1 is passed to the query using the value expression.
+In this example value of getId method is compared with value 1.
 
 ==exec==
 {{{
 Filter<Dto> query = CQ.<Dto>filter()
     .from(testList)
     .where()
-    .exec(new Exec<Dto>()
-    {
-     public Object exec(Dto dto)
-     {
-         return dto.getId() == 1;
-     }
-    });
+    .exec(s -> s.getId() + 1).eq().value(2);
 }}}
-Here exec use to find out the valid objects.
+In this example value of getId is manipulated in a method to calculate the value required to equate.
 
 ==property==
 {{{

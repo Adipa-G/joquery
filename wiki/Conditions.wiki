@@ -29,7 +29,7 @@ In following code list would be filtered so that only item with id = 1 is return
 Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
-        .property("id").eq().value(1);
+        .property(Dto::getId).eq().value(1);
 Collection<Dto> filtered = query.list();
 }}}
 
@@ -39,7 +39,7 @@ In following code list would be filtered so that only items with id < 2 are retu
 Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
-        .property("id").lt().value(2);
+        .property(Dto::getId).lt().value(2);
 
 Collection<Dto> filtered = query.list();
 }}}
@@ -59,7 +59,7 @@ In following code list would be filtered so that only items with id 1 or 2 are r
 Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
-        .property("id").in().value(new int[]{1,2});
+        .property(Dto::getId).in().value(new int[]{1,2});
 
 Collection<Dto> filtered = query.list();
 }}}
@@ -69,7 +69,7 @@ It can be re-parsed to use a collection instead of an array.
 Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
-        .property("id").in().value(Arrays.asList(1,2));
+        .property(Dto::getId).in().value(Arrays.asList(1,2));
 
 Collection<Dto> filtered = query.list();
 }}}
@@ -80,7 +80,7 @@ In following code list would be filtered so that only items with id greater than
 Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
-        .property("id").between().value(1).value(2);
+        .property(Dto::getId).between().value(1).value(2);
 
 Collection<Dto> filtered = query.list();
 }}}
@@ -91,9 +91,9 @@ In following code list would use and to join two conditions. Items with id grete
 Filter<Dto> query = CQ.<Dto>filter()
         .from(testList)
         .where()
-        .property("id").gt().value(1)
+        .property(Dto::getId).gt().value(1)
         .and()
-        .property("id").lt().value(3);
+        .property(Dto::getId).lt().value(3);
 
 Collection<Dto> filtered = query.list();
 }}}
