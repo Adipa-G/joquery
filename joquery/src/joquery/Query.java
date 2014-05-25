@@ -2,6 +2,8 @@ package joquery;
 
 import joquery.core.QueryException;
 
+import java.util.function.Function;
+
 /**
  * User: Adipa
  * Date: 10/6/12
@@ -15,9 +17,11 @@ public interface Query<T,W extends Query<T,W>>
 
     W select();
 
-    W exec(Exec<T> exec) throws QueryException;
+	W exec(Function<T,?> property) throws QueryException;
 
     W property(String property) throws QueryException;
+
+    W property(Function<T,?> property) throws QueryException;
 
     W value(Object value) throws QueryException;
 

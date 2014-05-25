@@ -42,13 +42,7 @@ public class ExpressionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .exec(new Exec<Dto>()
-                {
-                    public Object exec(Dto simple)
-                    {
-                        return simple.getId() == 1;
-                    }
-                });
+                .exec(s -> s.getId() == 1);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
@@ -60,13 +54,7 @@ public class ExpressionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .exec(new Exec<Dto>()
-                {
-                    public Object exec(Dto simple)
-                    {
-                        return 1/0;
-                    }
-                });
+                .exec(s -> {Object o = null; return o.toString();});
 
         query.list();
     }
@@ -84,6 +72,20 @@ public class ExpressionTest
         Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
     }
+
+	@Test
+	public void whereExpression_PropertyMethodRef_ShouldFilter() throws QueryException
+	{
+		Filter<Dto> query = CQ.<Dto>filter()
+		                      .from(testList)
+		                      .where()
+		                      .property(Dto::getId)
+		                      .eq()
+		                      .value(1);
+
+		Collection<Dto> filtered = query.list();
+		assertResult(filtered, new int[]{1});
+	}
 
     @Test(expected = QueryException.class)
     public void whereExpression_PropertyWithNoField_ShouldThrowException() throws QueryException

@@ -76,14 +76,7 @@ public class SelectionQueryTest
                 .from(testList);
 
         Collection<DestDto> filtered = query
-                .transformDirect(new ResultTransformer<SrcDto, DestDto>()
-                {
-                    @Override
-                    public DestDto transform(SrcDto srcDto)
-                    {
-                        return new DestDto(srcDto.getId());
-                    }
-                })
+                .transformDirect(srcDto -> new DestDto(srcDto.getId()))
                 .list();
         verifyEquals(testList, filtered);
     }
@@ -93,24 +86,12 @@ public class SelectionQueryTest
     {
         SelectionQuery<SrcDto,DestDto> query = CQ.<SrcDto,DestDto>query()
                 .from(testList)
-                .select().exec(new Exec<SrcDto>()
-                {
-                    @Override
-                    public Object exec(SrcDto srcDto)
-                    {
-                        return srcDto.getId();
-                    }
-                });
+                .select().property(SrcDto::getId);
 
         Collection<DestDto> filtered = query
-                .transformSelection(new ResultTransformer<Object[], DestDto>()
-                {
-                    @Override
-                    public DestDto transform(Object[] selection)
-                    {
-                        int id = (Integer) selection[0];
-                        return new DestDto(id);
-                    }
+                .transformSelection(selection -> {
+                    int id = (Integer) selection[0];
+                    return new DestDto(id);
                 })
                 .list();
 

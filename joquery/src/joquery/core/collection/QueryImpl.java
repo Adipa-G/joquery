@@ -1,19 +1,16 @@
 package joquery.core.collection;
 
-import joquery.Exec;
 import joquery.Query;
 import joquery.ResultTransformer;
 import joquery.core.QueryException;
 import joquery.core.QueryMode;
-import joquery.core.collection.expr.ConstExpr;
-import joquery.core.collection.expr.ExecExpr;
-import joquery.core.collection.expr.IExpr;
-import joquery.core.collection.expr.ReflectionExpr;
+import joquery.core.collection.expr.*;
 import joquery.core.collection.expr.condition.*;
 import joquery.core.collection.expr.condition.combine.AndConditionalCombinationExpr;
 import joquery.core.collection.expr.condition.combine.OrConditionalCombinationExpr;
 
 import java.util.*;
+import java.util.function.Function;
 
 /**
  * User: Adipa
@@ -119,76 +116,82 @@ public abstract class QueryImpl<T,W extends Query<T,W>> implements Query<T, W>
         return (W)this;
     }
 
-    @Override
-    public W exec(Exec<T> exec) throws QueryException
-    {
-        return addExpr(new ExecExpr<>(exec));
-    }
+	@Override
+	public W exec(Function<T,?> function) throws QueryException
+	{
+		return addExpr(new FunctionExpr<>(function));
+	}
 
     @Override
     public W property(String property) throws QueryException
     {
-        return addExpr(new ReflectionExpr<T>(property));
+        return addExpr(new ReflectionExpr<>(property));
     }
 
-    @Override
+	@Override
+	public W property(Function<T, ?> property) throws QueryException
+	{
+		return addExpr(new FunctionExpr<>(property));
+	}
+
+	@Override
     public W value(Object value) throws QueryException
     {
-        return addExpr(new ConstExpr<T>(value));
+        return addExpr(new ConstExpr<>(value));
     }
 
     @Override
     public W and() throws QueryException
     {
-        return addExpr(new AndConditionalCombinationExpr<T>());
+        return addExpr(new AndConditionalCombinationExpr<>());
     }
 
     @Override
     public W or() throws QueryException
     {
-        return addExpr(new OrConditionalCombinationExpr<T>());
+        return addExpr(new OrConditionalCombinationExpr<>());
     }
 
     @Override
     public W eq() throws QueryException
     {
-        return addExpr(new EqConditionalExpr<T>());
+        return addExpr(new EqConditionalExpr<>());
     }
 
     @Override
     public W lt() throws QueryException
     {
-        return addExpr(new LtConditionalExpr<T>());
+        return addExpr(new LtConditionalExpr<>());
     }
 
     @Override
     public W le() throws QueryException
     {
-        return addExpr(new LeConditionalExpr<T>());
+        return addExpr(new LeConditionalExpr<>());
     }
 
     @Override
     public W gt() throws QueryException
     {
-        return addExpr(new GtConditionalExpr<T>());
+        return addExpr(new GtConditionalExpr<>());
     }
 
     @Override
     public W ge() throws QueryException
     {
-        return addExpr(new GeConditionalExpr<T>());
+        return addExpr(new GeConditionalExpr<>());
     }
 
     @Override
     public W in() throws QueryException
     {
-        return addExpr(new InConditionalExpr<T>());
+        return addExpr(new InConditionalExpr<>());
     }
 
     @Override
     public W between() throws QueryException
     {
-        return addExpr(new BetweenConditionalExpr<T>());
+        return addExpr(new BetweenConditionalExpr<>());
     }
 
     private W addExpr(IExpr<T> expr) throws QueryException
@@ -273,15 +276,8 @@ public abstract class QueryImpl<T,W extends Query<T,W>> implements Query<T, W>
 
     private <U> ResultTransformer<T,U> createDefaultTransformer()
     {
-        return new ResultTransformer<T,U>()
-        {
-            @Override
-            public U transform(T selection)
-            {
-                //noinspection unchecked
-                return (U) selection;
-            }
-        };
+	    //noinspection unchecked
+        return selection -> (U) selection;
     }
 
     protected <U> Collection<U> transformCustomSelection(ResultTransformer<Object[], U> transformer) throws QueryException
@@ -327,43 +323,38 @@ public abstract class QueryImpl<T,W extends Query<T,W>> implements Query<T, W>
 
     private Collection<T> sortCollection(Collection<T> collectionToSort) throws QueryException
     {
-        Comparator<T> comparator = new Comparator<T>()
-        {
-            @Override
-            public int compare(T t1, T t2)
+        Comparator<T> comparator = (t1, t2) -> {
+            int compareResult = 0;
+            for (IExpr<T> expr : getSortExpressions())
             {
-                int compareResult = 0;
-                for (IExpr<T> expr : getSortExpressions())
+                Object val1 = EvaluateExpression(t1, expr);
+                Object val2 = EvaluateExpression(t2, expr);
+
+                if (val1 == val2)
                 {
-                    Object val1 = EvaluateExpression(t1, expr);
-                    Object val2 = EvaluateExpression(t2, expr);
-
-                    if (val1 == val2)
-                    {
-                        compareResult = 0;
-                    }
-                    else if (val1 == null)
-                    {
-                        compareResult = -1;
-                    }
-                    else if (val2 == null)
-                    {
-                        compareResult = 1;
-                    }
-                    else if (val1 instanceof Comparable
-                            && val2 instanceof Comparable)
-                    {
-                        Comparable val1Comparable = (Comparable) val1;
-                        //noinspection unchecked
-                        compareResult = val1Comparable.compareTo(val2);
-                    }
-
-                    if (compareResult != 0)
-                        break;
+                    compareResult = 0;
+                }
+                else if (val1 == null)
+                {
+                    compareResult = -1;
+                }
+                else if (val2 == null)
+                {
+                    compareResult = 1;
+                }
+                else if (val1 instanceof Comparable
+                        && val2 instanceof Comparable)
+                {
+                    Comparable val1Comparable = (Comparable) val1;
+                    //noinspection unchecked
+                    compareResult = val1Comparable.compareTo(val2);
                 }
 
-                return compareResult;
+                if (compareResult != 0)
+                    break;
             }
+
+            return compareResult;
         };
 
         List<T> sortedList = new ArrayList<>(collectionToSort);
@@ -422,14 +413,7 @@ public abstract class QueryImpl<T,W extends Query<T,W>> implements Query<T, W>
         if (getSelections().size() == 0
                 && defaultSelection == null)
         {
-            defaultSelection = new ExecExpr<>(new Exec<T>()
-            {
-                @Override
-                public Object exec(T t)
-                {
-                    return t;
-                }
-            });
+	        defaultSelection = new FunctionExpr<>(s -> s);
         }
     }
 
