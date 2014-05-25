@@ -48,6 +48,18 @@ public class ExpressionTest
         assertResult(filtered, new int[]{1});
     }
 
+	@Test
+	public void whereExpressionEquals_Exec_ShouldFilter() throws QueryException
+	{
+		Filter<Dto> query = CQ.<Dto>filter()
+		                      .from(testList)
+		                      .where()
+		                      .exec(s -> s.getId() + 1).eq().value(3);
+
+		Collection<Dto> filtered = query.list();
+		assertResult(filtered, new int[]{2});
+	}
+
     @Test(expected = QueryException.class)
     public void whereExpression_ExecThrowException_ShouldThrowException() throws QueryException
     {
