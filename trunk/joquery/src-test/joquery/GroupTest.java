@@ -44,35 +44,21 @@ public class GroupTest
     public void groupById_EmptyList_ShouldReturnEmptyList() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
-                .from(new ArrayList<Dto>())
+                .from(new ArrayList<>())
                 .<Integer>group()
-                .groupBy(new Exec<Dto>()
-                {
-                    @Override
-                    public Object exec(Dto dto)
-                    {
-                        return dto.getId();
-                    }
-                });
+                .groupBy(Dto::getId);
 
         Collection<Grouping<Integer,Dto>> groupedList = query.list();
         A.exp(0).act(groupedList.size());
     }
 
     @Test
-    public void groupById_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupById_UsingFuncWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
                 .<Integer>group()
-                .groupBy(new Exec<Dto>()
-                {
-                    @Override
-                    public Object exec(Dto dto)
-                    {
-                        return dto.getId();
-                    }
-                })
+                .groupBy(Dto::getId)
                 .orderBy()
                 .property("key");
 
@@ -97,19 +83,12 @@ public class GroupTest
     }
 
     @Test
-    public void groupByText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupByText_UsingFuncWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
                 .<Integer>group()
-                .groupBy(new Exec<Dto>()
-                {
-                    @Override
-                    public Object exec(Dto dto)
-                    {
-                        return dto.getText();
-                    }
-                })
+                .groupBy(Dto::getText)
                 .orderBy()
                 .property("key");
 
@@ -134,27 +113,13 @@ public class GroupTest
     }
 
     @Test
-    public void groupByIdAndText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupByIdAndText_UsingFuncWithValidList_ShouldGroupById() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
                 .<Integer>group()
-                .groupBy(new Exec<Dto>()
-                {
-                    @Override
-                    public Object exec(Dto dto)
-                    {
-                        return dto.getId();
-                    }
-                })
-                .groupBy(new Exec<Dto>()
-                {
-                    @Override
-                    public Object exec(Dto dto)
-                    {
-                        return dto.getText();
-                    }
-                });
+                .groupBy(Dto::getId)
+                .groupBy(Dto::getText);
 
         Collection<Grouping<Integer,Dto>> groupedList = query.list();
         A.exp(dtoList.size() - 1).act(groupedList.size());
@@ -181,7 +146,7 @@ public class GroupTest
         List<Grouping<Integer,Dto>> groupings = new ArrayList<>();
         for (Dto dto : dtoList)
         {
-            Grouping<Integer,Dto> value = CQ.<Grouping<Integer,Dto>>filter(groupings)
+            Grouping<Integer,Dto> value = CQ.filter(groupings)
                 .where().property("key").eq().value(dto.getId()).first();
 
             if (value != null)
@@ -204,7 +169,7 @@ public class GroupTest
         List<Grouping<String,Dto>> groupings = new ArrayList<>();
         for (Dto dto : dtoList)
         {
-            Grouping<String,Dto> value = CQ.<Grouping<String,Dto>>filter(groupings)
+            Grouping<String,Dto> value = CQ.filter(groupings)
                     .where().property("key").eq().value(dto.getText()).first();
 
             if (value != null)
@@ -224,17 +189,12 @@ public class GroupTest
 
     private <T extends Comparable<T>> void sortSingleGroup(List<Grouping<T, Dto>> groupings)
     {
-        Collections.sort(groupings, new Comparator<Grouping<T, Dto>>()
-        {
-            @Override
-            public int compare(Grouping<T, Dto> o1, Grouping<T, Dto> o2)
-            {
-                if (o1.getKey() == null)
-                    return -1;
-                if (o2.getKey() == null)
-                    return 1;
-                return o1.getKey().compareTo(o2.getKey());
-            }
+        Collections.sort(groupings, (o1, o2) -> {
+            if (o1.getKey() == null)
+                return -1;
+            if (o2.getKey() == null)
+                return 1;
+            return o1.getKey().compareTo(o2.getKey());
         });
     }
 

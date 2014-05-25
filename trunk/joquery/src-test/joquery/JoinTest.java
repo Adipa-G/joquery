@@ -80,7 +80,7 @@ public class JoinTest
     }
 
     @Test
-    public void join_InnerWithExec_ShouldJoin() throws QueryException
+    public void join_InnerWithFunc_ShouldJoin() throws QueryException
     {
         SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
@@ -88,31 +88,14 @@ public class JoinTest
                 .from(rightList);
         JoinQuery<LeftDto, RightDto, JoinPair<LeftDto,RightDto>> joinQuery = leftQuery
                 .<RightDto, JoinPair<LeftDto,RightDto>>innerJoin(rightQuery)
-                .on(
-                        new Exec<LeftDto>()
-                        {
-                            @Override
-                            public Object exec(LeftDto leftDto)
-                            {
-                                return leftDto.getId();
-                            }
-                        }
-                        , new Exec<RightDto>()
-                        {
-                            @Override
-                            public Object exec(RightDto rightDto)
-                            {
-                                return rightDto.getLeftId();
-                            }
-                        }
-                   );
+                .on(LeftDto::getId, RightDto::getLeftId);
 
         Collection<JoinPair<LeftDto,RightDto>> results = joinQuery.list();
         A.exp(innerJoin()).act(results);
     }
 
     @Test
-    public void join_InnerWithExecWithTransformation_ShouldJoin() throws QueryException
+    public void join_InnerWithFuncWithTransformation_ShouldJoin() throws QueryException
     {
         SelectionQuery<LeftDto, LeftDto> leftQuery = CQ.<LeftDto, LeftDto>query()
                 .from(leftList);
@@ -120,36 +103,12 @@ public class JoinTest
                 .from(rightList);
         JoinQuery<LeftDto, RightDto, JoinedDto> joinQuery = leftQuery
                 .<RightDto, JoinedDto>innerJoin(rightQuery)
-                .on(
-                        new Exec<LeftDto>()
-                        {
-                            @Override
-                            public Object exec(LeftDto leftDto)
-                            {
-                                return leftDto.getId();
-                            }
-                        }
-                        , new Exec<RightDto>()
-                        {
-                            @Override
-                            public Object exec(RightDto rightDto)
-                            {
-                                return rightDto.getLeftId();
-                            }
-                        }
-                   );
+                .on(LeftDto::getId,RightDto::getLeftId);
 
         Collection<JoinedDto> results = joinQuery
-                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                {
-                    @Override
-                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                    {
-                        return new JoinedDto(selection.getLeft().getText()
-                                , selection.getLeft().getId()
-                                , selection.getRight().getId());
-                    }
-                })
+                .transformDirect(selection -> new JoinedDto(selection.getLeft().getText()
+                        , selection.getLeft().getId()
+                        , selection.getRight().getId()))
                 .list();
 
         A.exp(innerJoinTransform()).act(results);
@@ -172,16 +131,9 @@ public class JoinTest
         Collection<JoinedDto> results = CQ.<LeftDto, LeftDto>query()
                 .from(leftList).<RightDto, JoinedDto>innerJoin(CQ.<RightDto, RightDto>query().from(rightList))
                 .on("id", "leftId")
-                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                {
-                    @Override
-                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                    {
-                        return new JoinedDto(selection.getLeft().getText()
-                                , selection.getLeft().getId()
-                                , selection.getRight().getId());
-                    }
-                })
+                .transformDirect(selection -> new JoinedDto(selection.getLeft().getText()
+                        , selection.getLeft().getId()
+                        , selection.getRight().getId()))
                 .list();
 
         A.exp(innerJoinTransform()).act(results);
@@ -196,36 +148,12 @@ public class JoinTest
                 .from(rightList);
         JoinQuery<LeftDto, RightDto, JoinedDto> joinQuery = leftQuery
                 .<RightDto, JoinedDto>leftOuterJoin(rightQuery)
-                .on(
-                        new Exec<LeftDto>()
-                        {
-                            @Override
-                            public Object exec(LeftDto leftDto)
-                            {
-                                return leftDto.getId();
-                            }
-                        }
-                        , new Exec<RightDto>()
-                        {
-                            @Override
-                            public Object exec(RightDto rightDto)
-                            {
-                                return rightDto.getLeftId();
-                            }
-                        }
-                   );
+                .on(LeftDto::getId,RightDto::getLeftId);
 
         Collection<JoinedDto> results = joinQuery
-                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                {
-                    @Override
-                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                    {
-                        return new JoinedDto(selection.getLeft().getText()
-                                , selection.getLeft().getId()
-                                , (selection.getRight() != null ? selection.getRight().getId() : -1));
-                    }
-                })
+                .transformDirect(selection -> new JoinedDto(selection.getLeft().getText()
+                        , selection.getLeft().getId()
+                        , (selection.getRight() != null ? selection.getRight().getId() : -1)))
                 .list();
 
         A.exp(leftOuterJoin()).act(results);
@@ -240,36 +168,12 @@ public class JoinTest
                 .from(rightList);
         JoinQuery<LeftDto, RightDto, JoinedDto> joinQuery = leftQuery
                 .<RightDto, JoinedDto>rightOuterJoin(rightQuery)
-                .on(
-                        new Exec<LeftDto>()
-                        {
-                            @Override
-                            public Object exec(LeftDto leftDto)
-                            {
-                                return leftDto.getId();
-                            }
-                        }
-                        , new Exec<RightDto>()
-                        {
-                            @Override
-                            public Object exec(RightDto rightDto)
-                            {
-                                return rightDto.getLeftId();
-                            }
-                        }
-                   );
+                .on(LeftDto::getId,RightDto::getLeftId);
 
         Collection<JoinedDto> results = joinQuery
-                .transformDirect(new ResultTransformer<JoinPair<LeftDto, RightDto>, JoinedDto>()
-                {
-                    @Override
-                    public JoinedDto transform(JoinPair<LeftDto, RightDto> selection)
-                    {
-                        return new JoinedDto((selection.getLeft() != null ? selection.getLeft().getText() : "")
-                                , (selection.getLeft() != null ? selection.getLeft().getId() : -1)
-                                , selection.getRight().getId());
-                    }
-                })
+                .transformDirect(selection -> new JoinedDto((selection.getLeft() != null ? selection.getLeft().getText() : "")
+                        , (selection.getLeft() != null ? selection.getLeft().getId() : -1)
+                        , selection.getRight().getId()))
                 .orderBy()
                 .property("text")
                 .list();

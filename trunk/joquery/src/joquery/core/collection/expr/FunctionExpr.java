@@ -1,21 +1,22 @@
 package joquery.core.collection.expr;
 
-import joquery.Exec;
 import joquery.core.QueryException;
 import joquery.core.QueryMode;
+
+import java.util.function.Function;
 
 /**
  * User: Adipa
  * Date: 10/6/12
  * Time: 9:31 PM
  */
-public class ExecExpr<T> implements IExpr<T>
+public class FunctionExpr<T> implements IExpr<T>
 {
-    private Exec<T> exec;
+    private Function<T,?> function;
 
-    public ExecExpr(Exec<T> exec)
+    public FunctionExpr(Function<T,?> function)
     {
-        this.exec = exec;
+        this.function = function;
     }
 
     @Override
@@ -35,13 +36,14 @@ public class ExecExpr<T> implements IExpr<T>
     @Override
     public Object evaluate(T t) throws QueryException
     {
-        try
-        {
-            return exec.exec(t);
-        }
-        catch (Exception ex)
-        {
-            throw new QueryException(String.format("Exception while evaluating exec %s",exec),ex);
-        }
+	    try
+	    {
+		    return function.apply(t);
+	    }
+	    catch (Exception ex)
+	    {
+		    throw new QueryException(String.format("Unable retrieve value for %s",function));
+	    }
+
     }
 }
