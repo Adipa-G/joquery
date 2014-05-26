@@ -26,6 +26,11 @@
         <entry key="$PROJECT_DIR$">
           <value>
             <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://joquery.googlecode.com/svn/branches" />
+                </list>
+              </option>
               <option name="trunkUrl" value="https://joquery.googlecode.com/svn/trunk/joquery" />
             </SvnBranchConfiguration>
           </value>
