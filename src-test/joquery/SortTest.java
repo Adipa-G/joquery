@@ -43,9 +43,16 @@ public class SortTest
     public void sort_EmptyList_ShouldReturnEmptyList() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
-                .from(new ArrayList<>())
+                .from(new ArrayList<Dto>())
                 .orderBy()
-                .property(Dto::getId);
+                .exec(new Exec<Dto>()
+                {
+                    @Override
+                    public Object exec(Dto dto)
+                    {
+                        return dto.getId();
+                    }
+                });
 
         Collection<Dto> sortedList = filter.list();
 
@@ -65,12 +72,19 @@ public class SortTest
     }
 
     @Test
-    public void sortWithFuncExpression_ValidList_ShouldSort() throws QueryException
+    public void sortWithExecExpression_ValidList_ShouldSort() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
                 .from(unsortedList)
                 .orderBy()
-                .property(Dto::getId);
+                .exec(new Exec<Dto>()
+                {
+                    @Override
+                    public Object exec(Dto dto)
+                    {
+                        return dto.getId();
+                    }
+                });
 
         Collection<Dto> sortedList = filter.list();
 
@@ -93,13 +107,27 @@ public class SortTest
     }
 
     @Test
-    public void sortByTwoFunc_ValidList_ShouldSort() throws QueryException
+    public void sortByTwoExecs_ValidList_ShouldSort() throws QueryException
     {
         Filter<Dto> filter = CQ.<Dto>filter()
                 .from(unsortedList)
                 .orderBy()
-                .property(Dto::getId)
-                .property(Dto::getId);
+                .exec(new Exec<Dto>()
+                {
+                    @Override
+                    public Object exec(Dto dto)
+                    {
+                        return dto.getId();
+                    }
+                })
+                .exec(new Exec<Dto>()
+                {
+                    @Override
+                    public Object exec(Dto dto)
+                    {
+                        return dto.getText();
+                    }
+                });
 
         Collection<Dto> sortedList = filter.list();
 
@@ -126,9 +154,14 @@ public class SortTest
     {
         List<Dto> sortedList = new ArrayList<>();
         sortedList.addAll(unsortedList);
-        Collections.sort(sortedList, (dto1, dto2) -> {
-            Integer id1 = dto1.getId();
-            return id1.compareTo(dto2.getId());
+        Collections.sort(sortedList,new Comparator<Dto>()
+        {
+            @Override
+            public int compare(Dto dto1, Dto dto2)
+            {
+                Integer id1 = dto1.getId();
+                return id1.compareTo(dto2.getId());
+            }
         });
         return sortedList;
     }
@@ -137,17 +170,22 @@ public class SortTest
     {
         List<Dto> sortedList = new ArrayList<>();
         sortedList.addAll(unsortedList);
-        Collections.sort(sortedList, (dto1, dto2) -> {
-            Integer id1 = dto1.getId();
-            int value = id1.compareTo(dto2.getId());
-            if (value == 0)
+        Collections.sort(sortedList,new Comparator<Dto>()
+        {
+            @Override
+            public int compare(Dto dto1, Dto dto2)
             {
-                String text1 = dto1.getText();
-                if (text1 == null)
-                    return dto2.getText() == null ? 0 : -1;
-                return text1.compareTo(dto2.getText());
+                Integer id1 = dto1.getId();
+                int value = id1.compareTo(dto2.getId());
+                if (value == 0)
+                {
+                    String text1 = dto1.getText();
+                    if (text1 == null)
+                        return dto2.getText() == null ? 0 : -1;
+                    return text1.compareTo(dto2.getText());
+                }
+                return value;
             }
-            return value;
         });
         return sortedList;
     }

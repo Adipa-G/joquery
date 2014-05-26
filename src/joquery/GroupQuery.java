@@ -3,7 +3,6 @@ package joquery;
 import joquery.core.QueryException;
 
 import java.util.Collection;
-import java.util.function.Function;
 
 /**
  * User: Adipa
@@ -14,7 +13,7 @@ public interface GroupQuery<Key,U> extends Query<Grouping<Key,U>,GroupQuery<Key,
 {
     Collection<Grouping<Key,U>> list() throws QueryException;
 
-    GroupQuery<Key,U> groupBy(Function<U,?> by);
+    GroupQuery<Key,U> groupBy(Exec<U> by);
 
     GroupQuery<Key,U> groupBy(String by);
 }

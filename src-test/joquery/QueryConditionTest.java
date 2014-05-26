@@ -42,7 +42,13 @@ public class QueryConditionTest
     {
         CQ.<Dto>filter()
                 .from(testList)
-                .exec(s -> null);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return null;
+                    }
+                });
     }
 
     @Test
@@ -51,7 +57,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .exec(s -> s.getId() == 1);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId() == 1;
+                    }
+                });
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
@@ -63,7 +75,13 @@ public class QueryConditionTest
         CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .exec(s -> null).value(1);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return null;
+                    }
+                }).value(1);
     }
 
     @Test (expected = QueryException.class)
@@ -90,7 +108,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).eq();
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq();
 
         query.list();
     }
@@ -101,7 +125,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).eq().value(1);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(1);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
@@ -113,7 +143,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .value(1).eq().property(Dto::getId);
+                .value(1).eq().exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                });
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
@@ -125,7 +161,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).lt().value(2);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).lt().value(2);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1});
@@ -137,7 +179,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).le().value(2);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).le().value(2);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered, new int[]{1, 2});
@@ -149,7 +197,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).gt().value(2);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).gt().value(2);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{3});
@@ -161,7 +215,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).ge().value(2);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).ge().value(2);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{2,3});
@@ -173,7 +233,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).in().value(new int[]{1,2});
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).in().value(new int[]{1,2});
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
@@ -185,7 +251,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).in().value(Arrays.asList(1,2));
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).in().value(Arrays.asList(1,2));
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
@@ -197,7 +269,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).between().value(1).value(2);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).between().value(1).value(2);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
@@ -209,7 +287,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).between().value(1);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).between().value(1);
 
         query.list();
     }
@@ -220,9 +304,21 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).eq().value(1)
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(1)
                 .and()
-                .property(Dto::getId).eq().value(1);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(1);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1});
@@ -234,9 +330,21 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).eq().value(1)
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(1)
                 .or()
-                .property(Dto::getId).eq().value(2);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(2);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1,2});
@@ -248,11 +356,29 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).eq().value(1)
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(1)
                 .or()
-                .property(Dto::getId).eq().value(2)
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(2)
                 .and()
-                .property(Dto::getId).eq().value(1);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(1);
 
         Collection<Dto> filtered = query.list();
         assertResult(filtered,new int[]{1});
@@ -266,7 +392,13 @@ public class QueryConditionTest
                 .where()
                 .value(1)
                 .and()
-                .property(Dto::getId).eq().value(2);
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(2);
 
         query.list();
     }
@@ -277,7 +409,13 @@ public class QueryConditionTest
         Filter<Dto> query = CQ.<Dto>filter()
                 .from(testList)
                 .where()
-                .property(Dto::getId).eq().value(2)
+                .exec(new Exec<Dto>()
+                {
+                    public Object exec(Dto simple)
+                    {
+                        return simple.getId();
+                    }
+                }).eq().value(2)
                 .or()
                 .value(1);
 

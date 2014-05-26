@@ -1,14 +1,14 @@
 package joquery.core.collection;
 
+import joquery.Exec;
 import joquery.GroupQuery;
 import joquery.Grouping;
 import joquery.core.QueryException;
-import joquery.core.collection.expr.FunctionExpr;
+import joquery.core.collection.expr.ExecExpr;
 import joquery.core.collection.expr.IExpr;
 import joquery.core.collection.expr.ReflectionExpr;
 
 import java.util.*;
-import java.util.function.Function;
 
 /**
  * User: Adipa
@@ -28,17 +28,17 @@ public class GroupQueryImpl<Key,U>
         groupExpressions = new ArrayList<>();
     }
 
-	@Override
-	public GroupQuery<Key, U> groupBy(Function<U, ?> by)
-	{
-		groupExpressions.add(new FunctionExpr<>(by));
-		return this;
-	}
+    @Override
+    public GroupQuery<Key,U> groupBy(Exec<U> by)
+    {
+        groupExpressions.add(new ExecExpr<>(by));
+        return this;
+    }
 
-	@Override
+    @Override
     public GroupQuery<Key,U> groupBy(String by)
     {
-        groupExpressions.add(new ReflectionExpr<>(by));
+        groupExpressions.add(new ReflectionExpr<U>(by));
         return this;
     }
 

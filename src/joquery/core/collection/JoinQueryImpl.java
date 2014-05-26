@@ -1,11 +1,12 @@
 package joquery.core.collection;
 
+import joquery.Exec;
 import joquery.JoinPair;
 import joquery.JoinQuery;
 import joquery.ResultTransformedQuery;
 import joquery.core.JoinMode;
 import joquery.core.QueryException;
-import joquery.core.collection.expr.FunctionExpr;
+import joquery.core.collection.expr.ExecExpr;
 import joquery.core.collection.expr.ReflectionExpr;
 import joquery.core.collection.join.JoinCondition;
 
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 /**
  * User: Adipa
@@ -61,17 +61,15 @@ public class JoinQueryImpl<T,U,V> extends ResultTransformedQueryImpl<JoinPair<T,
     }
 
     @Override
-    public JoinQuery<T, U, V> on(Function<T,?> left, Function<U,?> right)
+    public JoinQuery<T, U, V> on(Exec<T> left, Exec<U> right)
     {
-	    //noinspection Convert2Diamond
-	    joinConditions.add(new JoinCondition<>(new FunctionExpr<T>(left),new FunctionExpr<U>(right)));
+        joinConditions.add(new JoinCondition<>(new ExecExpr<>(left),new ExecExpr<>(right)));
         return this;
     }
 
     @Override
     public JoinQuery<T, U, V> on(String left, String right)
     {
-	    //noinspection Convert2Diamond
         joinConditions.add(new JoinCondition<>(new ReflectionExpr<T>(left),new ReflectionExpr<U>(right)));
         return this;
     }
