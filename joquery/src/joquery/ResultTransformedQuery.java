@@ -1,8 +1,10 @@
 package joquery;
 
 import joquery.core.QueryException;
+import joquery.core.collection.expr.FunctionExpr;
 
 import java.util.Collection;
+import java.util.function.Function;
 
 /**
  * User: Adipa
@@ -15,7 +17,9 @@ public interface ResultTransformedQuery<T,U,W extends ResultTransformedQuery<T,U
 
     U last() throws QueryException;
 
-    Collection<U> list()throws QueryException;
+    Collection<U> list() throws QueryException;
+
+	<V> U project(IProject<T,V,U> project,Function<T,V> property) throws QueryException;
 
     ResultTransformedQuery<T,U,W> transformDirect(ResultTransformer<T, U> transformer);
 

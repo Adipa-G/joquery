@@ -1,13 +1,11 @@
 package joquery.core.collection;
 
-import joquery.GroupQuery;
-import joquery.JoinQuery;
-import joquery.ResultTransformedQuery;
-import joquery.ResultTransformer;
+import joquery.*;
 import joquery.core.JoinMode;
 import joquery.core.QueryException;
 
 import java.util.Collection;
+import java.util.function.Function;
 
 /**
  * User: Adipa
@@ -51,7 +49,13 @@ public abstract class ResultTransformedQueryImpl<T,U,W extends ResultTransformed
         return super.transformDefaultSelection();
     }
 
-    @Override
+	@Override
+	public <V> U project(IProject<T,V,U> project,Function<T,V> property) throws QueryException
+	{
+		return project.eval(getItems(),property);
+	}
+
+	@Override
     public ResultTransformedQueryImpl<T,U,W> transformDirect(ResultTransformer<T, U> transformer)
     {
         directTransformer = transformer;
