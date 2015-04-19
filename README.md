@@ -153,8 +153,7 @@ Fastest way to setup the system is to
   1. run the build.xml script
 
 ## Checking out sources ##
-Sources can be checked out anonymously over HTTP.
-svn checkout https://joquery.googlecode.com/svn/trunk joquery-read-only
+Sources can be checked out or can be downloaded.
 
 ## Compile From Sources ##
 The editor used is Intellij IDEA Community Edition. An ant script is included to run the unit tests. Compilation ant script needed to be re-generated from the editor to run the build. Required libraries are included in the lib folder.
