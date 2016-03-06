@@ -161,3 +161,6 @@ The editor used is Intellij IDEA Community Edition. An ant script is included to
 ## Things to be done ##
   1. Projections (count,sum,....,custom)
   1. Group conditions
+
+## License
+GNU GPL V3
