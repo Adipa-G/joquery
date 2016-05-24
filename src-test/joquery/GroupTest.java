@@ -97,11 +97,11 @@ public class GroupTest
     }
 
     @Test
-    public void groupByText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupByText_UsingExecWithValidList_ShouldGroupByText() throws QueryException
     {
-        GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+        GroupQuery<String,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
-                .<Integer>group()
+                .<String>group()
                 .groupBy(new Exec<Dto>()
                 {
                     @Override
@@ -113,32 +113,32 @@ public class GroupTest
                 .orderBy()
                 .property("key");
 
-        Collection<Grouping<Integer,Dto>> groupedList = query.list();
+        Collection<Grouping<String,Dto>> groupedList = query.list();
         A.exp(groupByText().size()).act(groupedList.size());
         A.exp(createCompareString(groupByText())).act(createCompareString(groupedList));
     }
 
     @Test
-    public void groupByText_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
+    public void groupByText_UsingPropertyWithValidList_ShouldGroupByText() throws QueryException
     {
-        GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+        GroupQuery<String,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
-                .<Integer>group()
+                .<String>group()
                 .groupBy("text")
                 .orderBy()
                 .property("key");
 
-        Collection<Grouping<Integer,Dto>> groupedList = query.list();
+        Collection<Grouping<String,Dto>> groupedList = query.list();
         A.exp(groupByText().size()).act(groupedList.size());
         A.exp(createCompareString(groupByText())).act(createCompareString(groupedList));
     }
 
     @Test
-    public void groupByIdAndText_UsingExecWithValidList_ShouldGroupById() throws QueryException
+    public void groupByIdAndText_UsingExecWithValidList_ShouldGroupByIdAndText() throws QueryException
     {
-        GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+        GroupQuery<Object[],Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
-                .<Integer>group()
+                .<Object[]>group()
                 .groupBy(new Exec<Dto>()
                 {
                     @Override
@@ -156,7 +156,7 @@ public class GroupTest
                     }
                 });
 
-        Collection<Grouping<Integer,Dto>> groupedList = query.list();
+        Collection<Grouping<Object[],Dto>> groupedList = query.list();
         A.exp(dtoList.size() - 1).act(groupedList.size());
     }
 
