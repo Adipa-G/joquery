@@ -1,6 +1,7 @@
 # News #
 24-May-2016 :
 Added group conditions for both 1.7 branch and for 1.8 branch
+Added projections for branch 1.8
 
 25-May-2014 :
 Upgraded to Java 1.8
