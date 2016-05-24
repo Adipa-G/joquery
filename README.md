@@ -1,4 +1,7 @@
 # News #
+24-May-2016 :
+Added group conditions for both 1.7 branch and for 1.8 branch
+
 25-May-2014 :
 Upgraded to Java 1.8
 older version supporting Java 1.7 is moved to a branch
@@ -24,6 +27,7 @@ JOQuery allows you to use SQL style querying on java collections. Syntax is easy
   1. Sorting
   1. Grouping
   1. Joins
+  1. Group Conditions
 
 ## Using the library ##
 No runtime dependencies are required.
@@ -94,6 +98,17 @@ Another example,
         .groupBy(Dto::getId)
     Collection<Grouping<Integer,Dto>> grouped = query.list();
 
+## Group Conditions ##
+
+	GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
+		.from(dtoList)
+		.<Integer>group()
+		.groupBy(Dto::getId)
+		.where()
+		.exec(Grouping::getKey).eq().value(1);
+	
+	Collection<Grouping<Integer,Dto>> grouped = query.list();
+	
 ## Joins ##
 
 	class LeftDto
