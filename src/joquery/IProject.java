@@ -1,7 +1,5 @@
 package joquery;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.function.Function;
 
 /**

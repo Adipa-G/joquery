@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.function.Function;
 
 /**
  * User: Adipa

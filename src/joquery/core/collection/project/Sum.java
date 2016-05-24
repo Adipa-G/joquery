@@ -2,9 +2,6 @@ package joquery.core.collection.project;
 
 import joquery.IProject;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Function;
 
 /**

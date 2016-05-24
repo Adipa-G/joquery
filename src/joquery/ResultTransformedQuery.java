@@ -1,7 +1,6 @@
 package joquery;
 
 import joquery.core.QueryException;
-import joquery.core.collection.expr.FunctionExpr;
 
 import java.util.Collection;
 import java.util.function.Function;

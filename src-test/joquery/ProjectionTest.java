@@ -3,7 +3,6 @@ package joquery;
 import assertions.A;
 import joquery.core.QueryException;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -59,20 +58,13 @@ public class ProjectionTest
     static class Dto
     {
         private int id;
-        private int id2;
 
         Dto(int id)
         {
             this.id = id;
-            this.id2 = id;
         }
 
         public int getId()
-        {
-            return id;
-        }
-
-        public int getId3()
         {
             return id;
         }

@@ -83,8 +83,14 @@
         <entry file="file://$PROJECT_DIR$/src/joquery/Projections.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-              <folding />
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#240#241#0" expanded="true" />
+                <element signature="e#268#269#0" expanded="true" />
+                <element signature="e#348#349#0" expanded="true" />
+                <element signature="e#378#379#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,10 +99,8 @@
         <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,18 +109,21 @@
         <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/project/Sum.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="5" selection-start-line="25" selection-start-column="4" selection-end-line="34" selection-end-column="5" />
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectionTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProjectionTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src-test/joquery/ProjectionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="0.56732494">
+              <caret line="52" column="89" selection-start-line="50" selection-start-column="8" selection-end-line="52" selection-end-column="89" />
+              <folding>
+                <element signature="e#1274#1275#0" expanded="true" />
+                <element signature="e#1310#1311#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,34 +142,37 @@
         <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="172" column="43" selection-start-line="172" selection-start-column="43" selection-end-line="172" selection-end-column="43" />
+              <caret line="175" column="43" selection-start-line="175" selection-start-column="43" selection-end-line="175" selection-end-column="43" />
               <folding>
-                <element signature="e#1038#1047#0" expanded="true" />
-                <element signature="e#1361#1370#0" expanded="true" />
-                <element signature="e#1426#1435#0" expanded="true" />
-                <element signature="e#1917#1926#0" expanded="true" />
-                <element signature="e#1982#1991#0" expanded="true" />
-                <element signature="e#2467#2476#0" expanded="true" />
-                <element signature="e#2532#2541#0" expanded="true" />
-                <element signature="e#3033#3042#0" expanded="true" />
-                <element signature="e#3098#3107#0" expanded="true" />
-                <element signature="e#3599#3608#0" expanded="true" />
-                <element signature="e#3664#3673#0" expanded="true" />
-                <element signature="e#6372#6373#0" expanded="true" />
-                <element signature="e#6405#6406#0" expanded="true" />
-                <element signature="e#6448#6449#0" expanded="true" />
-                <element signature="e#6483#6484#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1128#1137#0" expanded="true" />
+                <element signature="e#1451#1460#0" expanded="true" />
+                <element signature="e#1516#1525#0" expanded="true" />
+                <element signature="e#2007#2016#0" expanded="true" />
+                <element signature="e#2072#2081#0" expanded="true" />
+                <element signature="e#2557#2566#0" expanded="true" />
+                <element signature="e#2622#2631#0" expanded="true" />
+                <element signature="e#3123#3132#0" expanded="true" />
+                <element signature="e#3188#3197#0" expanded="true" />
+                <element signature="e#3689#3698#0" expanded="true" />
+                <element signature="e#3754#3763#0" expanded="true" />
+                <element signature="e#6462#6463#0" expanded="true" />
+                <element signature="e#6495#6496#0" expanded="true" />
+                <element signature="e#6538#6539#0" expanded="true" />
+                <element signature="e#6573#6574#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupConditionsTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GroupConditionsTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupConditionsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3421829">
-              <caret line="65" column="54" selection-start-line="60" selection-start-column="8" selection-end-line="65" selection-end-column="54" />
-              <folding />
+            <state vertical-scroll-proportion="-4.296296">
+              <caret line="64" column="54" selection-start-line="59" selection-start-column="8" selection-end-line="64" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -171,8 +181,20 @@
         <entry file="file://$PROJECT_DIR$/src/joquery/IProject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultTransformedQuery.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -208,12 +230,12 @@
         <option value="$PROJECT_DIR$/src/joquery/Projections.java" />
         <option value="$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java" />
         <option value="$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java" />
-        <option value="$PROJECT_DIR$/src/joquery/core/collection/project/Sum.java" />
         <option value="$PROJECT_DIR$/src/joquery/core/collection/project/Avg.java" />
-        <option value="$PROJECT_DIR$/src-test/joquery/ProjectionTest.java" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src-test/joquery/GroupTest.java" />
         <option value="$PROJECT_DIR$/src-test/joquery/GroupConditionsTest.java" />
+        <option value="$PROJECT_DIR$/src-test/joquery/ProjectionTest.java" />
+        <option value="$PROJECT_DIR$/src/joquery/core/collection/project/Sum.java" />
       </list>
     </option>
   </component>
@@ -315,8 +337,22 @@
               <option name="myItemId" value="src-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assertions" />
+              <option name="myItemId" value="joquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="joquery" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -385,7 +421,7 @@
       <recent name="joquery.core.expr" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in joquery (1)">
+  <component name="RunManager" selected="JUnit.All in joquery">
     <configuration default="false" name="ProjectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -766,8 +802,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.All in joquery (1)" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.All in joquery" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in joquery" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.All in joquery (1)" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.ProjectionTest.projection_Avg_ShouldAvg" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.ProjectionTest" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.ProjectionTest.projection_Sum_ShouldSum" />
@@ -857,6 +893,9 @@
     <history-entry file="All_in_joquery - 2016.05.24 at 23h 12m 27s.xml">
       <configuration name="All in joquery" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_joquery - 2016.05.24 at 23h 40m 27s.xml">
+      <configuration name="All in joquery" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="All_in_joquery_(1) - 2016.05.24 at 23h 28m 10s.xml">
       <configuration name="All in joquery (1)" configurationId="JUnit" />
     </history-entry>
@@ -892,10 +931,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.50385207" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32649574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24810892" sideWeight="0.6701389" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649574" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1323752" sideWeight="0.6701389" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -911,7 +951,6 @@
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32423207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32764506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -945,7 +984,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/joquery/core/collection/QueryImpl.java</url>
-          <line>303</line>
+          <line>306</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -1104,6 +1143,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1127,6 +1167,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1150,6 +1191,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1164,6 +1206,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1195,6 +1238,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1273,6 +1317,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1292,48 +1337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/IProject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19178082">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/Projections.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/project/Sum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="5" selection-start-line="25" selection-start-column="4" selection-end-line="34" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/project/Avg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1341,14 +1344,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src-test/joquery/ProjectionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1371,32 +1366,94 @@
     <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="43" selection-start-line="172" selection-start-column="43" selection-end-line="172" selection-end-column="43" />
+          <caret line="175" column="43" selection-start-line="175" selection-start-column="43" selection-end-line="175" selection-end-column="43" />
           <folding>
-            <element signature="e#1038#1047#0" expanded="true" />
-            <element signature="e#1361#1370#0" expanded="true" />
-            <element signature="e#1426#1435#0" expanded="true" />
-            <element signature="e#1917#1926#0" expanded="true" />
-            <element signature="e#1982#1991#0" expanded="true" />
-            <element signature="e#2467#2476#0" expanded="true" />
-            <element signature="e#2532#2541#0" expanded="true" />
-            <element signature="e#3033#3042#0" expanded="true" />
-            <element signature="e#3098#3107#0" expanded="true" />
-            <element signature="e#3599#3608#0" expanded="true" />
-            <element signature="e#3664#3673#0" expanded="true" />
-            <element signature="e#6372#6373#0" expanded="true" />
-            <element signature="e#6405#6406#0" expanded="true" />
-            <element signature="e#6448#6449#0" expanded="true" />
-            <element signature="e#6483#6484#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1128#1137#0" expanded="true" />
+            <element signature="e#1451#1460#0" expanded="true" />
+            <element signature="e#1516#1525#0" expanded="true" />
+            <element signature="e#2007#2016#0" expanded="true" />
+            <element signature="e#2072#2081#0" expanded="true" />
+            <element signature="e#2557#2566#0" expanded="true" />
+            <element signature="e#2622#2631#0" expanded="true" />
+            <element signature="e#3123#3132#0" expanded="true" />
+            <element signature="e#3188#3197#0" expanded="true" />
+            <element signature="e#3689#3698#0" expanded="true" />
+            <element signature="e#3754#3763#0" expanded="true" />
+            <element signature="e#6462#6463#0" expanded="true" />
+            <element signature="e#6495#6496#0" expanded="true" />
+            <element signature="e#6538#6539#0" expanded="true" />
+            <element signature="e#6573#6574#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src-test/joquery/GroupConditionsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3421829">
-          <caret line="65" column="54" selection-start-line="60" selection-start-column="8" selection-end-line="65" selection-end-column="54" />
+        <state vertical-scroll-proportion="-4.296296">
+          <caret line="64" column="54" selection-start-line="59" selection-start-column="8" selection-end-line="64" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/ResultTransformedQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/ResultTransformedQueryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/IProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/Projections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/joquery/core/collection/project/Sum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src-test/joquery/ProjectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56732494">
+          <caret line="52" column="89" selection-start-line="50" selection-start-column="8" selection-end-line="52" selection-end-column="89" />
+          <folding>
+            <element signature="e#1274#1275#0" expanded="true" />
+            <element signature="e#1310#1311#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

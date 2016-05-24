@@ -28,6 +28,7 @@ JOQuery allows you to use SQL style querying on java collections. Syntax is easy
   1. Grouping
   1. Joins
   1. Group Conditions
+  1. Projections
 
 ## Using the library ##
 No runtime dependencies are required.
@@ -109,6 +110,16 @@ Another example,
 	
 	Collection<Grouping<Integer,Dto>> grouped = query.list();
 	
+## Projections ##
+
+	Integer result = CQ.<Dto,Integer>query()
+					.from(testList)
+					.project(Projections.<Dto,Integer>Sum(),Dto::getId);
+	
+	Integer result = CQ.<Dto,Integer>query()
+					.from(testList)
+					.project(Projections.<Dto, Integer,Integer >Avg(), Dto::getId);
+	
 ## Joins ##
 
 	class LeftDto
@@ -174,8 +185,7 @@ Sources can be checked out or can be downloaded.
 The editor used is Intellij IDEA Community Edition. An ant script is included to run the unit tests. Compilation ant script needed to be re-generated from the editor to run the build. Required libraries are included in the lib folder.
 
 ## Things to be done ##
-  1. Projections (count,sum,....,custom)
-  1. Group conditions
+  1. Add custom projections
 
 ## License
 GNU GPL V3
