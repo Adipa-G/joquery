@@ -83,7 +83,7 @@ public class GroupTest
     }
 
     @Test
-    public void groupByText_UsingFuncWithValidList_ShouldGroupById() throws QueryException
+    public void groupByText_UsingFuncWithValidList_ShouldGroupByText() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -98,7 +98,7 @@ public class GroupTest
     }
 
     @Test
-    public void groupByText_UsingPropertyWithValidList_ShouldGroupById() throws QueryException
+    public void groupByText_UsingPropertyWithValidList_ShouldGroupByText() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -113,7 +113,7 @@ public class GroupTest
     }
 
     @Test
-    public void groupByIdAndText_UsingFuncWithValidList_ShouldGroupById() throws QueryException
+    public void groupByIdAndText_UsingFuncWithValidList_ShouldGroupByIdAndText() throws QueryException
     {
         GroupQuery<Integer,Dto> query = CQ.<Dto,Dto>query()
                 .from(dtoList)
@@ -147,7 +147,7 @@ public class GroupTest
         for (Dto dto : dtoList)
         {
             Grouping<Integer,Dto> value = CQ.filter(groupings)
-                .where().property("key").eq().value(dto.getId()).first();
+                                            .where().property("key").eq().value(dto.getId()).first();
 
             if (value != null)
             {
@@ -170,7 +170,7 @@ public class GroupTest
         for (Dto dto : dtoList)
         {
             Grouping<String,Dto> value = CQ.filter(groupings)
-                    .where().property("key").eq().value(dto.getText()).first();
+                                           .where().property("key").eq().value(dto.getText()).first();
 
             if (value != null)
             {
