@@ -18,15 +18,15 @@ jobs:
         if: success() || failure()   
         with:
           name: JUnit Tests           
-          path: dbgate/ci/reports/*.xml   
+          path: ci/reports/*.xml   
           reporter: java-junit  
       - name: Publish packages
         uses: actions/upload-artifact@v3
         with:
           name: package
-          path: dbgate/ci/jar
+          path: ci/jar
       - name: Publish code coverage
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage
-          path: dbgate/ci/coverage
+          path: ci/coverage
